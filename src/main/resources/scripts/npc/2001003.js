@@ -26,10 +26,10 @@
 
 var status = -1;
 
-function start() { 
+function start() {
     action(1, 0, 0);
-} 
-function action(mode, type, selection) { 
+}
+function action(mode, type, selection) {
     if (mode < 0)
         cm.dispose();
     else {
@@ -37,9 +37,9 @@ function action(mode, type, selection) {
             status++;
         else
             status--;
-        
+
         if (status == 0) {
-            cm.sendYesNo("We have a beautiful christmas tree.\r\nDo you want to see/decorate it?");
+            cm.sendYesNo("我们拥有一棵美丽的圣诞树。\r\n你想看看，或者装点它吗？");
         } else if(status == 1) {
             cm.warp(209000003);
             cm.dispose();

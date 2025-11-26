@@ -32,7 +32,7 @@ function action(mode, type, selection){
                 }
             
                 if(status == 0){
-                        cm.sendSimple("#L0#Enter to fight #bKing Pepe#k and #bYeti Brothers#k.#l\r\n#L1#Enter to fight #bPrime Minister#k.#l");
+                        cm.sendSimple("#L0#进入 #b企鹅国王#k 和 #b白雪人#k战斗.#l\r\n#L1#开始与 #b总管#k战斗。#l");
                 }
                 else if(status == 1){
                         if(selection == 0){
@@ -42,21 +42,21 @@ function action(mode, type, selection){
                                 cm.dispose();
                                 return;
                         }
-                    
+
                         else if(selection == 1){
                                 var em = cm.getEventManager("MK_PrimeMinister2");
-                                
+
                                 var party = cm.getPlayer().getParty();
                                 if (party != null) {
                                     if (!em.startInstance(party, cm.getMap(), 1)) {
-                                        cm.sendOk("Another party is already challenging the boss in this channel.");
+                                        cm.sendOk("此频道已经有队伍在挑战了.");
                                     }
                                 } else {
                                     if (!em.startInstance(cm.getPlayer())) {
-                                        cm.sendOk("Another party is already challenging the boss in this channel.");
+                                        cm.sendOk("此频道已经有队伍在挑战了.");
                                     }
                                 }
-                                
+
                                 cm.dispose();
                                 return;
                         }
@@ -67,9 +67,9 @@ function action(mode, type, selection){
                         cm.dispose();
                         return;
                 }
-            
+
                 if(status == 0){
-                        cm.sendSimple("#L1#Enter to fight #bKing Pepe#k and #bYeti Brothers#k.#l");
+                        cm.sendSimple("#L1#开始挑战 #b企鹅国王#k 和 #b白雪人#k.#l");
                 }
                 else if(status == 1){
                         if(selection == 1){

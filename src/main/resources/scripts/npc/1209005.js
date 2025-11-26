@@ -6,6 +6,6 @@ function start() {
 }
 
 function action(mode, type, selection) {
-    cm.sendOk("Alright, embarking in...");
+    cm.sendOk("好的，上船！");
     cm.dispose();
 }

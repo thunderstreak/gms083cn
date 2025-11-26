@@ -38,9 +38,9 @@ var status;
 
 var seagullProgress;
 var seagullIdx = -1;
-var seagullQuestion = ["One day, I went to the ocean and caught 62 Octopi for dinner. But then some kid came by and gave me 10 Octopi as a gift! How many Octopi do I have then, in total?"];
+var seagullQuestion = ["有一天，我去海边捉了62只章鱼做晚餐。又有路过的小孩子送给我10只章鱼。那么我当时一共拥有多少只章鱼呢？"];
 var seagullAnswer = ["72"];
- 
+
 function start() {
         status = -1;
         action(1, 0, 0);
@@ -58,58 +58,58 @@ function action(mode, type, selection) {
                         status++;
                 else
                         status--;
-    
-                if (status == 0) {    // missing script for skill test found thanks to Jade™
+
+                if (status == 0) {    // missing script for skill test found thanks to Jade鈩?
                         if (!cm.isQuestStarted(6400)) {
-                                cm.sendOk("Who are you talking to me? If you're just bored, go bother somebody else.");
+                                cm.sendOk("有事吗？如果只是无聊，去找其他人搭话吧。");
                                 cm.dispose();
                         } else {
                                 seagullProgress = cm.getQuestProgressInt(6400, 1);
-                            
+
                                 if (seagullProgress == 0) {
                                         seagullIdx = Math.floor(Math.random() * seagullQuestion.length);
-                                        
+
                                         // string visibility thanks to ProXAIMeRx & Glvelturall
-                                        cm.sendNext("Ok then! I'll give you the first question now! You better be ready because this one's a hard one. Even the seagulls here think this one's pretty tough. It's a pretty difficult problem.");
+                                        cm.sendNext("好，我要给你出第一道题了。你要做好心理准备，这道题非常难。就算是海鸥们也会觉得它异常困难，难以解答。");
                                 } else if (seagullProgress == 1) {
-                                        cm.sendNext("Now~ Let's go onto the next question. This one is really difficult. I am going to have Bart help me on this one. You know Bart, right?");
+                                        cm.sendNext("现在~我们来看看下一题。这道题真的很难。我得请巴特来协助一下.你认识他，对吧？");
                                 } else {
-                                        cm.sendNext("Ohhhh! Now that was impressive! I considered my test quite difficult, and for you to pass that... you are indeed an integral member of the Pirate family, and a friend of seagulls. We are now bonded by the mutual friendship that will last a lifetime! And, most of all, friends are there to help you out when you are in dire straits. If you are in a state of emergency, call us seagulls.");
+                                        cm.sendNext("哦哦哦哦！这可真是令人惊叹。我以前觉得这些测试非常困难，你不太可能通过...你确实是海盗们不可或缺的一员，海鸥们的好朋友。我们现在将被一生一世的友谊紧密联结在一起！最重要的是，朋友之间会在危难之际互相伸出援手。如果你身处危险之中，就呼叫海鸥朋友吧。");
                                 }
                         }
                 } else if (status == 1) {
                         if (seagullProgress == 0) {
                                 cm.sendGetText(seagullQuestion[seagullIdx]);
                         } else if (seagullProgress == 1) {
-                                cm.sendNextPrev("I'm going to send you to an empty room in The Nautilus. You will see 9 Barts there. Hahaha~ Are they twins? No, no, certainly not. I've used a bit of magic for this test of will.");
+                                cm.sendNextPrev("我会送你去诺特勒斯号上的一个空房间。你会在那里看到9个巴特。哈哈哈~他们当然不会是多胞胎了。我只是用了一点小小的障眼法来测试你的意志力。");
                         } else {
-                                cm.sendNextPrev("Notify us using the skill Air Strike, and we will be there to help you out, because that's what friends are for.\r\n\r\n  #s5221003#    #b#q5221003##k");
+                                cm.sendNextPrev("发出信号，我们就会使用地毯式空袭帮助你摆脱困境，这就是朋友之间该做的。\r\n\r\n  #s5221003#    #b#q5221003##k");
                         }
                 } else if (status == 2) {
                         if (seagullIdx > -1) {
                                 var answer = cm.getText();
                                 if (answer == seagullAnswer[seagullIdx]) {
-                                        cm.sendNext("What! I can't believe how incredibly smart you are! Incredible! In the seagull world, that kind of intellingence would give you a Ph.D. and then some. You're really amazing... I can't believe it... I simply can't believe it!");
+                                        cm.sendNext("天啊，我真是无法想象你有多聪明，难以置信！在海鸥的世界里，这样的智力足够拿下博士学位，甚至更多的荣誉。你真是太棒了...无法相信...我是在做梦吗？");
                                         cm.setQuestProgress(6400, 1, 1);
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("Hmm, that's not quite how I recall it. Try again!");
+                                        cm.sendOk("嗯，我记得好像不是这么多，再试试吧。");
                                         cm.dispose();
                                 }
                         } else if (seagullProgress != 2) {
-                                cm.sendNextPrev("Anyway, only one of 9 Barts is the real Bart. You know that Pirates are known for the strength of their friendships and camaraderie with their fellow pirates. If you're a true pirate, you should be able to find your own mate with ease. Alright then, I'll send you to the room where Bart is.");
+                                cm.sendNextPrev("总之，9个巴特中只有一个是真的。你也知道，海盗们以互相之间坚定不移的友谊与羁绊而闻名于世。如果你是个真正的海盗，就应该能够轻松找到你的同伴。那么，我会送你去巴特所在的房间。");
                         } else {
                                 //cm.gainExp(1000000);
                                 //cm.teachSkill(5221003, 0, 10, -1);
                                 //cm.forceCompleteQuest(6400);
 
-                                cm.sendNextPrev("You have met all my challenges, and passed! Good job!");
+                                cm.sendNextPrev("你通过了我所有的测验，做得很好！");//怎么把地毯式空袭奖励给取消了，这个端做过技改吗？
                                 cm.dispose();
                         }
                 } else if (status == 3) {
                         var em = cm.getEventManager("4jaerial");
                         if(!em.startInstance(cm.getPlayer())) {
-                                cm.sendOk("Another player is already challenging the test in this channel. Please try another channel, or wait for the current player to finish.");
+                                cm.sendOk("本频道已经有其他玩家正在进行挑战。请等待其完成挑战或切换至其它频道。");
                         }
                         
                         cm.dispose();

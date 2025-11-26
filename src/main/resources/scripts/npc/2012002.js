@@ -29,21 +29,21 @@
 var status = 0;
 
 function start() {
-    cm.sendYesNo("Do you wish to leave the boat?");
+    cm.sendYesNo("你想下船吗？");
 }
 
 function action(mode, type, selection) {
 if (mode == 0 && status == 1) {
-	cm.sendOk("Good choice");
+	cm.sendOk("不错的选择");
 	cm.dispose();
 }
     if (mode > 0)
         status++;
     else
         cm.dispose();
-    
+
     if (status == 1) {
-        cm.sendNext ("Alright, see you next time. Take care.");
+        cm.sendNext ("好的，下次再见，请多保重。");
     }
     else if (status == 2) {
         cm.warp(200000111, 0);// back to Orbis jetty
