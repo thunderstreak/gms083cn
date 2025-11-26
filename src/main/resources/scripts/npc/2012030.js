@@ -27,7 +27,7 @@ var status;
 var harpNote = 'F';
 var harpSounds = ["do", "re", "mi", "pa", "sol", "la", "si"];   // musical order detected thanks to Arufonsu
 var harpSong = "CCGGAAGFFEEDDC|GGFFEED|GGFFEED|CCGGAAGFFEEDDC|";
- 
+
 function start() {
         status = -1;
         action(1, 0, 0);
@@ -45,23 +45,23 @@ function action(mode, type, selection) {
                         status++;
                 else
                         status--;
-    
+
                 if(status == 0) {
                         cm.getMap().broadcastMessage(MaplePacketCreator.playSound("orbis/" + harpSounds[cm.getNpc() - 2012027]));
-                        
+
                         if(cm.isQuestStarted(3114)) {
                                 var idx = -1 * cm.getQuestProgressInt(3114);
-                                
+
                                 if(idx > -1) {
                                         var nextNote = harpSong[idx];
-                                        
+
                                         if(harpNote != nextNote) {
                                                 cm.setQuestProgress(3114, 0);
 
                                                 cm.getPlayer().announce(MaplePacketCreator.showEffect("quest/party/wrong_kor"));
                                                 cm.getPlayer().announce(MaplePacketCreator.playSound("Party1/Failed"));
 
-                                                cm.message("You've missed the note... Start over again.");
+                                                cm.message("你弹错了音符...从头再来吧。");
                                         } else {
                                                 nextNote = harpSong[idx + 1];
 
@@ -69,21 +69,21 @@ function action(mode, type, selection) {
                                                         idx++;
 
                                                         if(idx == 45) {     // finished lullaby
-                                                                cm.message("Twinkle, twinkle, little star, how I wonder what you are.");
+                                                                cm.message("一闪一闪亮晶晶，漫天都是小星星...");
                                                                 cm.setQuestProgress(3114, 42);
 
                                                                 cm.getPlayer().announce(MaplePacketCreator.showEffect("quest/party/clear"));
                                                                 cm.getPlayer().announce(MaplePacketCreator.playSound("Party1/Clear"));
-                                                                
+
                                                                 cm.dispose();
                                                                 return;
                                                         } else {
                                                                 if(idx == 14) {
-                                                                        cm.message("Twinkle, twinkle, little star, how I wonder what you are!");
+                                                                        cm.message("一闪一闪亮晶晶，漫天都是小星星。");
                                                                 } else if(idx == 22) {
-                                                                        cm.message("Up above the world so high,");
+                                                                        cm.message("挂在天上放光明...");
                                                                 } else if(idx == 30) {
-                                                                        cm.message("like a diamond in the sky.");
+                                                                        cm.message("好像许多小眼睛...");
                                                                 }
                                                         }
                                                 }
