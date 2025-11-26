@@ -98,6 +98,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
                 <executions>
@@ -114,6 +115,25 @@
                                     <directory>${basedir}/wz</directory>
                                     <includes>
                                         <include>**/*.xml</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-scripts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/HeavenMS/bin</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>stop.sh</include>
+                                        <include>stop.bat</include>
                                     </includes>
                                 </resource>
                             </resources>
@@ -156,11 +176,19 @@
                         <program>
                             <id>start</id>
                             <mainClass>net.server.Server</mainClass>
-                            <name>start</name>
                             <jvmSettings>
                                 <extraArguments>
                                     <extraArgument>-Dfile.encoding=UTF-8</extraArgument>
                                     <!-- 调整内存大小 <extraArgument>-Xmx2G</extraArgument> <extraArgument>-Xms2G</extraArgument> -->
+                                </extraArguments>
+                            </jvmSettings>
+                        </program>
+                        <program>
+                            <id>stop</id>
+                            <mainClass>net.server.ServerStop</mainClass>
+                            <jvmSettings>
+                                <extraArguments>
+                                    <extraArgument>-Dfile.encoding=UTF-8</extraArgument>
                                 </extraArguments>
                             </jvmSettings>
                         </program>

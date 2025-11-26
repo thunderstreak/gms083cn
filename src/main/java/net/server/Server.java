@@ -21,7 +21,9 @@
  */
 package net.server;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
 import java.net.InetSocketAddress;
 import java.security.Security;
 import java.sql.Connection;
@@ -994,6 +996,18 @@ public class Server {
         System.setProperty("wzpath", "wz");
         Security.setProperty("crypto.policy", "unlimited");
         AutoJCE.removeCryptographyRestrictions();
+        
+        // Create PID file
+        try {
+            String pid = ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
+            try (FileWriter writer = new FileWriter("heavenms.pid")) {
+                writer.write(pid);
+            }
+            System.out.println("Server PID: " + pid + " written to heavenms.pid");
+        } catch (Exception e) {
+            System.err.println("Failed to create PID file: " + e.getMessage());
+        }
+        
         Server.getInstance().init();
     }
 
