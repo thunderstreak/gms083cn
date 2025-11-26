@@ -11037,7 +11037,10 @@ public class MapleCharacter extends AbstractMapleCharacterObject {
             ps.setInt(1, accountId);
             ResultSet rs = ps.executeQuery();
             if(!rs.next()) return "Account does not exist.";
-            if(rs.getLong("tempban") != 0 && !rs.getString("tempban").equals("2018-06-20 00:00:00.0")) return "Account has been banned.";
+            // 修复：使用 Timestamp 替代 getLong 来避免类型转换异常
+            Timestamp tempbanTimestamp = rs.getTimestamp("tempban");
+            if(tempbanTimestamp != null && tempbanTimestamp.getTime() != 0 && 
+               !rs.getString("tempban").equals("2018-06-20 00:00:00.0")) return "Account has been banned.";
         } catch(SQLException e) {
             e.printStackTrace();
             FilePrinter.printError(FilePrinter.CHANGE_CHARACTER_NAME, e);
