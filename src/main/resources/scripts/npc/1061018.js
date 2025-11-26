@@ -20,11 +20,11 @@ function action(mode, type, selection) {
     
                 if(status == 0){
                         if(cm.getEventInstance().isEventCleared()) {
-                                cm.sendOk("Wow! You defeated the balrog.");
+                                cm.sendOk("哇哦，居然打败了蝙蝠怪。");//之前说过这里是蝙蝠怪
                         } else if(cm.getPlayer().getMap().getCharacters().size() > 1) {
-                                cm.sendYesNo("Are you really going to leave this battle and leave your fellow travelers to die?");
+                                cm.sendYesNo("确定要离开这场战斗，丢下你的同伴独自面对吗？");//Are you really going to leave this battle and leave your fellow travelers to die?
                         } else {
-                                cm.sendYesNo("If you're a coward, you will leave.");
+                                cm.sendYesNo("如果你是个胆小鬼，就从这里出去吧。");//If you're a coward, you will leave.
                         }
                 } else if(status == 1){
                         if(cm.getEventInstance().isEventCleared()) {

@@ -66,15 +66,15 @@ function action(mode, type, selection) {
                         status--;
 
                 if (status == 0) {
-                        var sendStr = "The #bInternet Cafe Party Quest#k rewards players with ticket-like #bfigure erasers#k, that can be used on the vending machine to retrieve prizes. By further increasing the stakes, one can get better prizes, separated by #rtiers#k.\r\n\r\nThe possible rewards for each tier are depicted here:\r\n\r\n#b";
+                        var sendStr = "#b网吧组队活动#k 为玩家提供类似门票的 #b橡皮擦图形#k, 它可以在自动售货机上用来取回奖品。 通过进一步增加赌注，可以获得更好的奖品, #r等级不同#k.\r\n\r\n每一级的奖励也不同:\r\n\r\n#b";
                         for(var i = 0; i < 6; i++) {
                             sendStr += "#L" + i + "#" + levels[i] + "#l\r\n";
                         }
-                        
+
                         cm.sendSimple(sendStr);
                 } else if(status == 1) {
                         var lvTarget, lvQty;
-                        
+
                         if(selection == 0) {
                                 lvTarget = itemSet_lv1;
                                 lvQty = itemQty_lv1;
@@ -94,8 +94,8 @@ function action(mode, type, selection) {
                                 lvTarget = itemSet_lv6;
                                 lvQty = itemQty_lv6;
                         }
-                        
-                        var sendStr = "The following items are being awarded at #b" + levels[selection] + "#k:\r\n\r\n";
+
+                        var sendStr = "下列物品将于 #b" + levels[selection] + "#k:\r\n\r\n";
                         for(var i = 0; i < lvTarget.length; i++) {
                             sendStr += "  #L" + i + "# #i" + lvTarget[i] + "#  #t" + lvTarget[i] + "#";
                             if(lvQty[i] > 1) sendStr += " (" + lvQty[i] + ")";

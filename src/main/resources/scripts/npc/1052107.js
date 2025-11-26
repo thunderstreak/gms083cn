@@ -45,7 +45,7 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendOk("A small focus of light lighting in the immersive darkness.");
+                        cm.sendOk("深沉的黑暗中，有一处微弱的亮光闪烁着。");//A small focus of light lighting in the immersive darkness.
                         cm.dispose();
                 }
         }

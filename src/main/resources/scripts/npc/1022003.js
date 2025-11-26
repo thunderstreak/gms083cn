@@ -50,19 +50,19 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "Hm? Who might you be? Oh, you've heard about my forging skills? In that case, I'd be glad to process some of your ores... for a fee.#b"
-        var options = new Array("Refine a mineral ore","Refine a jewel ore","Upgrade a helmet","Upgrade a shield");
+        var selStr = "嗯？你是...哦，你听说过我高超的锻造技术了？那样的话，我很乐意为你冶炼一些母矿...只要支付手续费就好。#b"//Hm是语气词，还有一些其它翻译小问题
+        var options = new Array("冶炼矿石母矿","冶炼宝石母矿","升级头盔","升级盾牌");//脚本里的双引号需要使用英文符号的双引号才不会出现错误。不能用顿号取代英文逗号。
         for (var i = 0; i < options.length; i++){
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
-                        
+
         cm.sendSimple(selStr);
     }
     else if (status == 1 && mode == 1) {
         selectedType = selection;
         if (selectedType == 0){ //mineral refine
-            var selStr = "So, what kind of mineral ore would you like to refine?#b";
-            var minerals = new Array ("Bronze","Steel","Mithril","Adamantium","Silver","Orihalcon","Gold");
+            var selStr = "你想要冶炼哪种矿石母矿？#b";
+            var minerals = new Array ("青铜母矿","钢铁母矿","锂矿石母矿","朱矿石母矿","银的母矿","紫矿石母矿","黄金母矿");
             for (var i = 0; i < minerals.length; i++){
                 selStr += "\r\n#L" + i + "# " + minerals[i] + "#l";
             }
@@ -70,8 +70,8 @@ function action(mode, type, selection) {
             equip = false;
         }
         else if (selectedType == 1){ //jewel refine
-            var selStr = "So, what kind of jewel ore would you like to refine?#b";
-            var jewels = new Array ("Garnet","Amethyst","Aquamarine","Emerald","Opal","Sapphire","Topaz","Diamond","Black Crystal");
+            var selStr = "你想要冶炼哪种宝石母矿？#b";
+            var jewels = new Array ("石榴石母矿","紫水晶母矿","海蓝石母矿","祖母绿母矿","蛋白石母矿","蓝宝石母矿","黄晶母矿","钻石母矿","黑水晶母矿");
             for (var i = 0; i < jewels.length; i++){
                 selStr += "\r\n#L" + i + "# " + jewels[i] + "#l";
             }
@@ -79,11 +79,12 @@ function action(mode, type, selection) {
             equip = false;
         }
         else if (selectedType == 2){ //helmet refine
-            var selStr = "Ah, you wish to upgrade a helmet? Then tell me, which one?#b";
-            var helmets = new Array ("Blue Metal Gear#k - Common Lv. 15#b","Yellow Metal Gear#k - Common Lv. 15#b","Metal Koif#k - Warrior Lv. 10#b","Mithril Koif#k - Warrior Lv. 10#b","Steel Helmet#k - Warrior Lv. 12#b","Mithril Helmet#k - Warrior Lv. 12#b","Steel Full Helm#k - Warrior Lv. 15#b",
-                "Mithril Full Helm#k - Warrior Lv. 15#b","Iron Viking Helm#k - Warrior Lv. 20#b","Mithril Viking Helm#k - Warrior Lv. 20#b","Steel Football Helmet#k - Warrior Lv. 20#b","Mithrill Football Helmet#k - Warrior Lv. 20#b","Mithril Sharp Helm#k - Warrior Lv. 22#b","Gold Sharp Helm#k - Warrior Lv. 22#b",
-                "Orihalcon Burgernet Helm#k - Warrior Lv. 25#b","Gold Burgernet Helm#k - Warrior Lv. 25#b","Great Red Helmet#k - Warrior Lv. 35#b","Great Blue Helmet#k - Warrior Lv. 35#b","Mithril Nordic Helm#k - Warrior Lv. 40#b","Gold Nordic Helm#k - Warrior Lv. 40#b","Mithril Crusader Helm#k - Warrior Lv. 50#b",
-                "Silver Crusader Helm#k - Warrior Lv. 50#b","Old Steel Nordic Helm#k - Warrior Lv. 55#b","Old Mithril Nordic Helm#k - Warrior Lv. 55#b");
+            var selStr = "你想要将头盔升级成哪一种？#b";
+            var helmets = new Array ("蓝色金属头箍#k - 需要等级 Lv. 15#b","黄色金属头箍#k - 需要等级 Lv. 15#b","金属头盔#k - 需要等级 Lv. 10#b","锂矿头盔#k - 需要等级 Lv. 10#b","钢铁帽#k - 需要等级 Lv. 12#b","锂矿帽#k - 需要等级 Lv. 12#b","铁制头具#k - 需要等级 Lv. 15#b",
+                "锂矿钢盔#k - 需要等级 Lv. 15#b","钢制海盗帽#k - 需要等级 Lv. 20#b","锂矿海盗头盔#k - 需要等级 Lv. 20#b","钢铁球帽#k - 需要等级 Lv. 20#b","锂矿橄榄球帽#k - 需要等级 Lv. 20#b","锂矿尖头盔#k - 需要等级 Lv. 22#b",
+                "黄金尖头盔#k - 需要等级 Lv. 22#b",
+                "黄金骑士头盔#k - 需要等级 Lv. 25#b","紫矿骑士头盔#k - 需要等级 Lv. 25#b","红色战斗头盔#k - 需要等级 Lv. 35#b","蓝色战斗头盔#k - 需要等级 Lv. 35#b","锂矿诺曼头盔#k - 需要等级 Lv. 40#b","黄金诺曼头盔#k - 需要等级 Lv. 40#b","锂矿十字军帽#k - 需要等级 Lv. 50#b",
+                "银制十字军帽子#k - 需要等级 Lv. 50#b","旧诺曼头盔#k - 需要等级 Lv. 55#b","旧锂矿诺曼头盔#k - 需要等级 Lv. 55#b");
             for (var i = 0; i < helmets.length; i++){
                 selStr += "\r\n#L" + i + "# " + helmets[i] + "#l";
             }
@@ -91,8 +92,8 @@ function action(mode, type, selection) {
             equip = true;
         }
         else if (selectedType == 3){ //shield refine
-            var selStr = "Ah, you wish to upgrade a shield? Then tell me, which one?#b";
-            var shields = new Array ("Adamantium Tower Shield#k - Warrior Lv. 40#b","Mithril Tower Shield#k - Warrior Lv. 40#b","Silver Legend Shield#k - Warrior Lv. 60#b","Adamantium Legend Shield#k - Warrior Lv. 60#b");
+            var selStr = "你想要将盾牌升级成哪一种？#b";
+            var shields = new Array ("朱矿方盾#k - 需要等级 Lv. 40#b","锂矿方盾#k - 需要等级 Lv. 40#b","古老银盾#k - 需要等级 Lv. 60#b","古老朱矿盾#k - 需要等级 Lv. 60#b");
             for (var i = 0; i < shields.length; i++){
                 selStr += "\r\n#L" + i + "# " + shields[i] + "#l";
             }
@@ -124,9 +125,9 @@ function action(mode, type, selection) {
             matQty = matQtySet[selectedItem];
             cost = costSet[selectedItem];
         }
-                
-        var prompt = "So, you want me to make some #t" + item + "#s? In that case, how many do you want me to make?";
-                
+
+        var prompt = "想要制作#t" + item + "#，对吗？那么，你想制作多少？";
+
         cm.sendGetNumber(prompt,1,1,100)
     }
     else if (status == 3 && mode == 1) {
@@ -161,12 +162,12 @@ function action(mode, type, selection) {
             matQty = matQtySet[selectedItem];
             cost = costSet[selectedItem];
         }
-        var prompt = "You want me to make ";
+        var prompt = "你想制作";
         if (qty == 1)
-            prompt += "a #t" + item + "#?";
+            prompt += "一件 #t" + item + "#?";
         else
-            prompt += qty + " #t" + item + "#?";
-        prompt += " In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+            prompt += qty + "件 #t" + item + "#?";
+        prompt += " 那么，请确认你准备好了相应材料，并且背包里有充足的空间。#b";
         if (mats instanceof Array)
             for(var i = 0; i < mats.length; i++)
                 prompt += "\r\n#i"+mats[i]+"# " + matQty[i] * qty + " #t" + mats[i] + "#";
@@ -174,20 +175,20 @@ function action(mode, type, selection) {
             prompt += "\r\n#i"+mats+"# " + matQty * qty + " #t" + mats + "#";
         }
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost * qty + " meso";
+            prompt += "\r\n#i4031138# " + cost * qty + " 金币";
         cm.sendYesNo(prompt);
     }
     else if (status == 4 && mode == 1) {
         var complete = true;
-        
+
         if(!cm.canHold(item, qty)) {
-            cm.sendOk("Check your inventory for a free slot first.");
+            cm.sendOk("请确认背包有足够的空间。");
             cm.dispose();
             return;
         }
         else if (cm.getMeso() < cost * qty)
         {
-            cm.sendOk("I'm afraid you cannot afford my services.");
+            cm.sendOk("金币不足的话，我无法为你制作。");//这里是金币不足的提示，上面的地方是物品栏不足，抄错了
             cm.dispose();
             return;
         }
@@ -200,9 +201,9 @@ function action(mode, type, selection) {
             }
             else if (!cm.haveItem(mats, matQty * qty))
                 complete = false;
-        }       
+        }
         if (!complete)
-            cm.sendOk("I'm afraid you're missing something for the item you want. See you another time, yes?");
+            cm.sendOk("缺少材料，无法完成制作。");
         else {
             if (mats instanceof Array)
                 for (var i = 0; i < mats.length; i++)
@@ -211,7 +212,7 @@ function action(mode, type, selection) {
                 cm.gainItem(mats, -matQty * qty);
             cm.gainMeso(-cost * qty);
             cm.gainItem(item,qty);
-            cm.sendOk("There, finished. What do you think, a piece of art, isn't it? Well, if you need anything else, you nkow where to find me.");
+            cm.sendOk("一如既往，是件完美的作品。如果你还想做些什么，请再来找我。");
         }
         cm.dispose();
     }

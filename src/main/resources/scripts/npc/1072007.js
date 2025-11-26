@@ -1,6 +1,6 @@
 /*
 	This file is part of the OdinMS Maple Story Server
-    Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc> 
+    Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
                        Matthias Butz <matze@odinms.de>
                        Jan Christian Meyer <vimes@odinms.de>
 
@@ -32,7 +32,7 @@
 
 var status;
 var completed;
- 
+
 function start() {
         status = -1;
         action(1, 0, 0);
@@ -50,14 +50,14 @@ function action(mode, type, selection) {
                         status++;
                 else
                         status--;
-    
+
                 if(status == 0) {
                         if (cm.haveItem(4031013,30)) {
                             completed = true;
-                            cm.sendOk("You're a true hero! Take this and the Dark Lord will acknowledge you.");
+                            cm.sendOk("你真是个了不起的家伙！拿着它去找达克鲁，她会告诉你接下来怎么做。");
                         } else {
                             completed = false;
-                            cm.sendSimple("You will have to collect me #b30 #t4031013##k. Good luck. \r\n#b#L1#I would like to leave#l");
+                            cm.sendSimple("需要收集#b30个 #t4031013##k。祝你好运。 \r\n#b#L1#我想要现在离开。#l");
                         }
                 } else if(status == 1) {
                         if(completed) {
@@ -66,7 +66,7 @@ function action(mode, type, selection) {
                             cm.startQuest(100011);
                             cm.gainItem(4031012);
                         }
-                        
+
                         cm.warp(102040000, 9);
                         cm.dispose();
                 }
