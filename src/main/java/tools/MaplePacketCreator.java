@@ -85,14 +85,10 @@ import net.server.world.MapleParty;
 import net.server.world.MaplePartyCharacter;
 import net.server.world.PartyOperation;
 import net.server.world.World;
+import server.*;
 import server.CashShop.CashItem;
 import server.CashShop.CashItemFactory;
 import server.CashShop.SpecialCashItem;
-import server.DueyPackage;
-import server.MTSItemInfo;
-import server.MapleItemInformationProvider;
-import server.MapleShopItem;
-import server.MapleTrade;
 import server.events.gm.MapleSnowball;
 import server.life.MapleMonster;
 import server.life.MapleNPC;
@@ -8043,8 +8039,9 @@ public class MaplePacketCreator {
                 for (Item item : c.getPlayer().getCashShop().getInventory()) {
                         addCashItemInformation(mplew, item, c.getAccID());
                 }
-
-                mplew.writeShort(c.getPlayer().getStorage().getSlots());
+                // fix NullPointerException
+                MapleStorage storage = c.getPlayer().getStorage();
+                mplew.writeShort(storage != null ? storage.getSlots() : 0);
                 mplew.writeShort(c.getCharacterSlots());
 
                 return mplew.getPacket();
