@@ -459,3 +459,5 @@ server:
     #Event End Timestamp
     EVENT_END_TIMESTAMP: 1428897600000
 
+    ITEM_USE_SLOT_MAX: 9999               #  消耗物品堆叠最大值
+    ITEM_ETC_SLOT_MAX: 9999               #  其他物品堆叠最大值

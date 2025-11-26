@@ -371,11 +371,30 @@ public class MapleItemInformationProvider {
         if (item != null) {
             MapleData smEntry = item.getChildByPath("info/slotMax");
             if (smEntry == null) {
-                if (ItemConstants.getInventoryType(itemId).getType() == MapleInventoryType.EQUIP.getType()) {
-                    ret = 1;
-                } else {
-                    ret = 100;
+                byte itemType = ItemConstants.getInventoryType(itemId).getType(); // get item type
+                switch (itemType) {
+                    case 1: // equip
+                        ret = 1;
+                        break;
+                    case 2: // use
+                        ret = YamlConfig.config.server.ITEM_USE_SLOT_MAX > 0 ? YamlConfig.config.server.ITEM_USE_SLOT_MAX : 100;
+                        break;
+                    case 4: // etc
+                        ret = YamlConfig.config.server.ITEM_ETC_SLOT_MAX > 0 ? YamlConfig.config.server.ITEM_USE_SLOT_MAX : 100;
+                        break;
+                    case 3: // setup
+                    case 5: // cash
+                    case 6: // canhold
+                        ret = 100;
+                        break;
+                    default:
+                        ret = 100;
                 }
+                // if (itemType == MapleInventoryType.EQUIP.getType()) {
+                //     ret = 1;
+                // } else {
+                //     ret = 100;
+                // }
             } else {
                 ret = (short) MapleDataTool.getInt(smEntry);
             }
