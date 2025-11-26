@@ -197,7 +197,7 @@ public final class Channel {
                 return;
             }
             
-            System.out.println("Shutting down Channel " + channel + " on World " + world);
+            System.out.println("正在关闭世界 " + world + " 上的频道 " + channel);
             
             closeAllMerchants();
             disconnectAwayPlayers();
@@ -217,10 +217,10 @@ public final class Channel {
             acceptor.unbind();
             
             finishedShutdown = true;
-            System.out.println("Successfully shut down Channel " + channel + " on World " + world + "\r\n");
+            System.out.println("成功关闭世界 " + world + " 上的频道 " + channel + "\r\n");
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Error while shutting down Channel " + channel + " on World " + world + "\r\n" + e);
+            System.err.println("关闭世界 " + world + " 上的频道 " + channel + " 时发生错误\r\n" + e);
         }
     }
     

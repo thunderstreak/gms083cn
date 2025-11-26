@@ -2188,6 +2188,6 @@ public class World {
         players = null;
         
         clearWorldData();
-        System.out.println("Finished shutting down world " + id + "\r\n");
+        System.out.println("世界 " + id + " 关闭完成\r\n");
     }
 }

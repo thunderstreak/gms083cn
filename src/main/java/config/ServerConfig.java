@@ -302,4 +302,7 @@ public class ServerConfig {
     //Event End Timestamp
     public long EVENT_END_TIMESTAMP;
 
+    public short ITEM_USE_SLOT_MAX;
+    public short ITEM_ETC_SLOT_MAX;
+
 }

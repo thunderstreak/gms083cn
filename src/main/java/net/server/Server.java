@@ -403,7 +403,7 @@ public class Server {
             wldRLock.unlock();
         }
         
-        System.out.println("Starting world " + i);
+        System.out.println("正在启动世界 " + i);
 
         int exprate = YamlConfig.config.worlds.get(i).exp_rate;
         int mesorate = YamlConfig.config.worlds.get(i).meso_rate;
@@ -449,10 +449,10 @@ public class Server {
         if (canDeploy) {
             world.setServerMessage(YamlConfig.config.worlds.get(i).server_message);
             
-            System.out.println("Finished loading world " + i + "\r\n");
+            System.out.println("世界 " + i + " 加载完成\r\n");
             return i;
         } else {
-            System.out.println("Could not load world " + i + "...\r\n");
+            System.out.println("无法加载世界 " + i + "...\r\n");
             world.shutdown();
             return -2;
         }
@@ -864,7 +864,7 @@ public class Server {
     }
     
     public void init() {
-        System.out.println("HeavenMS v" + ServerConstants.VERSION + " starting up.\r\n");
+        System.out.println("HeavenMS v" + ServerConstants.VERSION + " 开始启动。\r\n");
         
         if(YamlConfig.config.server.SHUTDOWNHOOK)
             Runtime.getRuntime().addShutdownHook(new Thread(shutdown(false)));
@@ -899,16 +899,16 @@ public class Server {
         
         long timeToTake = System.currentTimeMillis();
         SkillFactory.loadAllSkills();
-        System.out.println("Skills loaded in " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " seconds");
+        System.out.println("技能加载完成，用时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
 
         timeToTake = System.currentTimeMillis();
         
         CashItemFactory.getSpecialCashItems();
-        System.out.println("Items loaded in " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " seconds");
+        System.out.println("物品加载完成，用时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒");
         
 	timeToTake = System.currentTimeMillis();
 	MapleQuest.loadAllQuest();
-	System.out.println("Quest loaded in " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " seconds\r\n");
+	System.out.println("任务加载完成，用时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒\r\n");
 	
         NewYearCardRecord.startPendingNewYearCardRequests();
         
@@ -926,7 +926,7 @@ public class Server {
             loadPlayerNpcMapStepFromDb();
         } catch (Exception e) {
             e.printStackTrace();//For those who get errors
-            System.out.println("[SEVERE] Syntax error in 'world.ini'.");
+            System.out.println("[严重] 'world.ini' 文件中存在语法错误。");
             System.exit(0);
         }
         
@@ -935,7 +935,7 @@ public class Server {
         if(YamlConfig.config.server.USE_FAMILY_SYSTEM) {
             timeToTake = System.currentTimeMillis();
             MapleFamily.loadAllFamilies();
-            System.out.println("Families loaded in " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " seconds\r\n");
+            System.out.println("家族加载完成，用时 " + ((System.currentTimeMillis() - timeToTake) / 1000.0) + " 秒\r\n");
         }
         
         System.out.println();
@@ -952,9 +952,9 @@ public class Server {
             ex.printStackTrace();
         }
         
-        System.out.println("Listening on port 8484\r\n\r\n");
+        System.out.println("监听端口 8484\r\n\r\n");
         
-        System.out.println("HeavenMS is now online.\r\n");
+        System.out.println("HeavenMS 现已上线。\r\n");
         online = true;
         
         MapleSkillbookInformationProvider.getInstance();
@@ -1890,7 +1890,7 @@ public class Server {
     }
     
     private synchronized void shutdownInternal(boolean restart) {
-        System.out.println((restart ? "Restarting" : "Shutting down") + " the server!\r\n");
+        System.out.println((restart ? "重启" : "关闭") + "服务器！\r\n");
         if (getWorlds() == null) return;//already shutdown
         for (World w : getWorlds()) {
             w.shutdown();
@@ -1936,7 +1936,7 @@ public class Server {
         TimerManager.getInstance().purge();
         TimerManager.getInstance().stop();
         
-        System.out.println("Worlds + Channels are offline.");
+        System.out.println("所有世界和频道均已离线。");
         acceptor.unbind();
         acceptor = null;
         if (!restart) {  // shutdown hook deadlocks if System.exit() method is used within its body chores, thanks MIKE for pointing that out
@@ -1947,7 +1947,7 @@ public class Server {
                 }
             }).start();
         } else {
-            System.out.println("\r\nRestarting the server....\r\n");
+            System.out.println("\r\n正在重启服务器....\r\n");
             try {
                 instance.finalize();//FUU I CAN AND IT'S FREE
             } catch (Throwable ex) {
