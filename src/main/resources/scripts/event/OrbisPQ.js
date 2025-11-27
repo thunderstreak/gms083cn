@@ -49,17 +49,17 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -75,7 +75,7 @@ function setEventRewards(eim) {
         itemSet = [2040602, 2040802, 2040002, 2040402, 2040505, 2040502, 2040601, 2044501, 2044701, 2044601, 2041019, 2041016, 2041022, 2041013, 2041007, 2043301, 2040301, 2040801, 2040001, 2040004, 2040504, 2040501, 2040513, 2043101, 2044201, 2044401, 2040701, 2044301, 2043801, 2040401, 2043701, 2040803, 2000003, 2000002, 2000004, 2000006, 2000005, 2022000, 2001001, 2001002, 2022003, 2001000, 2020014, 2020015, 4003000, 1102015, 1102016, 1102017, 1102018, 1102021, 1102022, 1102023, 1102024, 1102084, 1102085, 1102086, 1032019, 1032020, 1032021, 1032014, 2070011, 4010003, 4010000, 4010006, 4010002, 4010005, 4010004, 4010001, 4020001, 4020002, 4020008, 4020007, 4020003, 4020000, 4020004, 4020005, 4020006, 2210000, 2210001, 2210002, 2070006, 2070005, 2070007, 2070004, 2061003, 2060003, 2060004, 2061004, 2100000, 2100001, 2100002, 2100003, 2100004, 2100005];
         itemQty = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 100, 100, 15, 80, 5, 25, 20, 20, 25, 20, 15, 10, 45, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 15, 15, 10, 15, 15, 15, 15, 15, 15, 10, 10, 15, 15, 15, 15, 15, 5, 5, 5, 1, 1, 1, 1, 2000, 2000, 2000, 2000, 1, 1, 1, 1, 1, 1];
         eim.setEventRewards(evLevel, itemSet, itemQty);
-        
+
         expStages = [];    //bonus exp given on CLEAR stage signal
         eim.setEventClearStageExp(expStages);
 }
@@ -83,7 +83,7 @@ function setEventRewards(eim) {
 function getEligibleParty(party) {      //selects, from the given party, the team that is allowed to attempt this event
         var eligible = [];
         var hasLeader = false;
-        
+
         if(party.size() > 0) {
                 var partyList = party.toArray();
 
@@ -96,7 +96,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
                         }
                 }
         }
-        
+
         if(!(hasLeader && eligible.length >= minPlayers && eligible.length <= maxPlayers)) eligible = [];
         return eligible;
 }
@@ -104,7 +104,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
 function setup(level, lobbyid) {
         var eim = em.newInstance("Orbis" + lobbyid);
         eim.setProperty("level", level);
-        
+
         eim.setProperty("statusStg0", -1);
         eim.setProperty("statusStg1", -1);
         eim.setProperty("statusStg2", -1);
@@ -117,8 +117,8 @@ function setup(level, lobbyid) {
         eim.setProperty("statusStg2_c", 0);
         eim.setProperty("statusStg7_c", 0);
         eim.setProperty("statusStgBonus", 0);
-        
-        
+
+
         eim.getInstanceMap(920010000).resetPQ(level);
         eim.getInstanceMap(920010100).resetPQ(level);
         eim.getInstanceMap(920010200).resetPQ(level);
@@ -146,23 +146,23 @@ function setup(level, lobbyid) {
         eim.getInstanceMap(920011100).resetPQ(level);
         eim.getInstanceMap(920011200).resetPQ(level);
         eim.getInstanceMap(920011300).resetPQ(level);
-        
+
         respawnStages(eim);
-        
+
         var d = new Date();
         eim.getInstanceMap(920010400).getReactorByName("music").setEventState(d.getDay());
-        
+
         eim.startEventTimer(eventTime * 60000);
         setEventRewards(eim);
         setEventExclusives(eim);
-        
+
         return eim;
 }
 
 function isTeamAllJobs(eim) {
         var eventJobs = eim.getEventPlayersJobs();
         var rangeJobs = parseInt('111110', 2);
-        
+
         return ((eventJobs & rangeJobs) == rangeJobs);
 }
 
@@ -178,8 +178,8 @@ function respawnStages(eim) {}
 function playerEntry(eim, player) {
         var map = eim.getMapInstance(entryMap);
         player.changeMap(map, map.getPortal(0));
-        
-        var texttt = "Hi, my name is Eak, the Chamberlain of the Goddess. Don't be alarmed; you won't be able to see me right now. Back when the Goddess turned into a block of stone, I simultaneously lost my own power. If you gather up the power of the Magic Cloud of Orbis, however, then I'll be able to recover my body and re-transform back to my original self. Please collect #b20#k Magic Clouds and bring them back to me. Right now, you'll only see me as a tiny, flickering light.";
+
+        var texttt = "你好，我叫易克，女神雅典娜的帮佣。别着急，你现在还看不见我。当女神化为石像的同时，我也失去了自己的魔力。然而，如果你收集到了天空之城魔力云朵的力量，那么我就可以重新找回魔力将自己变回从前的样子。请收集 #b20#k 个魔云碎片带回来交给我。哦，对了，我就是在地图下方中央的那一道闪烁的光芒。将魔云碎片丢在这里，我就会出现。";
         player.getAbstractPlayerInteraction().npcTalk(2013001, texttt);
 }
 

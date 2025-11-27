@@ -51,19 +51,19 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    All members of the same guild";
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    所有组队成员需要来自同一家族";
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -79,7 +79,7 @@ function setEventRewards(eim) {
         itemSet = [];
         itemQty = [];
         eim.setEventRewards(evLevel, itemSet, itemQty);
-        
+
         expStages = [];    //bonus exp given on CLEAR stage signal
         eim.setEventClearStageExp(expStages);
 }
@@ -87,12 +87,12 @@ function setEventRewards(eim) {
 function getEligibleParty(party) {      //selects, from the given party, the team that is allowed to attempt this event
         var eligible = [];
         var hasLeader = false;
-        
+
         var guildId = 0;
-        
+
         if(party.size() > 0) {
                 var partyList = party.toArray();
-                
+
                 for(var i = 0; i < party.size(); i++) {
                         var ch = partyList[i];
                         if(ch.isLeader()) {
@@ -110,7 +110,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
                         }
                 }
         }
-        
+
         if(!(hasLeader)) eligible = [];
         return eligible;
 }
@@ -118,11 +118,11 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
 function setup(level, lobbyid) {
         var eim = em.newInstance("Guild" + lobbyid);
         eim.setProperty("level", level);
-        
+
         eim.setProperty("guild", 0);
         eim.setProperty("canJoin", 1);
         eim.setProperty("canRevive", 0);
-        
+
         eim.getInstanceMap(990000000).resetPQ(level);
         eim.getInstanceMap(990000100).resetPQ(level);
         eim.getInstanceMap(990000200).resetPQ(level);
@@ -152,25 +152,25 @@ function setup(level, lobbyid) {
         eim.getInstanceMap(990001000).resetPQ(level);
         eim.getInstanceMap(990001100).resetPQ(level);
         eim.getInstanceMap(990001101).resetPQ(level);
-        
+
         respawnStages(eim);
-        
+
         var ts = Date.now();
         ts += (60000 * waitTime);
         eim.setProperty("entryTimestamp", "" + ts);
-        
-        eim.startEventTimer(waitTime * 60000);    
-        
+
+        eim.startEventTimer(waitTime * 60000);
+
         setEventRewards(eim);
         setEventExclusives(eim);
-        
+
         return eim;
 }
 
 function isTeamAllJobs(eim) {
         var eventJobs = eim.getEventPlayersJobs();
         var rangeJobs = parseInt('111110', 2);
-        
+
         return ((eventJobs & rangeJobs) == rangeJobs);
 }
 
@@ -199,7 +199,7 @@ function scheduledTimeout(eim) {
                                 end(eim);
                         } else {
                                 eim.startEventTimer(eventTime * 60000);
-                                
+
                                 if(isTeamAllJobs(eim)) {
                                         var rnd = Math.floor(Math.random() * 4);
                                         eim.applyEventPlayersItemBuff(2023000 + rnd);
@@ -236,7 +236,7 @@ function changedMap(eim, player, mapid) {
 
 function afterChangedMap(eim, player, mapid) {
         if (mapid == 990000100) {
-                var texttt = "So, here is the brief. You guys should be warned that, once out on the fortress outskirts, anyone that would not be equipping the #b#t1032033##k will die instantly due to the deteriorated state of the air around there. That being said, once your team moves out, make sure to #bhit the glowing rocks#k in that region and #bequip the dropped item#k before advancing stages. That will protect you thoroughly from the air sickness. Good luck!";
+                var texttt = "任务简介：参与者应当知晓，一旦进入守护之峡谷，任何没有装备#b#t1032033##k的人都会因为毒雾侵蚀而立刻死亡。一旦角色所在的队伍离开地图，进入下一阶段前，请确保在区域内 #b攻击闪耀之石#k 并 #b装备掉落的物品#k 。这会帮助你顺畅地通过关卡，祝你好运。";
                 player.getAbstractPlayerInteraction().npcTalk(9040000, texttt);
         }
 }

@@ -51,17 +51,17 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -77,7 +77,7 @@ function setEventRewards(eim) {
         itemSet = [2000003, 2000002, 2000004, 2000005, 2022003, 1032016, 1032015, 1032014, 2041212, 2041020, 2040502, 2041016, 2044701, 2040301, 2043201, 2040501, 2040704, 2044001, 2043701, 2040803, 1102026, 1102028, 1102029];
         itemQty = [100, 100, 20, 10, 50, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
         eim.setEventRewards(evLevel, itemSet, itemQty);
-        
+
         expStages = [0, 10000, 20000, 0, 20000, 20000, 0, 0];    //bonus exp given on CLEAR stage signal
         eim.setEventClearStageExp(expStages);
 }
@@ -85,7 +85,7 @@ function setEventRewards(eim) {
 function getEligibleParty(party) {      //selects, from the given party, the team that is allowed to attempt this event
         var eligible = [];
         var hasLeader = false;
-        
+
         if(party.size() > 0) {
                 var partyList = party.toArray();
 
@@ -98,7 +98,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
                         }
                 }
         }
-        
+
         if(!(hasLeader && eligible.length >= minPlayers && eligible.length <= maxPlayers)) eligible = [];
         return eligible;
 }
@@ -106,16 +106,16 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
 function setup(level, lobbyid) {
         var eim = em.newInstance("MagatiaZ" + lobbyid);
         eim.setProperty("level", level);
-        
+
         eim.setIntProperty("isAlcadno", 0);
-        
+
         eim.setIntProperty("escortFail", 0);
         eim.setIntProperty("yuleteTimeout", 0);
         eim.setIntProperty("yuleteTalked", 0);
         eim.setIntProperty("yuletePassed", 0);
         eim.setIntProperty("npcShocked", 0);
         eim.setIntProperty("normalClear", 0);
-        
+
         eim.setIntProperty("statusStg1", 0);
         eim.setIntProperty("statusStg2", 0);
         eim.setIntProperty("statusStg3", 0);
@@ -123,7 +123,7 @@ function setup(level, lobbyid) {
         eim.setIntProperty("statusStg5", 0);
         eim.setIntProperty("statusStg6", 0);
         eim.setIntProperty("statusStg7", 0);
-        
+
         eim.getInstanceMap(926100000).resetPQ(level);
         eim.getInstanceMap(926100001).resetPQ(level);
         eim.getInstanceMap(926100100).resetPQ(level);
@@ -141,15 +141,15 @@ function setup(level, lobbyid) {
         eim.getInstanceMap(926100500).resetPQ(level);
         eim.getInstanceMap(926100600).resetPQ(level);
         eim.getInstanceMap(926100700).resetPQ(level);
-        
+
         eim.getInstanceMap(926100201).shuffleReactors(2518000, 2612004);
         eim.getInstanceMap(926100202).shuffleReactors(2518000, 2612004);
-        
+
         eim.spawnNpc(2112000, new java.awt.Point(252, 243), eim.getInstanceMap(926100203));
         eim.spawnNpc(2112000, new java.awt.Point(200, 100), eim.getInstanceMap(926100401));
         eim.spawnNpc(2112001, new java.awt.Point(200, 100), eim.getInstanceMap(926100500));
         eim.spawnNpc(2112018, new java.awt.Point(200, 100), eim.getInstanceMap(926100600));
-        
+
         respawnStages(eim);
         eim.startEventTimer(eventTime * 60000);
         setEventRewards(eim);
@@ -178,37 +178,37 @@ function shuffle(array) {
 
 function generateStg6Combo(eim) {
         var matrix = [];
-        
+
         for (var i = 0; i < 4; i++) {
                 matrix.push([]);
         }
-        
+
         for (var j = 0; j < 10; j++) {
                 var array = [0, 1, 2, 3];
                 array = shuffle(array);
-                
+
                 for (var i = 0; i < 4; i++) {
                         matrix[i].push(array[i]);
                 }
         }
-        
+
         for (var i = 0; i < 4; i++) {
                 var comb = "";
                 for(var j = 0; j < 10; j++) {
                     var r = matrix[i][j];
                     comb += r.toString();
                 }
-                
+
                 eim.setProperty("stage6_comb" + (i + 1), comb);
         }
 }
 
 function afterSetup(eim) {
         eim.setIntProperty("escortFail", 0);    // refresh friendly status
-    
+
         var books = [-1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 2, 3];
         shuffle(books);
-    
+
         eim.setIntProperty("stg1_b0",  books[0]);
         eim.setIntProperty("stg1_b1",  books[1]);
         eim.setIntProperty("stg1_b2",  books[2]);
@@ -237,10 +237,10 @@ function afterSetup(eim) {
         eim.setIntProperty("stg1_b25", books[25]);
 }
 
-function respawnStages(eim) {    
+function respawnStages(eim) {
         eim.getMapInstance(926100100).instanceMapRespawn();
         eim.getMapInstance(926100200).instanceMapRespawn();
-        
+
         if(!eim.isEventCleared()) {
             var mapobj = eim.getMapInstance(926100401);
             var mobcount = mapobj.countMonster(9300150);
@@ -256,7 +256,7 @@ function respawnStages(eim) {
                 mapobj.spawnMonsterOnGroundBelow(mobobj, new Packages.java.awt.Point(-542, -126));
             }
         }
-        
+
         eim.schedule("respawnStages", 15 * 1000);
 }
 
@@ -290,7 +290,7 @@ function changedMap(eim, player, mapid) {
                 }
                 else
                         eim.unregisterPlayer(player);
-                    
+
         } else if(mapid == 926100203 && eim.getIntProperty("yuleteTimeout") == 0) {
                 eim.setIntProperty("yuleteTimeout", 1);
                 eim.schedule("yuleteAction", 10 * 1000);
@@ -300,10 +300,10 @@ function changedMap(eim, player, mapid) {
 function yuleteAction(eim) {
         if(eim.getIntProperty("yuleteTalked") == 1) {
                 eim.setIntProperty("yuletePassed", 1);
-                
-                eim.dropMessage(5, "Yulete: Ugh, you guys disgust me. All I desired was to make this nation the greatest alchemy powerhouse of the entire world. If they won't accept this, I will make it true by myself, at any costs!!!");
+
+                eim.dropMessage(5, "犹泰：你们真是执迷不悟。我只是想把玛加提亚打造成为全世界炼金术士的圣地。如果有人不肯承认这一点，我将会不惜任何代价来实现我的理想！");
         } else {
-                eim.dropMessage(5, "Yulete: Hahaha... Did you really think I was going to be so disprepared knowing that the Magatia societies' dogs would be coming in my pursuit after my actions? Fools!");
+                eim.dropMessage(5, "犹泰：哈哈哈...你们真的认为我会对一直追逐着我的...那群玛加提亚炼金学会鹰犬的追踪毫无防备吗？一群笨蛋！");
         }
         eim.setIntProperty("yuleteTalked", -1);
         

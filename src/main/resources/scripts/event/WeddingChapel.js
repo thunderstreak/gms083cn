@@ -118,8 +118,8 @@ function playerEntry(eim, player) {
 
 function stopBlessings(eim) {
         var mapobj = eim.getMapInstance(entryMap + 10);
-        mapobj.dropMessage(6, "Wedding Assistant: Alright people, our couple are preparing their vows to each other right now.");
-        
+        mapobj.dropMessage(6, "婚礼助手：我们的新人即将许下誓言。");
+
         eim.setIntProperty("weddingStage", 2);
 }
 
@@ -150,7 +150,7 @@ function showBlessMsg(eim) {
 function showMarriedMsg(eim) {
         sendWeddingAction(eim, 1);
         eim.schedule("hidePriestMsg", 10 * 1000);
-        
+
         eim.restartEventTimer(partyTime * 60000);
 }
 
@@ -158,19 +158,19 @@ function scheduledTimeout(eim) {
         if(eim.getIntProperty("canJoin") == 1) {
                 em.getChannelServer().closeOngoingWedding(isCathedral);
                 eim.setIntProperty("canJoin", 0);
-                
+
                 var mapobj = eim.getMapInstance(entryMap);
                 var chr = mapobj.getCharacterById(eim.getIntProperty("groomId"));
                 if(chr != null) {
                         chr.changeMap(entryMap + 10, "we00");
                 }
-                
+
                 chr = mapobj.getCharacterById(eim.getIntProperty("brideId"));
                 if(chr != null) {
                         chr.changeMap(entryMap + 10, "we00");
                 }
-                
-                mapobj.dropMessage(6, "Wedding Assistant: The couple are heading to the altar, hurry hurry talk to me to arrange your seat.");
+
+                mapobj.dropMessage(6, "婚礼助手：新人正在走向圣坛，请贵宾们与我对话，我会为你们安排座位。");
 
                 eim.setIntProperty("weddingStage", 1);
                 eim.schedule("showStartMsg", startMsgTime * 60 * 1000);

@@ -51,17 +51,17 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -75,7 +75,7 @@ function setEventRewards(eim) {}
 function getEligibleParty(party) {      //selects, from the given party, the team that is allowed to attempt this event
         var eligible = [];
         var hasLeader = false;
-        
+
         if(party.size() > 0) {
                 var partyList = party.toArray();
 
@@ -88,7 +88,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
                         }
                 }
         }
-        
+
         if(!(hasLeader && eligible.length >= minPlayers && eligible.length <= maxPlayers)) eligible = [];
         return eligible;
 }
@@ -96,7 +96,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
 function setup(level, lobbyid) {
         var eim = em.newInstance("Pirate" + lobbyid);
         eim.setProperty("level", level);
-        
+
 	eim.setProperty("stage2", "0");
         eim.setProperty("stage2a", "0");
 	eim.setProperty("stage3a", "0");
@@ -104,15 +104,15 @@ function setup(level, lobbyid) {
 	eim.setProperty("stage3b", "0");
 	eim.setProperty("stage4", "0");
 	eim.setProperty("stage5", "0");
-        
+
         eim.setProperty("curStage", "1");
         eim.setProperty("grindMode", isGrindMode ? "1" : "0");
-        
+
         eim.setProperty("openedChests", "0");
         eim.setProperty("openedBoxes", "0");
         eim.getInstanceMap(925100000).resetPQ(level);
         eim.getInstanceMap(925100000).shuffleReactors();
-        
+
 	eim.getInstanceMap(925100100).resetPQ(level);
 	var map = eim.getInstanceMap(925100200);
 	map.resetPQ(level);
@@ -184,9 +184,9 @@ function setup(level, lobbyid) {
 	eim.getInstanceMap(925100302).resetPQ(level);
 	eim.getInstanceMap(925100400).resetPQ(level);
 	eim.getInstanceMap(925100500).resetPQ(level);
-        
+
         respawnStages(eim);
-        
+
         eim.startEventTimer(eventTime * 60000);
         setEventRewards(eim);
         setEventExclusives(eim);
@@ -200,7 +200,7 @@ function respawnStages(eim) {
         if (stg < 3) {  // thanks Chloek3, seth1, BHB for suggesting map respawn rather than waves on stg2
             eim.getMapInstance(925100100).spawnAllMonsterIdFromMapSpawnList(9300114 + stg, eim.getIntProperty("level"), true);
         }
-        
+
         eim.getMapInstance(925100400).instanceMapRespawn();
         eim.schedule("respawnStages", 10 * 1000);
 }
@@ -229,7 +229,7 @@ function playerLeft(eim, player) {
 
 function changedMapInside(eim, mapid) {
         var stage = eim.getIntProperty("curStage");
-    
+
         if(stage == 1) {
                 if(mapid == 925100100) {
                         eim.restartEventTimer(6 * 60 * 1000);
@@ -327,11 +327,11 @@ function end(eim) {
 function clearPQ(eim) {
         eim.stopEventTimer();
         eim.setEventCleared();
-        
+
         var chests = parseInt(eim.getProperty("openedChests"));
         var expGain = (chests == 0 ? 28000 : (chests == 1 ? 35000 : 42000));
         eim.giveEventPlayersExp(expGain);
-        
+
         eim.warpEventTeam(925100600);
 }
 
@@ -347,9 +347,9 @@ function passedGrindMode(map, eim) {
 
 function monsterKilled(mob, eim) {
         var map = mob.getMap();
-    
+
         if(isLordPirate(mob)) {  // lord pirate defeated, spawn the little fella!
-            map.broadcastStringMessage(5, "As Lord Pirate dies, Wu Yang is released!");
+            map.broadcastStringMessage(5, "你们击败了老海盗，无恙得救了！");
             eim.spawnNpc(2094001, new java.awt.Point(777, 140), mob.getMap());
         }
         

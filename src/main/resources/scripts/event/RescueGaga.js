@@ -30,17 +30,17 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -56,7 +56,7 @@ function setEventRewards(eim) {
         itemSet = [];
         itemQty = [];
         eim.setEventRewards(evLevel, itemSet, itemQty);
-        
+
         expStages = [];    //bonus exp given on CLEAR stage signal
         eim.setEventClearStageExp(expStages);
 }
@@ -64,7 +64,7 @@ function setEventRewards(eim) {
 function getEligibleParty(party) {      //selects, from the given party, the team that is allowed to attempt this event
         var eligible = [];
         var hasLeader = false;
-        
+
         if(party.size() > 0) {
                 var partyList = party.toArray();
 
@@ -77,7 +77,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
                         }
                 }
         }
-        
+
         if(!(hasLeader && eligible.length >= minPlayers && eligible.length <= maxPlayers)) eligible = [];
         return eligible;
 }
@@ -87,7 +87,7 @@ function setup(level, lobbyid) {
         eim.setProperty("level", level);
         eim.setProperty("stage", "0");
         eim.setProperty("falls", "0");
-        
+
         respawnStages(eim);
         eim.startEventTimer(eventTime * 60000);
         setEventRewards(eim);
@@ -102,9 +102,9 @@ function respawnStages(eim) {}
 function playerEntry(eim, player) {
         var map = eim.getMapInstance(entryMap);
         player.changeMap(map, map.getPortal(0));
-        
+
         player.announce(MaplePacketCreator.showEffect("event/space/start"));
-        player.startMapEffect("Please rescue Gaga within the time limit.", 5120027);
+        player.startMapEffect("请在限制时间内拯救佳佳。", 5120027);
 }
 
 function scheduledTimeout(eim) {

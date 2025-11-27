@@ -52,17 +52,17 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -78,16 +78,16 @@ function setEventRewards(eim) {
         itemSet = [];
         itemQty = [];
         eim.setEventRewards(evLevel, itemSet, itemQty);
-        
+
         expStages = [];    //bonus exp given on CLEAR stage signal
         eim.setEventClearStageExp(expStages);
-        
+
         mesoStages = [];    //bonus meso given on CLEAR stage signal
         eim.setEventClearStageMeso(mesoStages);
 }
 
 function afterSetup(eim) {
-    eim.dropMessage(5, "The first wave will start within 15 seconds, prepare yourselves.");
+    eim.dropMessage(5, "第一轮战斗将在 15 秒钟后开始，请做好准备。");
     eim.schedule("startWave", 15 * 1000);
 }
 
@@ -96,7 +96,7 @@ function setup(channel) {
     eim.setProperty("canJoin", 1);
     eim.setProperty("defeatedBoss", 0);
     eim.setProperty("fallenPlayers", 0);
-    
+
     eim.setProperty("stage", 1);
     eim.setProperty("channel", channel);
 
@@ -104,20 +104,20 @@ function setup(channel) {
     eim.getInstanceMap(270050100).resetPQ(level);
     eim.getInstanceMap(270050200).resetPQ(level);
     eim.getInstanceMap(270050300).resetPQ(level);
-    
+
     var mob = MapleLifeFactory.getMonster(8820000);
     mob.disableDrops();
     eim.getInstanceMap(270050100).spawnMonsterOnGroundBelow(mob, new java.awt.Point(0, -42));
-    
+
     eim.startEventTimer(eventTime * 60000);
     setEventRewards(eim);
     setEventExclusives(eim);
-    
+
     return eim;
 }
 
 function playerEntry(eim, player) {
-    eim.dropMessage(5, "[Expedition] " + player.getName() + " has entered the map.");
+    eim.dropMessage(5, "[远征队信息] " + player.getName() + " 进入了地图。");
     var map = eim.getMapInstance(entryMap);
     player.changeMap(map, map.getPortal(0));
 }
@@ -130,11 +130,11 @@ function changedMap(eim, player, mapid) {
     if (mapid < minMapId || mapid > maxMapId) {
 	if (eim.isExpeditionTeamLackingNow(true, minPlayers, player)) {
             eim.unregisterPlayer(player);
-            eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+            eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
             end(eim);
         }
         else {
-            eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the expedition.");
+            eim.dropMessage(5, "[远征队信息] " + player.getName() + " 退出了地图。");
             eim.unregisterPlayer(player);
         }
     }
@@ -145,16 +145,16 @@ function changedLeader(eim, leader) {}
 function playerDead(eim, player) {
     var count = eim.getIntProperty("fallenPlayers");
     count = count + 1;
-    
+
     eim.setIntProperty("fallenPlayers", count);
-    
+
     if(count == 5) {
-        eim.dropMessage(5, "[Expedition] Too many players have fallen, Pink Bean is now deemed undefeatable; the expedition is over.");
+        eim.dropMessage(5, "[远征队信息] 无数的勇士阵亡了，然而品克缤依然屹立不倒。远征就此结束。");
         end(eim);
     } else if(count == 4) {
-        eim.dropMessage(5, "[Expedition] Pink Bean is growing stronger than ever, last stand mode everyone!");
+        eim.dropMessage(5, "[远征队信息] 品克缤变得前所未有地强大，这将是最后一轮战斗！");
     } else if(count == 3) {
-        eim.dropMessage(5, "[Expedition] Casualty count is starting to get out of control. Battle with care.");
+        eim.dropMessage(5, "[远征队信息] 阵亡的勇士变得越来越多，请谨慎作战。");
     }
 }
 
@@ -171,11 +171,11 @@ function monsterRevive(eim, mob) {
 function playerDisconnected(eim, player) {
     if (eim.isExpeditionTeamLackingNow(true, minPlayers, player)) {
         eim.unregisterPlayer(player);
-        eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+        eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
         end(eim);
     }
     else {
-        eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the expedition.");
+        eim.dropMessage(5, "[远征队信息] " + player.getName() + " 退出了远征。");
         eim.unregisterPlayer(player);
     }
 }
@@ -229,12 +229,12 @@ function noJrBossesLeft(map) {
 function spawnJrBoss(mobObj, gotKilled) {
     if(gotKilled) {
         spawnid = mobObj.getId() + 17;
-        
+
     } else {
         mobObj.getMap().killMonster(mobObj.getId());
         spawnid = mobObj.getId() - 17;
     }
-    
+
     var mob = MapleLifeFactory.getMonster(spawnid);
     mobObj.getMap().spawnMonsterOnGroundBelow(mob, mobObj.getPosition());
 }
@@ -245,13 +245,13 @@ function monsterKilled(mob, eim) {
         eim.showClearEffect(mob.getMap().getId());
         mob.getMap().killAllMonsters();
         eim.clearPQ();
-        
+
         var ch = eim.getIntProperty("channel");
         mob.getMap().broadcastPinkBeanVictory(ch);
     } else if(isJrBoss(mob)) {
         if(noJrBossesLeft(mob.getMap())) {
             var stage = eim.getIntProperty("stage");
-            
+
             if(stage == 5) {
                 var iid = 4001193;
                 var itemObj = new Item(iid, 0, 1);
@@ -261,12 +261,12 @@ function monsterKilled(mob, eim) {
                 mapObj.spawnItemDrop(dropper, dropper, itemObj, reactObj.getPosition(), true, true);
 
 
-                eim.dropMessage(6, "With the last of its guardians fallen, Pink Bean loses its invulnerability. The real fight starts now!");
+                eim.dropMessage(6, "最后一尊守护石像失去了力量，品克缤的身体逐渐变得真实起来。真正的战斗就此打响。");
             } else {
                 stage++;
                 eim.setIntProperty("stage", stage);
-                
-                eim.dropMessage(5, "The next wave will start within 15 seconds, prepare yourselves.");
+
+                eim.dropMessage(5, "下一轮战斗将在 15 秒钟后开始，请做好准备。");
                 eim.schedule("startWave", 15 * 1000);
             }
         }

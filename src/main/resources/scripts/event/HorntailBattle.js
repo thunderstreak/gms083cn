@@ -51,17 +51,17 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -77,10 +77,10 @@ function setEventRewards(eim) {
         itemSet = [];
         itemQty = [];
         eim.setEventRewards(evLevel, itemSet, itemQty);
-        
+
         expStages = [];    //bonus exp given on CLEAR stage signal
         eim.setEventClearStageExp(expStages);
-        
+
         mesoStages = [];    //bonus meso given on CLEAR stage signal
         eim.setEventClearStageMeso(mesoStages);
 }
@@ -97,25 +97,25 @@ function setup(channel) {
     eim.getInstanceMap(240060000).resetPQ(level);
     eim.getInstanceMap(240060100).resetPQ(level);
     eim.getInstanceMap(240060200).resetPQ(level);
-    
+
     var map, mob;
     map = eim.getInstanceMap(240060000);
     mob = MapleLifeFactory.getMonster(8810000);
     map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(960, 120));
-    
+
     map = eim.getInstanceMap(240060100);
     mob = MapleLifeFactory.getMonster(8810001);
     map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(-420, 120));
-    
+
     eim.startEventTimer(eventTime * 60000);
     setEventRewards(eim);
     setEventExclusives(eim);
-    
+
     return eim;
 }
 
 function playerEntry(eim, player) {
-    eim.dropMessage(5, "[Expedition] " + player.getName() + " has entered the map.");
+    eim.dropMessage(5, "[远征队信息] " + player.getName() + " 进入了地图。");
     var map = eim.getMapInstance(entryMap);
     player.changeMap(map, map.getPortal(0));
 }
@@ -128,11 +128,11 @@ function changedMap(eim, player, mapid) {
     if (mapid < minMapId || mapid > maxMapId) {
 	if (eim.isExpeditionTeamLackingNow(true, minPlayers, player)) {
             eim.unregisterPlayer(player);
-            eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+            eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
             end(eim);
         }
         else {
-            eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the instance.");
+            eim.dropMessage(5, "[远征队信息] " + player.getName() + " 已退出地图。");
             eim.unregisterPlayer(player);
         }
     }
@@ -145,11 +145,11 @@ function playerDead(eim, player) {}
 function playerRevive(eim, player) {
     if (eim.isExpeditionTeamLackingNow(true, minPlayers, player)) {
         eim.unregisterPlayer(player);
-        eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+        eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
         end(eim);
     }
     else {
-        eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the instance.");
+        eim.dropMessage(5, "[远征队信息] " + player.getName() + " 已退出地图。");
         eim.unregisterPlayer(player);
     }
 }
@@ -157,11 +157,11 @@ function playerRevive(eim, player) {
 function playerDisconnected(eim, player) {
     if (eim.isExpeditionTeamLackingNow(true, minPlayers, player)) {
         eim.unregisterPlayer(player);
-        eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+        eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
         end(eim);
     }
     else {
-        eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the instance.");
+        eim.dropMessage(5, "[远征队信息] " + player.getName() + " 已退出地图。");
         eim.unregisterPlayer(player);
     }
 }

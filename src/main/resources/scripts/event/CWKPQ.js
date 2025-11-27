@@ -49,17 +49,17 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -75,10 +75,10 @@ function setEventRewards(eim) {
         itemSet = [];
         itemQty = [];
         eim.setEventRewards(evLevel, itemSet, itemQty);
-        
+
         expStages = [2500, 8000, 18000, 25000, 30000, 40000];    //bonus exp given on CLEAR stage signal
         eim.setEventClearStageExp(expStages);
-        
+
         mesoStages = [500, 1000, 2000, 5000, 8000, 20000];    //bonus meso given on CLEAR stage signal
         eim.setEventClearStageMeso(mesoStages);
 }
@@ -90,36 +90,36 @@ function getNameFromList(index, array) {
 }
 
 function generateMapReactors(map) {
-    
+
     var jobReactors = [ [0, 0, -1, -1, 0],
                         [-1, 4, 3, 3, 3],
                         [1, 3, 4, 2, 2],
-                        [2, -1, 0, 1, -1], 
+                        [2, -1, 0, 1, -1],
                         [3, 2, 1, 0, -1],
                         [4, 1, -1, 4, 1],
                         [-1, 2, 4],
                         [-1, -1]
                       ];
-                      
+
     var rndIndex;
     var jobFound;
     while(true) {
         jobFound = {};
         rndIndex = [];
-        
+
         for(var i = 0; i < jobReactors.length; i++) {
             var jobReactorSlot = jobReactors[i];
-            
+
             var idx = Math.floor(Math.random() * jobReactorSlot.length);
             jobFound["" + jobReactorSlot[idx]] = 1;
             rndIndex.push(idx);
         }
-        
+
         if(Object.keys(jobFound).length == 6) break;
     }
-    
+
     var toDeploy = [];
-    
+
     toDeploy.push(getNameFromList(rndIndex[0], ["4skill0a", "4skill0b", "4fake1c", "4fake1d", "4skill0e"]));
     toDeploy.push(getNameFromList(rndIndex[1], ["4fake0a", "4skill4b", "4skill3c", "4skill3d", "4skill3e"]));
     toDeploy.push(getNameFromList(rndIndex[2], ["4skill1a", "4skill3b", "4skill4c", "4skill2d", "4skill2e"]));
@@ -128,22 +128,22 @@ function generateMapReactors(map) {
     toDeploy.push(getNameFromList(rndIndex[5], ["4skill4a", "4skill1b", "4fake0c", "4skill4d", "4skill1e"]));
     toDeploy.push(getNameFromList(rndIndex[6], ["4fake1a", "4skill2c", "4skill4e"]));
     toDeploy.push(getNameFromList(rndIndex[7], ["4fake0b", "4fake0d"]));
-    
+
     var toRandomize = new Array();
-    
+
     for(var i = 0; i < toDeploy.length; i++) {
         var react = map.getReactorByName(toDeploy[i]);
-        
+
         react.setState(1);
         toRandomize.push(react);
     }
-    
+
     map.shuffleReactors(toRandomize);
 }
 
 function setup(channel) {
     var eim = em.newInstance("CWKPQ" + channel);
-    
+
     eim.setProperty("current_instance", "0");
     eim.setProperty("glpq1", "0");
     eim.setProperty("glpq2", "0");
@@ -153,7 +153,7 @@ function setup(channel) {
     eim.setProperty("glpq5", "0");
     eim.setProperty("glpq5_room", "0");
     eim.setProperty("glpq6", "0");
-    
+
     eim.setProperty("glpq_f0", "0");
     eim.setProperty("glpq_f1", "0");
     eim.setProperty("glpq_f2", "0");
@@ -180,10 +180,10 @@ function setup(channel) {
     eim.getInstanceMap(610030600).resetPQ(level);
     eim.getInstanceMap(610030700).resetPQ(level);
     eim.getInstanceMap(610030800).resetPQ(level);
-    
+
     generateMapReactors(eim.getInstanceMap(610030400));
     eim.getInstanceMap(610030550).shuffleReactors();
-    
+
     //add environments
     var a = Array("a", "b", "c", "d", "e", "f", "g", "h", "i");
     var map = eim.getInstanceMap(610030400);
@@ -198,7 +198,7 @@ function setup(channel) {
             }
         }
     }
-    
+
     var pos_x = Array(944,401,28,-332,-855);
     var pos_y = Array(-204,-384,-504,-384,-204);
     var map = eim.getInstanceMap(610030540);
@@ -207,17 +207,17 @@ function setup(channel) {
         eim.registerMonster(mob);
         map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(pos_x[z], pos_y[z]));
     }
-    
+
     eim.startEventTimer(eventTime * 60000);
     setEventRewards(eim);
     setEventExclusives(eim);
-    
+
     eim.schedule("spawnGuardians", 60000);
     return eim;
 }
 
 function playerEntry(eim, player) {
-    eim.dropMessage(5, "[Expedition] " + player.getName() + " has entered the map.");
+    eim.dropMessage(5, "[远征队信息] " + player.getName() + " 进入了地图。");
     var map = eim.getMapInstance(610030100 + (eim.getIntProperty("current_instance") * 100));
     player.changeMap(map, map.getPortal(0));
 }
@@ -227,7 +227,7 @@ function spawnGuardians(eim) {
     if (map.countPlayers() <= 0) {
 	return;
     }
-    map.broadcastStringMessage(5, "The Master Guardians have detected you.");
+    map.broadcastStringMessage(5, "精英卫士发现了你。");
     for (var i = 0; i < 20; i++) { //spawn 20 guardians
 	var mob = eim.getMonster(9400594);
 	eim.registerMonster(mob);
@@ -243,11 +243,11 @@ function changedMap(eim, player, mapid) {
     if (mapid < minMapId || mapid > maxMapId) {
 	if (eim.isEventTeamLackingNow(true, minPlayers, player)) {
             eim.unregisterPlayer(player);
-            eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+            eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
             end(eim);
         }
         else {
-            eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the instance.");
+            eim.dropMessage(5, "[远征队信息] " + player.getName() + " 已退出地图。");
             eim.unregisterPlayer(player);
         }
     } else {
@@ -299,11 +299,11 @@ function playerDead(eim, player) {}
 function playerRevive(eim, player) {
     if (eim.isEventTeamLackingNow(true, minPlayers, player)) {
         eim.unregisterPlayer(player);
-        eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+        eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
         end(eim);
     }
     else {
-        eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the instance.");
+        eim.dropMessage(5, "[远征队信息] " + player.getName() + " 已退出地图。");
         eim.unregisterPlayer(player);
     }
 }
@@ -311,11 +311,11 @@ function playerRevive(eim, player) {
 function playerDisconnected(eim, player) {
     if (eim.isEventTeamLackingNow(true, minPlayers, player)) {
         eim.unregisterPlayer(player);
-        eim.dropMessage(5, "[Expedition] Either the leader has quit the expedition or there is no longer the minimum number of members required to continue it.");
+        eim.dropMessage(5, "[远征队信息] 队长目前已退出本场任务，或人数不满足继续任务的要求。");
         end(eim);
     }
     else {
-        eim.dropMessage(5, "[Expedition] " + player.getName() + " has left the instance.");
+        eim.dropMessage(5, "[远征队信息] " + player.getName() + " 已退出地图。");
         eim.unregisterPlayer(player);
     }
 }

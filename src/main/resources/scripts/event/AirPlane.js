@@ -16,7 +16,7 @@ function init() {
     closeTime = em.getTransportationTime(closeTime);
     beginTime = em.getTransportationTime(beginTime);
     rideTime = em.getTransportationTime(rideTime);
-    
+
     KC_bfd = em.getChannelServer().getMapFactory().getMap(540010100);
     CBD_bfd = em.getChannelServer().getMapFactory().getMap(540010001);
     Plane_to_CBD = em.getChannelServer().getMapFactory().getMap(540010101);
@@ -47,7 +47,7 @@ function takeoff() {
 function arrived() {
     Plane_to_CBD.warpEveryone(CBD_docked.getId(), 0);
     Plane_to_KC.warpEveryone(KC_docked.getId(), 7);
-        
+
     scheduleNew();
 }
 

@@ -49,17 +49,17 @@ function setLobbyRange() {
 function setEventRequirements() {
         var reqStr = "";
         
-        reqStr += "\r\n    Number of players: ";
+        reqStr += "\r\n    组队人数限制: ";
         if(maxPlayers - minPlayers >= 1) reqStr += minPlayers + " ~ " + maxPlayers;
         else reqStr += minPlayers;
-        
-        reqStr += "\r\n    Level range: ";
+
+        reqStr += "\r\n    等级限制: ";
         if(maxLevel - minLevel >= 1) reqStr += minLevel + " ~ " + maxLevel;
         else reqStr += minLevel;
-        
-        reqStr += "\r\n    Time limit: ";
-        reqStr += eventTime + " minutes";
-        
+
+        reqStr += "\r\n    时间限制: ";
+        reqStr += eventTime + " 分钟";
+
         em.setProperty("party", reqStr);
 }
 
@@ -75,7 +75,7 @@ function setEventRewards(eim) {
         itemSet = [4001158];
         itemQty = [1];
         eim.setEventRewards(evLevel, itemSet, itemQty);
-        
+
         expStages = [1600];    //bonus exp given on CLEAR stage signal
         eim.setEventClearStageExp(expStages);
 }
@@ -83,7 +83,7 @@ function setEventRewards(eim) {
 function getEligibleParty(party) {      //selects, from the given party, the team that is allowed to attempt this event
         var eligible = [];
         var hasLeader = false;
-        
+
         if(party.size() > 0) {
                 var partyList = party.toArray();
 
@@ -96,7 +96,7 @@ function getEligibleParty(party) {      //selects, from the given party, the tea
                         }
                 }
         }
-        
+
         if(!(hasLeader && eligible.length >= minPlayers && eligible.length <= maxPlayers)) eligible = [];
         return eligible;
 }
@@ -107,12 +107,12 @@ function setup(level, lobbyid) {
         eim.setProperty("stage", "0");
         eim.setProperty("bunnyCake", "0");
         eim.setProperty("bunnyDamaged", "0");
-        
+
         eim.getInstanceMap(910010000).resetPQ(level);
         eim.getInstanceMap(910010000).allowSummonState(false);
-        
+
         eim.getInstanceMap(910010200).resetPQ(level);
-        
+
         respawnStages(eim);
         eim.startEventTimer(eventTime * 60000);
         setEventRewards(eim);
@@ -125,7 +125,7 @@ function afterSetup(eim) {}
 function respawnStages(eim) {
         eim.getInstanceMap(910010000).instanceMapRespawn();
         eim.getInstanceMap(910010200).instanceMapRespawn();
-        
+
         eim.schedule("respawnStages", 15 * 1000);
 }
 
@@ -145,7 +145,7 @@ function scheduledTimeout(eim) {
 }
 
 function bunnyDefeated(eim) {
-        eim.dropMessage(5, "Due to your failure to protect the Moon Bunny, you have been transported to the Exile Map.");
+        eim.dropMessage(5, "保护月妙任务失败，被传送出任务地图。");
         end(eim);
 }
 
@@ -233,7 +233,7 @@ function giveRandomEventReward(eim, player) {
 function clearPQ(eim) {
         eim.stopEventTimer();
         eim.setEventCleared();
-        
+
         eim.warpEventTeam(910010100);
 }
 
@@ -249,8 +249,8 @@ function friendlyItemDrop(eim, mob) {
         if (mob.getId() == 9300061) {
                 var cakes = eim.getIntProperty("bunnyCake") + 1;
                 eim.setIntProperty("bunnyCake", cakes);
-                
-                mob.getMap().broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "The Moon Bunny made rice cake number " + cakes + "."));
+
+                mob.getMap().broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "月妙制作了" + cakes + "块年糕。"));
         }
 }
 
@@ -258,7 +258,7 @@ function friendlyDamaged(eim, mob) {
         if (mob.getId() == 9300061) {
                 var bunnyDamage = eim.getIntProperty("bunnyDamaged") + 1;
                 if (bunnyDamage > 5) {
-                        broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "The Moon Bunny is feeling sick. Please protect it so it can make delicious rice cakes."));
+                        broadcastMessage(Packages.tools.MaplePacketCreator.serverNotice(6, "月妙受伤了，请保护它制作更多美味的年糕。"));
                         eim.setIntProperty("bunnyDamaged", 0);
                 }
         }
