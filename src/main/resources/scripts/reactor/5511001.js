@@ -5,7 +5,7 @@
 function summonBoss() {
         rm.spawnMonster(9420547,-238,636);
         rm.changeMusic("Bgm09/TimeAttack");
-        rm.mapMessage(6, "Beware! The furious Scarlion has shown himself!");
+        rm.mapMessage(6, "小心!愤怒的斯卡利翁现身了！");
 }
 
 function act() {

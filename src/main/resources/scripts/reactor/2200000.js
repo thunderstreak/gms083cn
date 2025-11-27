@@ -26,6 +26,6 @@
 */
 
 function act(){
-    rm.playerMessage(5, "Gotcha! Try again next time!");
+    rm.playerMessage(5, "明白了!下次再试！");
     rm.warp(221023200);
 }

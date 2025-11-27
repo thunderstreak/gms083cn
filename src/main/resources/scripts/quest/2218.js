@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Hey did you see how strange #rLakelis#k has been acting these days? We should see what's going on aabout her, her actions have been so weird lately...");
+            qm.sendNext("嘿，你看到#r莱克利斯#k最近的行为有多奇怪了吗？我们应该看看她是怎么回事，她最近的行为太奇怪了……");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.gainExp(7000);

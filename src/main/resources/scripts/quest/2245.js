@@ -37,13 +37,13 @@ function start(mode, type, selection) {
         if (status == 0) {
             em = qm.getEventManager("BalrogQuest");
             if (em == null) {
-                qm.sendOk("Sorry, but the BalrogQuest is closed.");
+                qm.sendOk("抱歉，巴洛克任务结束了。");
                 return;
             }
             
             var em = qm.getEventManager("BalrogQuest");
             if (!em.startInstance(qm.getPlayer())) {
-                qm.sendOk("There is currently someone in this map, come back later.");
+                qm.sendOk("目前有人在这张地图上，稍后回来。");
             } else {
                 qm.forceStartQuest();
                 qm.dispose();

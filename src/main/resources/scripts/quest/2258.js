@@ -35,9 +35,9 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendAcceptDecline("Meerkats spreads rumors like wildfire... By blackmailing me and my cab service, they are taking costumers away from me day after day... Hey, tell no one about this, if you clean some #rMeerkats#k from my way, I'll tell you an info about the #rMushroom Castle#k. What do you say?");
+            qm.sendAcceptDecline("#r猫鼬#k像野火一样传播谣言…通过勒索我和我的出租车服务，他们日复一日地抢走我的客户……嘿，别把这事告诉任何人，如果你帮我清理掉挡道的猫鼬，我就告诉你#r蘑菇城堡#k的事。你说呢？");
         } else if (status == 1) {
-            qm.sendNext("Great, they you have #r5 minutes#k to kill #b40 Meerkats#k within this time. Good luck!");
+            qm.sendNext("很好，你有#r5分钟时间#k在这段时间内杀死#b40只猫鼬#k。祝你好运！");
         } else if (status == 2) {
             qm.forceStartQuest();
             qm.dispose();
@@ -60,7 +60,7 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("You did it! ... Hey, #rMeerkats#k around here may listen to our conversation. I'm not going to talk about THAT right now.");
+            qm.sendNext("你做到了！．．． 嘿，这里的#r猫鼬#k可能会听到我们的谈话。我现在不打算谈论这个。");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.dispose();

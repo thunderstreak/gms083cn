@@ -10,17 +10,17 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("Ugh. This isn't going to work. I need something else. No plants. No meat. What, you have no idea? But you're the master, and you're older than me, too. You must know what'd be good for me!");
+		qm.sendNext("啊。这是行不通的。我还需要别的东西。没有植物。没有肉。什么，你不知道？但你是大师，而且你也比我大。你一定知道什么对我有好处！");
 	} else if (status == 1) {
-		qm.sendNextPrev("#bBut I don't. It's not like age has anything to do with this...", 2);
+		qm.sendNextPrev("#b但我没有。这跟年龄没什么关系…", 2);
 	} else if (status == 2) {
-		qm.sendAcceptDecline("Since you're older, you must be more experienced in the world, too. Makes sense that you'd know more than me. Oh, fine. I'll ask someone who's even older than you, master!");
+		qm.sendAcceptDecline("既然你年纪大了，你在这个世界上肯定也更有经验了。你知道的比我多也说得通。哦,很好。我去问比你年纪还大的人，师傅！");
 	} else if (status == 3) {
 		if (mode == 0) {
-			qm.sendNext("No use trying to find an answer to this on my own. I'd better look for #bsomeone older and wiser than master#k!");
+			qm.sendNext("我一个人想找到答案是没有用的。我最好找一个#b比师父更年长更聪明#k的人！");
 		} else {
 			qm.forceStartQuest();
-			qm.sendNext("#b#b(You already asked Dad once, but you don't have any better ideas. Time to ask him again!)");
+			qm.sendNext("#b#b(你已经问过爸爸一次了，但你没有更好的主意。是时候再问他一次了！)");
 		}
 	} else if (status == 4) {
                 qm.dispose();

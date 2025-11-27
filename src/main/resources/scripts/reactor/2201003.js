@@ -26,10 +26,10 @@
  
 function act() {
     if (rm.getPlayer().getMapId() == 922010900) {
-        rm.mapMessage(5, "Alishar has been summoned.");
+        rm.mapMessage(5, "Alishar被召来了。");
         rm.spawnMonster(9300012, 941, 184);
     } else if(rm.getPlayer().getMapId() == 922010700) {
-        rm.mapMessage(5, "Rombard has been summoned somewhere in the map.");
+        rm.mapMessage(5, "Rombard已经在地图的某个地方被召唤了。");
         rm.spawnMonster(9300010, 1, -211);
     }
 }

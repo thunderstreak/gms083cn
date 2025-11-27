@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Did you know, they say someone from the sewers has been trying to #rdevelop a magic powder that let's one to grow#k, isn't that nice?");
+            qm.sendNext("你知道吗，据说下水道里有个人一直在#r研究一种神奇的粉末能让人长生#k，是不是很好？");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.gainExp(7000);

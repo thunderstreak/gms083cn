@@ -31,5 +31,5 @@ function act() {
         var eim = rm.getEventInstance();
         eim.restartEventTimer(60 * 60000);
     }
-    rm.mapMessage(6, "From the depths of his cave, here comes Horntail!");
+    rm.mapMessage(6, "树蜂从洞穴深处出来了！");
 }

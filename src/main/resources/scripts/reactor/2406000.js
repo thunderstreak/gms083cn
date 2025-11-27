@@ -5,7 +5,7 @@ Dragon nest
 function sendToHeaven() {
     rm.spawnNpc(2081008);
     rm.startQuest(100203);
-    rm.mapMessage(6, "In a flicker of light the egg has matured and cracked, thus born a radiant baby dragon.");
+    rm.mapMessage(6, "在一闪一闪的光中，蛋成熟了，裂开了，于是诞生了一条容光焕发的小龙。");
 }
 
 function touch() {

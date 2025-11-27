@@ -35,7 +35,7 @@ function end(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("Did you defeat the #o9300385#es?");
+		qm.sendNext("你打败了吗？#o9300385#es吗？?");
 	} else if (status == 1) {
 		qm.sendNextPrev("#bWhat happened to slaying the Foxes left behind?", 2);
 	} else if (status == 2) {
@@ -55,7 +55,7 @@ function end(mode, type, selection) {
 	} else if (status == 9) {
 		qm.sendNextPrev("You little brat! I'm your older brother. Don't you mess with me! Your brother has a weak heart, you know. Don't surprise me like that!");	
 	} else if (status == 10) {
-		qm.sendNextPrev("#b(This is why I don't want to call you Older Brother...)", 2);
+		qm.sendNextPrev("#b(这就是我不想叫你大哥的原因……)", 2);
 	} else if (status == 11) {
 		qm.sendNextPrev("Hmph! Anyway, I'm glad you were able to defeat the #o9300385#es. As a reward, I'll give you something an adventurer gave me a long time ago. Here you are. \r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0# \r\n#i1372043# 1 #t1372043# \r\n#i2022621# 25 #t2022621# \r\n#i2022622# 25 #t2022622#s \r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 910 exp");
 	} else if (status == 12) {

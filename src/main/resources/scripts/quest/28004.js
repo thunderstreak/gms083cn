@@ -41,9 +41,9 @@ function start(mode, type, selection) {
                 return;
             }
             
-            qm.sendNext("Okay... so here's our plan to defeat Scrooge and his dastardly plans. The Force of the Spirit I gave you is an item packed with mana. It's an item you'll definitely use at the map I am about to send you. In order to do that, you'll have to bring your party members with you as well. You should bring your party members here or form one right now!");
+            qm.sendNext("好吧……这就是我们打败斯克罗吉和他卑鄙计划的计划。我给你的精神之力是一个充满法力的物品。在我即将发给你的地图上，你肯定会用到它。为了做到这一点，你必须带上你的队友。你应该把你的党员带过来，或者现在就组成一个！");
         } else if (status == 1) {
-            qm.sendAcceptDecline("Would you like to move forward?");
+            qm.sendAcceptDecline("你想继续吗？");
         } else if (status == 2) {
             var level = qm.getPlayer().getLevel();
             

@@ -10,10 +10,10 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendAcceptDecline("Wouldn't a lizard enjoy a #b#t4032452##k, like a cow? There are a lot of #bHaystacks#k nearby, so try feeding it that.");
+		qm.sendAcceptDecline("蜥蜴难道不会像奶牛一样享受#b#t4032452##k吗? 附近有很多#b干草堆#k，所以试着喂它。");
 	} else if (status == 1) {
 		if (mode == 0) {
-			qm.sendNext("Hm, you never know unless you try. That lizard is big enough to be on Maple's Believe It Or Not. It might eat hay.");
+			qm.sendNext("不试试你永远不会知道。那只蜥蜴大得足以登上枫树的《信不信由你》它可能吃干草。");
 		} else {
 			qm.forceStartQuest();
 			qm.sendImage("UI/tutorial/evan/12/0");

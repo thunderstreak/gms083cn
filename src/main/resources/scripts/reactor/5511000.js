@@ -5,7 +5,7 @@
 function summonBoss() {
         rm.spawnMonster(9420542,-527,637);
         rm.changeMusic("Bgm09/TimeAttack");
-        rm.mapMessage(6, "Beware! The furious Targa has shown himself!");
+        rm.mapMessage(6, "小心!暴怒的塔格现身了！");
 }
 
 function act() {

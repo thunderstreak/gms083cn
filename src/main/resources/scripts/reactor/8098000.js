@@ -33,5 +33,5 @@ function act() {
         rm.spawnMonster(9400209, 6);
         rm.spawnMonster(9400210, 9);
     }
-    rm.mapMessage(5, "Some monsters are summoned.");
+    rm.mapMessage(5, "一些怪物被召唤。");
 }

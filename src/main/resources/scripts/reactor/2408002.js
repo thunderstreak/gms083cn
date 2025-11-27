@@ -35,7 +35,7 @@ function act() {
     var vvpOrig = 4001088;
     var vvpStage = -1;
     eim.showClearEffect(false, vvpMap);
-    rm.mapMessage(6, "The key has been teleported somewhere...");
+    rm.mapMessage(6, "钥匙被传送到某个地方了……");
     switch (vvpMap) {
         case 240050101 : {
             vvpKey = vvpOrig;
@@ -69,7 +69,7 @@ function act() {
     var theWomanfred = womanfred.getReactorByName("keyDrop1");
     var dropper = eim.getPlayers().get(0);
     womanfred.spawnItemDrop(theWomanfred, dropper, tehWomanfred, theWomanfred.getPosition(), true, true);
-    eim.getMapInstance(240050100).dropMessage(6, "A bright flash of light, then a key suddenly appears somewhere in the map.");
+    eim.getMapInstance(240050100).dropMessage(6, "一道明亮的闪光，然后一个钥匙突然出现在地图的某个地方。");
 }
 	
 	

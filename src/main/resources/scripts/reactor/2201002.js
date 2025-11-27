@@ -24,6 +24,6 @@
  */
  
 function act() {
-    rm.mapMessage(5, "Rombard has been summoned somewhere in the map.");
+    rm.mapMessage(5, "Rombard 已经在地图的某个地方被召唤了。");
     rm.spawnMonster(9300010, 1, -211);
 }

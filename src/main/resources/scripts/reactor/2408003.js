@@ -33,7 +33,7 @@ function touch() {
 		rm.getPlayer().getEventInstance().setProperty("canEnter", "false");
 	}
     rm.spawnFakeMonster(8800000);
-    rm.mapMessage(6, "A gigantic creature is approaching from the deep cave.");	
+    rm.mapMessage(6, "一个巨大的生物正从深洞里走来。");
     //rm.createMapMonitor(rm.getPlayer().getMap().getId(),"ps00");
 	switch (rm.getPlayer().getMap().getId()) {
 		case 240060000: 
