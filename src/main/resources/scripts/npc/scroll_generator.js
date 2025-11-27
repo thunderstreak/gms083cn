@@ -72,14 +72,14 @@ function action(mode, type, selection) {
             status--;
 
         if(status == 0) {
-            cm.sendNext("This is the MapleTV Scroll Generator broadcast. Place your supplies or mesos earned throughout your adventure to redeem a prize! You can place #bany amount of supplies#k, however take note that placing #rdifferent supplies#k with #rbigger shots of any of them#k will improve the reward possibilities!");
+            cm.sendNext("这里是枫叶电视滚动抽奖机. 将你在冒险中获得的物资或金币放入以兑换奖品！ 你可以放置#b任意数量的物资#k, 但是要注意的是，将#r不同的补给#k与它们中的#r任何一种#k放置在一起将会提高奖励的可能性！");
         } else if(status == 1) {
             var sendStr;
 
             //print("Book: " + sgBookBuckets + " Item: " + sgItemBuckets);
             
-            if(sgItemBuckets > 0.0) sendStr = "With the items you have currently placed, you have #r" + sgBuckets + "#k buckets (#r" + (sgItemBuckets < 1.0 ? sgItemBuckets.toFixed(2) : Math.floor(sgItemBuckets)) + "#k supply buckets) for claiming a prize. Place supplies:";
-            else sendStr = "You have placed no supplies yet. Place supplies:";
+            if(sgItemBuckets > 0.0) sendStr = "根据你目前放置的物品，你有#r" + sgBuckets + "#k个桶 (#r" + (sgItemBuckets < 1.0 ? sgItemBuckets.toFixed(2) : Math.floor(sgItemBuckets)) + "#k个补给物资) 可以领取奖品。放置补给物品：";
+            else sendStr = "您还没有放置任何物资。放置物资：";
 
             var listStr = "";
             var i;
@@ -89,15 +89,15 @@ function action(mode, type, selection) {
                 listStr += "#l\r\n";
             }
 
-            listStr += "#b#L" + i + "#Mesos#k";
+            listStr += "#b#L" + i + "#金币#k";
             if(sgAppliedMeso > 0) listStr += " - " + sgAppliedMeso;
             listStr += "#l\r\n";
 
-            cm.sendSimple(sendStr + "\r\n\r\n" + listStr + "#r#L" + (sgItems.length + 2) + "#Retrieve a prize!#l#k\r\n");
+            cm.sendSimple(sendStr + "\r\n\r\n" + listStr + "#r#L" + (sgItems.length + 2) + "#找回奖品！#l#k\r\n");
         } else if(status == 2) {
             if(selection == (sgItems.length + 2)) {
                 if(sgItemBuckets < 1.0) {
-                    cm.sendPrev("You have set not enough supplies. Insert at least one bucket of #bsupplies#k to claim a prize.");
+                    cm.sendPrev("您设置的物资不足。至少放入一桶物资#b物资#k才能领取奖品");
                 } else {
                     generateRandomScroll();
                     cm.dispose();
@@ -108,15 +108,15 @@ function action(mode, type, selection) {
                     tickSel = "of #b#t" + sgItems[selection] + "##k";
                     curItemQty = cm.getItemQuantity(sgItems[selection]);
                 } else {
-                    tickSel = "#bmesos#k";
+                    tickSel = "#b金币#k";
                     curItemQty = cm.getMeso();
                 }
                 
                 curItemSel = selection;
                 if(curItemQty > 0) {
-                    cm.sendGetText("How many " + tickSel + " do you want to provide? (#r" + curItemQty + "#k available)#k");
+                    cm.sendGetText("你想提供多少个" + tickSel + "? (#r" + curItemQty + "#k 可用)#k");
                 } else {
-                    cm.sendPrev("You have got #rnone#k " + tickSel + " to provide for Scroll Generation. Click '#rBack#k' to return to the main interface.");
+                    cm.sendPrev("您#r没有#k " + tickSel + "来提供滚动抽奖。 点击'#r返回#k'返回主界面");
                 }
             }
         } else if(status == 3) {
@@ -127,15 +127,15 @@ function action(mode, type, selection) {
                 if(isNaN(placedQty) || placedQty < 0) throw true;
 
                 if(placedQty > curItemQty) {
-                    cm.sendPrev("You cannot insert the given amount of #r" + (curItemSel < sgItems.length ? "#t" + sgItems[curItemSel] + "#" : "mesos") + "#k (#r" + curItemQty + "#k available). Click '#rBack#k' to return to the main interface.");
+                    cm.sendPrev("不能给定数量的#r" + (curItemSel < sgItems.length ? "#t" + sgItems[curItemSel] + "#" : "金币") + "#k (#r" + curItemQty + "#k 可用的). 点击'#r返回#k'返回主界面");
                 } else {
                     if(curItemSel < sgItems.length) sgApplyItem(curItemSel, placedQty);
                     else sgApplyMeso(placedQty);
 
-                    cm.sendPrev("Operation succeeded. Click '#rBack#k' to return to the main interface.");
+                    cm.sendPrev("操作成功。点击'#r返回#k'返回主界面");
                 }
             } catch(err) {
-                cm.sendPrev("You must enter a positive number of supplies to insert. Click '#rBack#k' to return to the main interface.");
+                cm.sendPrev("您必须输入一个正数的物资数量才能插入。 点击'#r返回#k'返回主界面");
             }
 
             status = 2;
@@ -425,14 +425,14 @@ function generateRandomScroll() {
         var itemid = getRandomScroll(calculateScrollTiers());
         if (itemid != -1) {
             if (performExchange(itemid, 1)) {
-                cm.sendNext("Transaction accepted! You have received a #r#t" + itemid + "##k.");
+                cm.sendNext("事务接受!您已收到#r#t" + itemid + "##k.");
             } else {
-                cm.sendOk("Oh, it looks like some items are missing... Please double-check provided items in your inventory before trying to exchange.");
+                cm.sendOk("哦，好像少了一些东西……在尝试交换之前，请仔细检查您的库存中提供的物品。");
             }
         } else {
-            cm.sendOk("Sorry for the inconvenience, but it seems there are no scrolls on store right now... Try again later.");
+            cm.sendOk("很抱歉给您带来不便，但目前商店似乎没有卷轴…请稍后再试。");
         }
     } else {
-        cm.sendOk("Please look out for a slot available on your USE inventory before trying for a scroll.");
+        cm.sendOk("在尝试卷轴之前，请注意在您的背包消耗栏上是否有足够的空间。");
     }
 }

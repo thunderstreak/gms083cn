@@ -44,9 +44,9 @@ function action(mode, type, selection) {
     
                 if (status == 0) {
                         if (cm.getMapId() != 925010400) {
-                                em = cm.getEventManager("DelliBattle");
+                                em = cm.getEventManager("DelliBattle");//黑魔法师相关
                                 if(em == null) {
-                                        cm.sendOk("The Delli Battle has encountered an error.");
+                                        cm.sendOk("Delli战役遇到了一个错误。");
                                         cm.dispose();
                                         return;
                                 } else if(cm.isUsingOldPqNpcStyle()) {
@@ -54,38 +54,38 @@ function action(mode, type, selection) {
                                         return;
                                 }
 
-                                cm.sendSimple("#e#b<Party Quest: Save Delli>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nAh, #r#p1095000##k sent you here? Is she worried about me? ... I'm terribly sorry to hear that, but I can't really go back just yet, some monsters are under the Black Mage's influence, and it's up to me to liberate them! ... It seems you're not going to accept that either, huh? Would you like to collaborate with party members to help me? If so, please have your #bparty leader#k talk to me.#b\r\n#L0#I want to participate in the party quest.\r\n#L1#I would like to " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "disable" : "enable") + " Party Search.\r\n#L2#I would like to hear more details.");
+                                cm.sendSimple("#e#b<组队任务：Save Delli>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nAh, #r#p1095000##k 把你送到这儿来？她在担心我吗？．．． 我很抱歉听到这个消息，但我现在还不能回去，有些怪物在黑魔法师的影响之下, 要靠我来解放他们! ... 看来你也不打算接受这一点，对吧？你愿意和党员合作帮助我吗? 如果是这样，请让你们的#b队长#k跟我谈谈.#b\r\n#L0#我想要执行组队任务。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                         } else {
-                                cm.sendYesNo("The mission succeeded, thanks for escorting me! I can lead you to #b#m120000104##k, are you ready?");
+                                cm.sendYesNo("任务成功了，谢谢你的护送！我可以带你去#b#m120000104##k，你准备好了吗?");
                         }
                 } else if (status == 1) {
                         if (cm.getMapId() != 925010400) {
                                 if (selection == 0) {
                                         if (cm.getParty() == null) {
-                                                cm.sendOk("You can participate in the party quest only if you are in a party.");
+                                                cm.sendOk("处于组队状态时，才能执行组队任务。");
                                                 cm.dispose();
                                         } else if(!cm.isLeader()) {
-                                                cm.sendOk("Your party leader must talk to me to start this party quest.");
+                                                cm.sendOk("如果想执行组队任务，请让你的队长来和我对话。");
                                                 cm.dispose();
                                         } else {
                                                 var eli = em.getEligibleParty(cm.getParty());
                                                 if(eli.size() > 0) {
                                                         if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
-                                                                cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                                                                cm.sendOk("本频道已经有队伍正在执行组队任务，请等待其完成组队任务或切换至其他频道。");
                                                         }
                                                 }
                                                 else {
-                                                        cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                                                        cm.sendOk("目前无法执行组队任务，原因可能是组队人数不满足要求，组队中存在不符合资格的成员，组队成员没有进入本地图之一。如果缺少组队成员，请尝试组队搜索功能。");
                                                 }
 
                                                 cm.dispose();
                                         }
                                 } else if (selection == 1) {
                                         var psState = cm.getPlayer().toggleRecvPartySearchInvite();
-                                        cm.sendOk("Your Party Search status is now: #b" + (psState ? "enabled" : "disabled") + "#k. Talk to me whenever you want to change it back.");
+                                        cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("#e#b<Party Quest: Save Delli>#k#n\r\n A ambush is under way! I must stand on the field for around 6 minutes to complete the liberation, please protect me during that time so that my mission is completed.");
+                                        cm.sendOk("#e#b<组队任务：Save Delli>#k#n\r\n 伏击正在进行中！我必须在场上站立6分钟左右才能完成解放，请在这段时间内保护我，让我的任务完成。.");
                                         cm.dispose();
                                 }
                         } else {

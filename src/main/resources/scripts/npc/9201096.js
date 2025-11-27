@@ -42,17 +42,17 @@ function action(mode, type, selection) {
     if (mode == 1)
         status++;
     else {
-        cm.sendOk("Very well, see you around.");
+        cm.sendOk("好，下回见。");
         cm.dispose();
         return;
     }
 
     if (status == 0) {
-        var selStr = "Hey, are you aware about the expeditions running right now at the Crimsonwood Keep? So, there is a great opportunity for one to improve themselves, one can rack up experience and loot pretty fast there.";
+        var selStr = "你知道绯红要塞的远征浪潮此时此刻正在火热进行中吗？这可是一个提升自己的好机会，冒险家在那里能迅速变得强大起来。";
         cm.sendNext(selStr);
     }
     else if (status == 1) {
-	var selStr = "Said so, methinks making use of some strong utility potions can potentially create some differential on the front, and by this I mean to start crafting #b#t2022284##k's to help on the efforts. So, getting right down to business, I'm currently pursuing #rplenty#k of those items: #r#t4032010##k, #r#t4032011##k, #r#t4032012##k, and some funds to support the cause. Would you want to get some of these boosters?";
+	var selStr = "我觉得善用一些强力的药剂也许会让这个过程变得更轻松。因此我想要着手制作#b#t2022284##k，看看能不能帮上什么忙。所以说真的，我正在寻找#r大量#k的必备材料：#r#t4032010##k、#r#t4032011##k,、#r#t4032012##k以及一些资金。当然，都是用于制作药剂的。有没有兴趣帮我一把，把这项生意做起来?";
         cm.sendYesNo(selStr);
     }
 
@@ -68,23 +68,23 @@ function action(mode, type, selection) {
         mats = matSet[selectedItem];
         matQty = matQtySet[selectedItem];
         cost = costSet[selectedItem];
-                
-        var prompt = "Ok, I'll be crafting some #t" + item + "#. In that case, how many of those do you want me to make?";
+
+        var prompt = "好，我会帮你制作 #t" + item + "#。那么，你想制作多少？";
         cm.sendGetNumber(prompt,1,1,100)
     }
-        
+
     else if (status == 3) {
         qty = (selection > 0) ? selection : (selection < 0 ? -selection : 1);
         last_use = false;
-                
-        var prompt = "So, you want me to make ";
+
+        var prompt = "所以你想要我制作 ";
         if (qty == 1)
-            prompt += "a #t" + item + "#?";
+            prompt += "一件 #t" + item + "#?";
         else
-            prompt += qty + " #t" + item + "#?";
-                        
-        prompt += " In that case, I'm going to need specific items from you in order to make it. And make sure you have room in your inventory!#b";
-                
+            prompt += qty + "件 #t" + item + "#?";
+
+        prompt += " 那么，我就需要一些特定的材料才能制作出你需要的道具。不过在这之前，先看看你的背包里有没有足够的空位吧。#b";
+
         if (mats instanceof Array){
             for (var i = 0; i < mats.length; i++) {
                 prompt += "\r\n#i"+mats[i]+"# " + matQty[i] * qty + " #t" + mats[i] + "#";
@@ -92,21 +92,21 @@ function action(mode, type, selection) {
         } else {
             prompt += "\r\n#i"+mats+"# " + matQty * qty + " #t" + mats + "#";
         }
-                
+
         if (cost > 0) {
-            prompt += "\r\n#i4031138# " + cost * qty + " meso";
+            prompt += "\r\n#i4031138# " + cost * qty + " 金币";
         }
         cm.sendYesNo(prompt);
     }
-    
+
     else if (status == 4) {
         var complete = true;
-                
+
         if (cm.getMeso() < cost * qty) {
-            cm.sendOk("Well, I DID say I would be needing some funds to craft it, wasn't it?");
+            cm.sendOk("我说过这不是免费服务吧？");
         }
         else if(!cm.canHold(item, qty)) {
-            cm.sendOk("You didn't check if you got a slot to spare on your inventory before crafting, right?");
+            cm.sendOk("你的背包里没有足够的空间？去整理一下。");
         }
         else {
             if (mats instanceof Array) {
@@ -120,9 +120,9 @@ function action(mode, type, selection) {
             } else {
                 complete = cm.haveItem(mats, matQty * qty);
             }
-            
+
             if (!complete)
-                cm.sendOk("There are not enough resources on your inventory. Please check it again.");
+                cm.sendOk("你的包裹里没有足够的材料，好好找找看吧。");
             else {
                 if (mats instanceof Array) {
                     for (var i = 0; i < mats.length; i++){
@@ -133,7 +133,7 @@ function action(mode, type, selection) {
                 }
                 cm.gainMeso(-cost * qty);
                 cm.gainItem(item, qty);
-                cm.sendOk("There it is! Thanks for your cooperation.");
+                cm.sendOk("就是这个！谢谢你的帮助。");
             }
         }
         cm.dispose();

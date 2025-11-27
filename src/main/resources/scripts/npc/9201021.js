@@ -22,13 +22,13 @@
 var status = 0;  
 
 function start() {
-    if(cm.getMapId() != 680000401) cm.sendSimple("Hello, where would you like to go?\r\n#b" + ((cm.getMapId() != 680000400) ? "#L0#Untamed Hearts Hunting Ground#l\r\n" : "") + ((cm.getMapId() == 680000400) ? "#L1#I have 7 keys. Bring me to smash boxes#l\r\n" : "") + "#L2#Please warp me out.#l#k");
-    else cm.sendSimple("Hello, do you want to go back now? Returning here again will cost you #rother 7 keys#k.\r\n#b#L2#Please warp me back to the training grounds.#l#k");
+    if(cm.getMapId() != 680000401) cm.sendSimple("你好，你想去哪里？\r\n#b" + ((cm.getMapId() != 680000400) ? "#L0#野性之心狩猎场#l\r\n" : "") + ((cm.getMapId() == 680000400) ? "#L1#我有7把钥匙。带我去砸箱子#l\r\n" : "") + "#L2#请把我弄出去。#l#k");
+    else cm.sendSimple("你好，你现在想回去吗？再来这里要再花#r7把钥匙#k。\r\n#b#L2#请把我传送回训练场。#l#k");
 }  
 
 function action(mode, type, selection) {  
     if (mode < 1) {
-        cm.sendOk("Goodbye then.");
+        cm.sendOk("再会.");
         cm.dispose();
         return;
     }
@@ -39,23 +39,23 @@ function action(mode, type, selection) {
     if (status == 1) {
         if (selection < 1) {
             if(!cm.haveItem(4000313, 1)) {
-                cm.sendOk("It seems like you lost your #b#t4000313##k. I'm sorry, but I can't let you proceed to the hunting grounds without that.");
+                cm.sendOk("你似乎丢失了#b#t4000313##k.没有它的话,我无法将你传送至结婚花园,很抱歉.");
                 cm.dispose();
                 return;
             }
-            
+
             cm.warp(680000400, 0);
         } else if (selection < 2) {
             if (cm.haveItem(4031217,7)) {
                 cm.gainItem(4031217, -7);
                 cm.warp(680000401, 0);
             } else {
-                cm.sendOk("It seems like you don't have 7 Keys. Kill the cakes and candles in the Untamed Heart Hunting Ground to get keys.");
+                cm.sendOk("看起来你还没有收集齐7把黄金钥匙,从这周围的蜡烛和蛋糕里寻找它们吧.");
             }
         } else if (selection > 1) {
             if(cm.getMapId() != 680000401) {
                 cm.warp(680000500, 0);
-                cm.sendOk("Goodbye. I hope you enjoyed the wedding!");
+                cm.sendOk("希望你在这次婚礼中玩得开心,再会!");
             } else {
                 cm.warp(680000400, 0);
             }

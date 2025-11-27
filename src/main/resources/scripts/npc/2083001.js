@@ -56,7 +56,7 @@ function action(mode, type, selection) {
                         if (status == 0) {
                                 em = cm.getEventManager("HorntailPQ");
                                 if(em == null) {
-                                        cm.sendOk("The Horntail PQ has encountered an error.");
+                                        cm.sendOk("The Horntail 组队任务遇到了一个错误。");
                                         cm.dispose();
                                         return;
                                 } else if(cm.isUsingOldPqNpcStyle()) {
@@ -64,40 +64,40 @@ function action(mode, type, selection) {
                                         return;
                                 }
 
-                                cm.sendSimple("#e#b<Party Quest: Horntail Trial Grounds>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nThis is the path to Horntail's lair. If you want to face him, you and your team shall be tested on the trial grounds ahead.#b\r\n#L0#Let us pass to the trial grounds.\r\n#L1#I would like to " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "disable" : "enable") + " Party Search.\r\n#L2#I would like to hear more details.");
+                                cm.sendSimple("#e#b<组队任务：暗黑龙王的试炼场>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n这里通向暗黑龙王的巢穴。如果想要面对它，整个队伍必须在前方的试炼场中接受考验。#b\r\n#L0#让我们进入试炼场。\r\n#L1#我想要 " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "禁用" : "启用") + " 组队搜索。\r\n#L2#我想要听取更多相关细节。");
                         } else if (status == 1) {
                                 if (selection == 0) {
                                         if (cm.getParty() == null) {
-                                                cm.sendOk("You can participate in the party quest only if you are in a party.");
+                                                cm.sendOk("处于组队状态时，才能执行组队任务。");
                                                 cm.dispose();
                                         } else if(!cm.isLeader()) {
-                                                cm.sendOk("Your party leader must talk to me to start this party quest.");
+                                                cm.sendOk("如果想执行组队任务，请让你的队长来和我对话。");
                                                 cm.dispose();
                                         } else {
                                                 var eli = em.getEligibleParty(cm.getParty());
                                                 if(eli.size() > 0) {
                                                         if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
-                                                                cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                                                                cm.sendOk("本频道已经有队伍正在执行组队任务，请等待其完成组队任务或切换至其他频道。");
                                                         }
                                                 }
                                                 else {
-                                                        cm.sendOk("Either I cannot accept some members of your party inside the cave or you team is lacking. Solve this problem then talk to me!");
+                                                        cm.sendOk("你的队员中有不满足进入洞穴条件的成员，或是队伍人数不足。请整备队伍后再来与我交谈。");
                                                 }
 
                                                 cm.dispose();
                                         }
                                 } else if(selection == 1) {
                                         var psState = cm.getPlayer().toggleRecvPartySearchInvite();
-                                        cm.sendOk("Your Party Search status is now: #b" + (psState ? "enabled" : "disabled") + "#k. Talk to me whenever you want to change it back.");
+                                        cm.sendOk("现在组队搜索状态为: #b" + (psState ? "启用" : "禁用") + "#k。需要更改时请与我对话。");
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("#e#b<Party Quest: Horntail Trial Grounds>#k#n\r\nAs the gatekeeper of Horntail's lair, I will grant access #bjust to those worthy#k of his presence. Even for those people, the path inside is that of a maze, full of branches and trials. However, those #radept at fighting squad bosses#k have a better chance to stand to our leader, although those #rof our kind#k have a shabby chance as well.");
+                                        cm.sendOk("#e#b<组队任务：暗黑龙王的试炼场>#k#n\r\n作为暗黑龙王巢穴的看守者，我会允许那些#b有价值#k令它现身的人入内。即便是对于这些人而言，里面的通道也繁杂如迷宫，有许多岔道和考验。但那些 #r善于挑战BOSS的队伍#k 更有可能抵达我们的首领面前，即便对于#r身为同类#k的我们而言这个机会也很渺茫。");
                                         cm.dispose();
                                 }
                         }
                 } else {
                         if(!cm.isEventLeader()) {
-                                cm.sendOk("Only your party leader is allowed to interact with the Schedule.");
+                                cm.sendOk("只有队长才能可以与暗黑龙王的里程碑交互。");//这个npc的名字就是这样
                         } else if(cm.getMapId() == 240050100) {
                                 if(cm.haveItem(4001087) && cm.haveItem(4001088) && cm.haveItem(4001089) && cm.haveItem(4001090) && cm.haveItem(4001091)) {
                                         cm.gainItem(4001087, -1);
@@ -105,10 +105,10 @@ function action(mode, type, selection) {
                                         cm.gainItem(4001089, -1);
                                         cm.gainItem(4001090, -1);
                                         cm.gainItem(4001091, -1);
-                                        
+
                                         cm.getEventInstance().warpEventTeam(240050200);
                                 } else {
-                                        cm.sendOk("You don't have all the keys needed to proceed.");
+                                        cm.sendOk("尚未获取继续所需的全部水晶钥匙。");
                                 }
                         } else if(cm.getMapId() == 240050300) {
                                 if(cm.haveItem(4001092, 1) && cm.haveItem(4001093, 6)) {
@@ -116,7 +116,7 @@ function action(mode, type, selection) {
                                         cm.gainItem(4001093, -6);
                                         cm.getEventInstance().clearPQ();
                                 } else {
-                                        cm.sendOk("Check if you have got all 6 Red keys and 1 Blue key with you.");
+                                        cm.sendOk("请检查是否已获取全部6把红色钥匙和1把蓝色钥匙。");
                                 }
                         } else if(cm.getMapId() == 240050310) {
                                 if(cm.haveItem(4001092, 1) && cm.haveItem(4001093, 6)) {
@@ -124,7 +124,7 @@ function action(mode, type, selection) {
                                         cm.gainItem(4001093, -6);
                                         cm.getEventInstance().clearPQ();
                                 } else {
-                                        cm.sendOk("Check if you have got all 6 Red keys and 1 Blue key with you.");
+                                        cm.sendOk("请检查是否已获取全部6把红色钥匙和1把蓝色钥匙。");
                                 }
                         }
                         

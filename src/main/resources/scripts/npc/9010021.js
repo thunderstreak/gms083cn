@@ -27,7 +27,7 @@
 function start() {
     status = -1;
     if (!Packages.config.YamlConfig.config.server.USE_REBIRTH_SYSTEM) {
-        cm.sendOk("... I came from distant planes to assist the fight against the #rBlack Magician#k. Right now I search my master, have you seen him?");
+        cm.sendOk("... 我从遥远的地方来协助对抗#r黑魔法师#k. 现在我在找我的主人，你看见他了吗？");
         cm.dispose();
         return;
     }
@@ -42,15 +42,15 @@ function action(mode, type, selection) {
         return;
     }
     if (status == 0) {
-        cm.sendNext("Come to me when you want to be reborn again. You currently have a total of #r" + cm.getChar().getReborns() + " #krebirths.");
+        cm.sendNext("当你想转生的时候来找我。你目前总共有#r" + cm.getChar().getReborns() + " #k次转生。");
     } else if (status == 1) {
-        cm.sendSimple("What do you want me to do today: \r\n \r\n #L0##bI want to be rebirthed#l \r\n #L1##bMaybe next time#k#l");
+        cm.sendSimple("你今天想让我做什么: \r\n \r\n #L0##b我想转生#l \r\n #L1##b下次吧#k#l");
     } else if (status == 2) {
         if (selection == 0) {
             if (cm.getChar().getLevel() == 200) {
-                cm.sendYesNo("Are you sure you want to be rebirthed?");
+                cm.sendYesNo("你确定你想转生吗？");
             } else {
-                cm.sendOk("You are not level 200, please come back when you hit level 200.");
+                cm.sendOk("你不是200级，当你达到200级时请回来。");
                 cm.dispose();
             }
         } else if (selection == 1) {
@@ -59,7 +59,7 @@ function action(mode, type, selection) {
         }
     } else if (status == 3 && type == 1) {
         cm.getChar().executeReborn();
-        cm.sendOk("You have now been reborn. That's a total of #r" + cm.getChar().getReborns() + "#k rebirths");
+        cm.sendOk("你现在已经转生了，总共有#r" + cm.getChar().getReborns() + "#k次转生");
         cm.dispose();
     }
 

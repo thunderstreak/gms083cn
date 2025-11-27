@@ -40,13 +40,13 @@ var maxEqp = 0;
 
 function start() {
     if (!Packages.config.YamlConfig.config.server.USE_ENABLE_CUSTOM_NPC_SCRIPT) {
-        cm.sendOk("Hi, I'm #b#p" + cm.getNpc() + "##k.");
+        cm.sendOk("你好，我是#b#p" + cm.getNpc() + "##k。");//工作人员E被拿来做饰品制作NPC了？！这太私服了不能接受（跳过）
         cm.dispose();
         return;
     }
-    
+
     cm.getPlayer().setCS(true);
-    var selStr = "Hello, I am the #bAccessory NPC Crafter#k! My works are widely recognized to be too fine, up to the point at which all my items mimic not only the appearance but too the attributes of them! Everything I charge is some 'ingredients' to make them and, of course, a fee for my services. On what kind of equipment are you interessed?#b";
+    var selStr = "你好，我是 #b配件NPC工匠#k! 我的作品被广泛认为是太精细了，以至于我所有的物品不仅模仿了它们的外观，而且模仿了它们的属性！我收取的所有费用都是制作它们的“原料”，当然还有我的服务费。你对哪种设备感兴趣？#b";
     var options = ["Pendants","Face accessories","Eye accessories","Belts & medals","Rings"/*,"#t4032496#"*/];
     for (var i = 0; i < options.length; i++)
         selStr += "\r\n#L" + i + "# " + options[i] + "#l";
@@ -61,45 +61,45 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         if (selection == 0) { //pendants
-            var selStr = "Well, I've got these pendants on my repertoire:#b";
+            var selStr = "我的收藏里有这些吊坠：#b";
             items = [1122018,1122007,1122001,1122003,1122004,1122006,1122002,1122005,1122058];
             for (var i = 0; i < items.length; i++)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##b";
         }else if (selection == 1) { //face accessory
-            var selStr = "Hmm, face accessories? There you go: #b";
+            var selStr = "嗯，脸部饰品？这就对了： #b";
             items = [1012181,1012182,1012183,1012184,1012185,1012186, 1012108, 1012109, 1012110, 1012111];
             for (var i = 0; i < items.length; i++)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##b";
         }else if (selection == 2) { //eye accessory
-            var selStr = "Got hard sight? Okay, so which glasses do you want me to make?#b";
+            var selStr = "视力不好？好吧，那你想让我做哪种眼镜？#b";
             items = [1022073, 1022088, 1022103, 1022089, 1022082];
             for (var i = 0; i < items.length; i++)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##b";
         }else if (selection == 3) { //belt & medal
-            var selStr = "Hmm... For these, things get a little tricky. Since these items are too short and too similar one another, I don't really know what item will emerge when I finish the synthesis. Still wanna try for something?";
+            var selStr = "嗯…对于这些，事情变得有点棘手。由于这些项目太短，彼此之间又太相似，所以我真的不知道当我完成合成后会出现什么项目。还想尝试些什么吗？";
             items = [];
             maxEqp = 0;
-            
+
             for (var x = 1132005; x < 1132017; maxEqp++, x++)
                 items[maxEqp] = x;
-            
+
             for (var x = 1142000; x < 1142102; maxEqp++, x++)
                 items[maxEqp] = x;
-            
+
             for (var x = 1142107; x < 1142121; maxEqp++, x++)
                 items[maxEqp] = x;
-		
+
             for (var x = 1142122; x < 1142143; maxEqp++, x++)
-                items[maxEqp] = x;		
-            selStr += "\r\n#L" + i + "##bTry it!#b";
-            
+                items[maxEqp] = x;
+            selStr += "\r\n#L" + i + "##b试一下!#b";
+
         }else if (selection == 4) { //ring refine
-            var selStr = "Rings, huh? These are my specialty, go check it yourself!#b";
+            var selStr = "戒指,嗯?这是我的拿手好戏，你自己去看看吧!#b";
             items = [1112407, 1112408, 1112401, 1112413, 1112414, 1112405, 1112402];
-            
+
             for (var i = 0; i < items.length; i++)
                 selStr += "\r\n#L" + i + "##t" + items[i] + "##b";
-            
+
         }/*else if (selection == 5) { //make necklace
             var selStr = "Need to make #t4032496#?#b";
             items = [4032496];
@@ -110,7 +110,7 @@ function action(mode, type, selection) {
         cm.sendSimple(selStr);
     }else if (status == 1) {
         if (selectedType != 3) selectedItem = selection;
-        
+
         if (selectedType == 0) { //pendant refine
             var matSet = [[4003004, 4030012, 4001356, 4000026], [4000026, 4001356, 4000073, 4001006], [4001343, 4011002, 4003004, 4003005], [4001343, 4011006, 4003004, 4003005], [4000091, 4011005, 4003004, 4003005], [4000091, 4011001, 4003004, 4003005], [4000469, 4011000, 4003004, 4003005], [4000469, 4011004, 4003004, 4003005], [1122007, 4003002, 4000413]];
             var matQtySet = [[20, 20, 5, 1], [5, 5, 10, 1], [10, 2, 20, 4], [10, 1, 20, 4], [15, 3, 30, 6], [15, 3, 30, 6], [20, 5, 20, 8], [20, 4, 40, 8], [1, 1, 1]];
@@ -136,7 +136,7 @@ function action(mode, type, selection) {
             var matQtySet = [[1, 1, 1]];
             var costSet = [10000];
         }*/
-        
+
         if (selectedType == 3) {
             selectedItem = Math.floor(Math.random() * maxEqp);
             item = items[selectedItem];
@@ -150,17 +150,17 @@ function action(mode, type, selection) {
             matQty = matQtySet[selectedItem];
             cost = costSet[selectedItem];
         }
-        
-        var prompt = "You want me to make ";
+
+        var prompt = "你想制作 ";
         if(selectedType != 3) {
             if (qty == 1)
                 prompt += "a #b#t" + item + "##k?";
             else
                 prompt += "#b" + qty + " #t" + item + "##k?";
         }
-        else prompt += "a #bbelt#k or a #bmedal#k?";
+        else prompt += "一个 #bbelt#k 或者一个 #bmedal#k?";
         
-        prompt += " Right! I will need some items to make that item. Make sure you have a #bfree slot#k in your inventory!#b";
+        prompt += " 好了! 我需要一些材料来制作. 确保你的#b背包#k有足够的空间!#b";
         if (mats instanceof Array)
             for(var i = 0; i < mats.length; i++)
                 prompt += "\r\n#i" + mats[i] + "# " + (matQty[i] * qty) + " #t" + mats[i] + "#";
@@ -171,7 +171,7 @@ function action(mode, type, selection) {
         cm.sendYesNo(prompt);
     }else if (status == 2) {
         if (cm.getMeso() < (cost * qty)) {
-            cm.sendOk("This is the fee I charge to make my items! No credit.");
+            cm.sendOk("这是我制作物品的费用！不赊账。");
         } else {
             var complete = true;
             if (mats instanceof Array) {
@@ -182,7 +182,7 @@ function action(mode, type, selection) {
                 complete = false;
             
             if (!complete)
-                cm.sendOk("Are you sure you got all the items required? Double check it!");
+                cm.sendOk("你确定所需的东西都带齐了吗？再次检查！");
             else {
                 if (cm.canHold(item, qty)) {
                     if (mats instanceof Array) {
@@ -193,9 +193,9 @@ function action(mode, type, selection) {
                     cm.gainMeso(-(cost * qty));
 
                     cm.gainItem(item, qty);
-                    cm.sendOk("The item is done! Take and try this piece of art yourself.");
+                    cm.sendOk("这个项目完成了！拿去试试这件艺术品吧。");
                 } else {
-                    cm.sendOk("You got no free slot on your inventory.");
+                    cm.sendOk("你的背包上没有空余的位置了。");
                 }
             }
         }	

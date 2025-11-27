@@ -26,8 +26,8 @@
  * @Purpose:     Levels people up.
  */
 function start() {
-    if(cm.getPlayer().gmLevel() > 1) cm.sendYesNo("Do you want to level up?");
-    else cm.sendOk("Hey wassup?");
+    if(cm.getPlayer().gmLevel() > 1) cm.sendYesNo("你想升级吗？");
+    else cm.sendOk("嘿,准备好了吗?");
 }
 
 function action(i, am, pro) {

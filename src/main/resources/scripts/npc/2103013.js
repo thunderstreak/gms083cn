@@ -54,17 +54,17 @@ function action(mode, type, selection) {
 		if (status == 0) {
 			if (selection > -1) selected = selection;
 			if (selection == 0 || selected == 0) {
-				cm.sendNext("This is the pyramid of Nett, the god of chaos and revenge. For a long time, it was buried deep in the desert, but Nett has ordered it to rise above ground. If you are unafraid of chaos and possible death, you may challenge Pharaoh Yeti, who lies asleep inside the Pyramid. Whatever the outcome, the choice is yours to make.");
+				cm.sendNext("这是内特的金字塔，他是混乱和复仇之神。很长一段时间，它被深埋在沙漠里，但内特命令它从地面上升起。如果你不怕混乱和可能的死亡，你可以挑战法老雪人，他睡在金字塔里。无论结果如何，选择权在你。");
 			} else if (selection == 1) {
-				cm.sendSimple("You fools who know no fear of Nett's wrath, it is now time to choose your destiny! \r\n\r\n#b#L0# Enter alone.#l\r\n#L1# Enter with a party of 2 or more.#l");
+				cm.sendSimple("你们这些不惧怕内特之怒的傻瓜，现在是时候选择你们的命运了！ \r\n\r\n#b#L0# 独自进入。#l\r\n#L1# 与2人或以上的团队一起进入。#l");
 			} else if (selection == 2) {
 				cm.openUI(0x16);
-				cm.showInfoText("Use the Party Search (Hotkey O) window to search for a party to join anytime and anywhere!");
+				cm.showInfoText("使用组队搜索（热键O）窗口搜索一个聚会，随时随地加入！");
 				cm.dispose();
 			} else if (selection == 3) {
-				cm.sendSimple("What gem have you brought?\r\n\r\n#L0##i4001322# #t4001322##l\r\n#L1##i4001323# #t4001323##l\r\n#L2##i4001324# #t4001324##l\r\n#L3##i4001325# #t4001325##l");
+				cm.sendSimple("你带来了什么珍宝？\r\n\r\n#L0##i4001322# #t4001322##l\r\n#L1##i4001323# #t4001323##l\r\n#L2##i4001324# #t4001324##l\r\n#L3##i4001325# #t4001325##l");
 			} else if (selection == 4) {
-				cm.sendNext("Inside Pharaoh Yeti's Tomb, you can acquire a #e#b#t2022613##k#n by proving yourself capable of defeating the #bPharaoh Jr. Yeti#k, the Pharaoh's clone. Inside that box lies a very special treasure. It is the #e#b#t1132012##k#n.\r\n#i1132012:# #t1132012#\r\n\r\n And if you are somehow able to survive Hell Mode, you will receive the #e#b#t1132013##k#n.\r\n\r\n#i1132013:# #t1132013#\r\n\r\n Though, of course, Nett won't allow that to happen.");
+				cm.sendNext("在法老雪人的坟墓里， 你可以通过证明自己有能力击败#b小雪人法老#k来获得一个#e#b#t2022613##k#n, 法老的复制品。那个盒子里有一个非常特别的宝藏。. 它是 #e#b#t1132012##k#n.\r\n#i1132012:# #t1132012#\r\n\r\n 如果你能挺过地狱模式， 你会收到 #e#b#t1132013##k#n.\r\n\r\n#i1132013:# #t1132013#\r\n\r\n, 当然，内特不会允许这种事发生的。");
 			} else if (selection == 5) {
 				var progress = cm.getQuestProgressInt(29932);
 				if (progress >= 50000)
@@ -75,10 +75,10 @@ function action(mode, type, selection) {
 			}
 		} else if (status == 1) {
 			if (selected == 0) {
-				cm.sendNextPrev("Once you enter the Pyramid, you will be faced with the wrath of Nett. Since you don't look too sharp, I will offer you some advice and rules to follow. Remember them well.#b\r\n\r\n1. Be careful that your #e#rAct Gauge#b#n does not decrease. The only way to maintain your Gauge level is to battle the monsters without stopping.\r\n2. Those who are unable will pay dearly. Be careful to not cause any #rMiss#b.\r\n3. Be wary of the Pharaoh Jr. Yeti with the #v04032424# mark. Make the mistake of attacking him and you will regret it.\r\n4. Be wise about using the skill that is given to you for Kill accomplishments.");
+				cm.sendNextPrev("一旦你进入金字塔，你将面对奈特的愤怒。既然你看起来不太帅，我就给你一些建议和规则。记住他们。.#b\r\n\r\n1. 请注意，您的 #e#rAct 感知#b#n 不会减小。维持你的感知等级的唯一方法就是不停地与怪物战斗。\r\n2. 那些没有能力的人将付出高昂的代价。 小心不要造成任何#r失误#b.\r\n3. 小心带有 #v04032424# 标记的小法老雪人。犯了攻击他的错误，你会后悔的.\r\n4. 明智地使用给你的杀戮成就的技能。");
 			} else if (selected == 1) {
 				party = selection;
-				cm.sendSimple("You who lack fear of death's cruelty, make your decision!\r\n#L0##i3994115##l#L1##i3994116##l#L2##i3994117##l#L3##i3994118##l");
+				cm.sendSimple("你们这些不惧怕死亡残酷的人，做个决定吧！\r\n#L0##i3994115##l#L1##i3994116##l#L2##i3994117##l#L3##i3994118##l");
 			} else if (selected == 3) {
 				if (selection == 0) {
 					if (cm.haveItem(4001322)) {
@@ -97,7 +97,7 @@ function action(mode, type, selection) {
 						return;
 					}
 				}
-				cm.sendOk("You'll need a gem to enter Pharaoh Yeti's Tomb. Are you sure you have one?");
+				cm.sendOk("你需要一块宝石才能进入法老雪人的坟墓。你确定你有吗？");
 				cm.dispose();
 			} else if (selected == 5) {
 			} else {
@@ -105,19 +105,19 @@ function action(mode, type, selection) {
 			}
 		} else if (status == 2) {
 			if (selected == 0) {
-				cm.sendNextPrev("Those who are able to withstand Nett's wrath will be honored, but those who fail will face destruction. This is all the advice I can give you. The rest is in your hands.");
+				cm.sendNextPrev("能抵挡尼特之怒的，必得尊荣；抵挡不住的，必得灭亡。这是我能给你的所有建议。剩下的就看你的了。");
 			} else if (selected == 1) {
 				var mode = "EASY";
 				//Finish this
 				var pqparty = cm.getPlayer().getParty();
 				if (party == 1) {
 					if (pqparty == null) {
-						cm.sendOk("Create a fucking party faggot.");//BE NICE
+						cm.sendOk("创建一个组队。");//BE NICE
 						cm.dispose();
 						return;		
 					} else {
 						if (pqparty.getMembers().size() < 2) {
-							cm.sendOk("Get more members...");
+							cm.sendOk("需要多队员…");
 							cm.dispose();
 							return;								
 						} else {
@@ -128,7 +128,7 @@ function action(mode, type, selection) {
 								if (pqchar != null && pqchar.getMapId() == 926010000) i++;
 							}
 							if (i < 2) {
-								cm.sendOk("Make sure that 2 or more party members are in your map.");
+								cm.sendOk("确保地图上有2个或更多的团队成员。");
 								cm.dispose();
 								return;								
 							}
@@ -137,12 +137,12 @@ function action(mode, type, selection) {
 				}
 				
 				if (cm.getPlayer().getLevel() < 40) {
-					cm.sendOk("You must be Lv. 40+ to enter this PQ.");
+					cm.sendOk("你必须是Lv. 40+才能进入这个副本。");
 					cm.dispose();
 					return;
 				}
 				if (selection < 3 && cm.getPlayer().getLevel() > 60) {
-					cm.sendOk("Only Hell mode is avaible for players that are over Lv. 60.");
+					cm.sendOk("只有lv60以上的玩家可以使用地狱模式。");
 					cm.dispose();
 					return;
 				} 
@@ -151,7 +151,7 @@ function action(mode, type, selection) {
 				else if (selection == 3) mode = "HELL";
 	
 				if (!cm.createPyramid(mode, party == 1)) {
-					cm.sendOk("All rooms are full for this mode, please try it again later or on another channel ):");
+					cm.sendOk("此模式下所有房间已满，请稍后再试或换另一个频道 ):");
 				}
 				cm.dispose();
 			}
@@ -163,7 +163,7 @@ function action(mode, type, selection) {
 			if (selection == 0) 
 				cm.dispose();//:(
 			else if (selection == 1) 
-				cm.sendNext("I will give you Pharaoh Yeti's Gem. You will be able to enter Pharaoh Yeti's Tomb anytime with this Gem. Check to see if you have at least 1 empty slot in your Etc window.");
+				cm.sendNext("我会给你法老雪人的宝石。你将能够进入法老雪人的坟墓随时与此宝石。检查你的背包其他窗口是否至少有一个空槽。");
 			
 		} else if (status == 1) {
 			var itemid = 4001325;
@@ -172,7 +172,7 @@ function action(mode, type, selection) {
 				cm.gainItem(itemid);
 				cm.warp(926010000);
 			} else 
-				cm.showInfoText("You must have at least 1 empty slot in your Etc window to receive the reward.");
+				cm.showInfoText("你必须在背包其他窗口中至少有一个空槽才能获得奖励。");
 			
 			cm.dispose();
 		}

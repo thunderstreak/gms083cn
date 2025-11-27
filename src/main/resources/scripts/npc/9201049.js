@@ -43,18 +43,18 @@ function action(mode, type, selection) {
             status--;
 
         if(status == 0) {
-            cm.sendOk("Hey there, did you enjoy the wedding? I will head you back to #bAmoria#k now.");                        
+            cm.sendOk("你好啊,在婚礼上留下开心的回忆了吗?那么现在我会带你回到#b婚礼村#k.");
         } else if(status == 1) {
             var eim = cm.getEventInstance();
             if(eim != null) {
                 var boxId = (cm.getPlayer().getId() == eim.getIntProperty("groomId") || cm.getPlayer().getId() == eim.getIntProperty("brideId")) ? 4031424 : 4031423;
-                
+
                 if(cm.canHold(boxId, 1)) {
                     cm.gainItem(boxId, 1);
                     cm.warp(680000000);
-                    cm.sendOk("You just received an Onyx Chest. Search for #b#p9201014##k, she is at the top of Amoria, she knows how to open these.");
+                    cm.sendOk("你刚刚收到了一份礼物.去婚礼村找#b#p9201014##k吧,她知道如何开启这个玛瑙箱子.");
                 } else {
-                    cm.sendOk("Please make room on your ETC inventory to receive the Onyx Chest.");
+                    cm.sendOk("请空出一格其他栏来存放玛瑙箱子.");
                     cm.dispose();
                     return;
                 }

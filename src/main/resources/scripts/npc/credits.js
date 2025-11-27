@@ -40,7 +40,7 @@ function writeServerStaff_HeavenMS() {
         addPerson("GabrielSin", "Contributor");
         addPerson("Masterrulax", "Contributor");
         addPerson("MedicOP", "Adjunct Developer");
-        
+
         setHistory(2015, 2019);
 }
 
@@ -53,7 +53,7 @@ function writeServerStaff_MapleSolaxia() {
         addPerson("SourMjolk", "Game Master");
         addPerson("Kanade", "Game Master");
         addPerson("Kitsune", "Game Master");
-        
+
         setHistory(2014, 2015);
 }
 
@@ -61,7 +61,7 @@ function writeServerStaff_MoopleDEV() {
         addPerson("kevintjuh93", "Developer");
         addPerson("hindie93", "Contributor");
         addPerson("JuniarZ-", "Contributor");
-        
+
         setHistory(2010, 2012);
 }
 
@@ -70,7 +70,7 @@ function writeServerStaff_BubblesDEV() {
         addPerson("Moogra", "Developer");
         addPerson("XxOsirisxX", "Contributor");
         addPerson("MrMysterious", "Contributor");
-        
+
         setHistory(2009, 2010);
 }
 
@@ -78,7 +78,7 @@ function writeServerStaff_MetroMS() {
         addPerson("David!", "Developer");
         addPerson("XxOsirisxX", "Contributor");
         addPerson("Generic", "Contributor");
-        
+
         setHistory(2009, 2009);
 }
 
@@ -88,7 +88,7 @@ function writeServerStaff_OdinMS() {
         addPerson("Patrick", "Developer");
         addPerson("Matze", "Developer");
         addPerson("Vimes", "Developer");
-        
+
         setHistory(2007, 2008);
 }
 
@@ -119,7 +119,7 @@ function writeAllServerStaffs() {
 
                 var srvName = servers[i];
                 this["writeServerStaff_" + srvName]();
-        
+
                 name_tree.push(name_cursor);
                 role_tree.push(role_cursor);
         }
@@ -145,10 +145,10 @@ function action(mode, type, selection) {
                         status--;
 
                 if (status == 0) {
-                        var sendStr = "There is the history tree of all participating parties on the build of this server:\r\n\r\n";
+                        var sendStr = "这是这个服务器上所有参与方的历史树：\r\n\r\n";
                         for(var i = 0; i < servers.length; i++) {
                             var hist = servers_history[i];
-                            
+
                             if(hist && hist.length > 0) {
                                 sendStr += "#L" + i + "##b" + servers[i] + "#k  --  " + ((hist[0] != hist[1]) ? hist[0] + " ~ " + hist[1] : hist[0]) + "#l\r\n";
                             } else {

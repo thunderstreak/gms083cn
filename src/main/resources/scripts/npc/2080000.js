@@ -36,12 +36,12 @@ var cd_cost = 25000;
 
 function start() {
     cm.getPlayer().setCS(true);
-    var selStr = "A dragon's power is not to be underestimated. If you like, I can add its power to one of your weapons. However, the weapon must be powerful enough to hold its potential...#b"
-    var options = new Array("What's a stimulator?","Create a Warrior weapon","Create a Bowman weapon","Create a Magician weapon","Create a Thief weapon","Create a Pirate Weapon",
-        "Create a Warrior weapon with a Stimulator","Create a Bowman weapon with a Stimulator","Create a Magician weapon with a Stimulator","Create a Thief weapon with a Stimulator","Create a Pirate Weapon with a Stimulator");
-        
-    if(cm.isQuestStarted(7301) || cm.isQuestStarted(7303)) options.push("Make #t4001078#");
-    
+    var selStr = "不要低估一条龙的力量。如果你喜欢的话，我可以把它的力量灌注到你的武器中。不过，得是足够强大的武器才能承受这种力量...#b"
+    var options = new Array("辅助剂是什么？","制作战士武器","制作弓箭手武器","制作法师武器","制作飞侠武器",
+    "使用辅助剂制作战士武器","使用辅助剂制作弓箭手武器","使用辅助剂制作法师武器","使用辅助剂制作飞侠武器");
+
+    if(cm.isQuestStarted(7301) || cm.isQuestStarted(7303)) options.push("制作 #t4001078#");
+
     for (var i = 0; i < options.length; i++){
         selStr += "\r\n#L" + i + "# " + options[i] + "#l";
     }
@@ -64,52 +64,52 @@ function action(mode, type, selection) {
         else
             stimulator = false;
         if (selectedType == 0) { //What's a stim?
-            cm.sendNext("A stimulator is a special potion that I can add into the process of creating certain items. It gives it stats as though it had dropped from a monster. However, it is possible to have no change, and it is also possible for the item to be below average. There's also a 10% chance of not getting any item when using a stimulator, so please choose wisely.")
+            cm.sendNext("辅助剂是一种用来在特定物品制作过程中添加的特殊药剂。它所能提供的属性与掉落来源相仿。不过有可能不发生变化，也有可能使产物品质变低。另外，有10%的概率令物品消失，所以请慎重选择使用。")
             cm.dispose();
         } else if (selectedType == 1){ //warrior weapon
-            var selStr = "Very well, then which Warrior weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Carbella#k - Lv. 110 One-Handed Sword#b","Dragon Axe#k - Lv. 110 One-Handed Axe#b","Dragon Mace#k - Lv. 110 One-Handed BW#b","Dragon Claymore#k - Lv. 110 Two-Handed Sword#b","Dragon Battle Axe#k - Lv. 110 Two-Handed Axe#b","Dragon Flame#k - Lv. 110 Two-Handed BW#b",
-                "Dragon Faltizan#k - Lv. 110 Spear#b","Dragon Chelbird#k - Lv. 110 Polearm#b");
+            var selStr = "很好，你准备让哪一把战士武器灌注龙的力量呢？#b";
+            var weapon = new Array ("狂龙闪电剑#k - 等级.110 单手剑#b","狂龙怒斩#k - 等级.110 单手斧#b","狂龙地锤#k - 等级.110 单手钝器#b","飞龙巨剑#k - 等级.110 双手剑#b","炼狱魔龙斧#k - 等级.110 双手斧#b","金龙轰天锤#k - 等级.110 双手钝器#b",
+                "盘龙七冲枪#k - 等级.110 Spear#b","血龙神斧#k - 等级.110 矛#b");
             for (var i = 0; i < weapon.length; i++){
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
         } else if (selectedType == 2){ //bowman weapon
-            var selStr = "Very well, then which Bowman weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Shiner Bow#k - Lv. 110 Bow#b","Dragon Shiner Cross#k - Lv. 110 Crossbow#b");
+            var selStr = "很好，你准备让哪一把弓箭手武器灌注龙的力量呢？#b";
+            var weapon = new Array ("金龙振翅弓#k - 等级.110 弓#b","黄金飞龙弩#k - 等级.110 Crossbow#b");
             for (var i = 0; i < weapon.length; i++){
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
         } else if (selectedType == 3){ //magician weapon
-            var selStr = "Very well, then which Magician weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Wand#k - Lv. 108 Wand#b","Dragon Staff#k - Lv. 110 Staff#b");
+            var selStr = "很好，你准备让哪一把法师武器灌注龙的力量呢？#b";
+            var weapon = new Array ("佘太君龙杖#k - 等级.108 短杖#b","黑精灵王杖#k - 等级.110 长杖#b");
             for (var i = 0; i < weapon.length; i++){
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
         } else if (selectedType == 4){ //thief weapon
-            var selStr = "Very well, then which Thief weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Kanzir#k - Lv. 110 STR Dagger#b","Dragon Kreda#k - Lv. 110 LUK Dagger#b","Dragon Green Sleve#k - Lv. 110 Claw#b");
+            var selStr = "很好，你准备让哪一把飞侠武器灌注龙的力量呢？#b";
+            var weapon = new Array ("蝉翼龙牙破#k - 等级.110 短刀（力）#b","半月龙鳞裂#k - 等级.110 短刀（运）#b","寒木升龙拳#k - 等级.110 拳套#b");
             for (var i = 0; i < weapon.length; i++){
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
         } else if (selectedType == 5){ //pirate weapon
-            var selStr = "Very well, then which Pirate weapon shall receive a dragon's power?#b";
-            var weapon = new Array ("Dragon Slash Claw#k - Lv. 110 Knuckle#b","Dragonfire Revolver#k - Lv. 110 Gun#b");
+            var selStr = "很好，你准备让哪一把海盗武器灌注龙的力量呢？#b";
+            var weapon = new Array ("撕裂者#k - 等级.110 Knuckle#b","枭龙#k - 等级.110 Gun#b");
             for (var i = 0; i < weapon.length; i++){
                     selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
             }
             cm.sendSimple(selStr);
 	}
         else if (selectedType == 11){ //cornian's dagger
-            var selStr = "Oh, are you trying to sneak into these lizards to save Moira? I will support your cause wherever I can. Bring me a couple of resources and I will make you an almost identical piece of #t4001078#.";
+            var selStr = "喔，你准备潜入那群蜥蜴之中救出摩伊拉吗？我会尽我所能地帮助你。拿来一套材料，我会帮你做一柄足够以假乱真的 #t4001078#。";
             cm.sendNext(selStr);
 	}
     } else if (status == 2) {
         selectedItem = selection;
-        
+
         if (selectedType == 1){ //warrior weapon
             var itemSet = new Array(1302059,1312031,1322052,1402036,1412026,1422028,1432038,1442045);
             var matSet = new Array(new Array(1302056,4000244,4000245,4005000),new Array(1312030,4000244,4000245,4005000),new Array(1322045,4000244,4000245,4005000),new Array(1402035,4000244,4000245,4005000),
@@ -162,8 +162,8 @@ function action(mode, type, selection) {
             matQty = cd_matQty;
             cost = cd_cost;
         }
-        
-        var prompt = "You want me to make a #t" + item + "#? In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+
+        var prompt = "你想要制作 #t" + item + "# 吗？这样的话，你需要备齐材料。另外，请保证有足够的包裹空间。#b";
         if(stimulator){
             stimID = getStimID(item);
             prompt += "\r\n#i"+stimID+"# 1 #t" + stimID + "#";
@@ -176,18 +176,18 @@ function action(mode, type, selection) {
             prompt += "\r\n#i"+mats+"# " + matQty + " #t" + mats + "#";
         }
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost + " meso";
+            prompt += "\r\n#i4031138# " + cost + " 金币";
         cm.sendYesNo(prompt);
     } else if (status == 3) {
         var complete = true;
-        
+
         if(!cm.canHold(item, 1)) {
-            cm.sendOk("Check your inventory for a free slot first.");
+            cm.sendOk("请检查你的物品栏是否有足够空间。");
             cm.dispose();
             return;
         }
         else if (cm.getMeso() < cost) {
-            cm.sendOk("My fee is for the good of all of Leafre. If you cannot pay it, then begone.");
+            cm.sendOk("全神木村再也找不到第二家收费比我更公道的了，如果你付不起这样的价格，就走吧。");
             cm.dispose();
             return;
         } else {
@@ -205,7 +205,7 @@ function action(mode, type, selection) {
             }
         }
         if (!complete)
-            cm.sendOk("I'm afraid that without the correct items, the dragon's essence would... not make for a very reliable weapon. Please bring the correct items next time.");
+            cm.sendOk("没有用对应的材料来制作的话，龙魂让你的武器变得不稳定。带齐所有材料再来找我吧。");
         else {
             if (mats instanceof Array) {
                 for (var i = 0; i < mats.length; i++){
@@ -219,14 +219,14 @@ function action(mode, type, selection) {
                 var deleted = Math.floor(Math.random() * 10);
                 if (deleted != 0) {
                     cm.gainItem(item, 1, true, true);
-                    cm.sendOk("The process is complete. Treat your weapon well, lest you bring the wrath of the dragons upon you.");
+                    cm.sendOk("制作完成。请你善待这把武器，不要被龙魂的怒火反噬自身。");
                 } else {
-                    cm.sendOk("Unfortunately, the dragon's essence has... conflicted with your weapon. My apologies for your loss.");
+                    cm.sendOk("运气不太好，龙魂和你的武器发生了剧烈的冲突...对于你的损失，我非常抱歉。");
                 }
             }
             else {//just give basic item
                 cm.gainItem(item, 1);
-                cm.sendOk("The process is complete. Treat your weapon well, lest you bring the wrath of the dragons upon you.");
+                cm.sendOk("制作完成。请你善待这把武器，不要被龙魂的怒火反噬自身。");
             }
         }
         cm.dispose();
