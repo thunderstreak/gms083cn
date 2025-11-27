@@ -35,7 +35,7 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Oh, a letter for the #rempress#k? From the #bheroes#k?!");
+            qm.sendNext("给#r皇后#k的信? 来自#bheroes#k那里?!");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.gainExp(1000);

@@ -36,12 +36,12 @@ function start(mode, type, selection) {
         
         if (status == 0) {
             if(!qm.canHold(4032328, 1)) {
-                qm.sendNext("Hm, I will need you to prepare a ETC slot for a letter I need to give you.");
+                qm.sendNext("嗯，我需要你为我要给你的一封信，背包其他栏空出一个空间。");
                 qm.dispose();
                 return;
             }
             
-            qm.sendNext("Here, take this. Send it to #r#p1002104##k, it contains a relevant matter for protecting this world. Please comply to this request.");
+            qm.sendNext("给，拿着这个。送到#r#p1002104##k，它包含了保护这个世界的相关事项。请遵从这一要求。");
         } else if (status == 1) {
             qm.forceStartQuest();
             

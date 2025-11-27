@@ -43,7 +43,7 @@ function start(mode, type, selection) {
 			if (!qm.isQuestStarted(22500)) {
 				qm.forceStartQuest();
 			}
-			qm.sendNext("命令我杀了他们#r#o1210100##k! 现在就做！我会让你看看龙能多快打败#o1210100#! Goooo, charge!");
+			qm.sendNext("命令我杀了他们#r#o1210100##ks! 现在就做！我会让你看看龙能多快打败#o1210100#s! Goooo, charge!");
 		}
 	} else if (status == 14) {
 		qm.sendNextPrev("等一下！你分发AP了吗？ 我深受我主人的#b智力和幸运值#k的影响！如果你真的想看看我能做什么，在你使用技能之前分发你的#bAP和装备你的魔法装备#k！!");
