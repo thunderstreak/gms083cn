@@ -24,7 +24,7 @@
  */
 function enter(pi) {
 	pi.spawnGuide();
-	pi.talkGuide("Welcome to Maple World! I'm Mimo. I'm in charge of guiding you until you reach Lv. 10 and become a Knight-In-Training. Double-click for further information!");
+	pi.talkGuide("欢迎来到枫叶世界！我那。我负责指导你，直到你达到Lv.10，成为一名准骑士。双击查看更多信息！");
 	pi.blockPortal();
 	return true;
 }

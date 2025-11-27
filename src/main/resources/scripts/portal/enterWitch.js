@@ -16,7 +16,7 @@ function enter(pi) {
         
     
     } else {
-	pi.playerMessage(5, "I shouldn't go here.. it's creepy!");
+	pi.playerMessage(5, "我不应该去这里……这是令人毛骨悚然!");
         return false;
     }
 }

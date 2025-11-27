@@ -23,7 +23,7 @@
 */
 function enter(pi) {
 	if (pi.getPlayer().getJob().getId() == 2000 && !pi.isQuestCompleted(21014)) {
-		pi.showInfoText("The town of Rien is to the right. Take the portal on the right and go into town to meet Lilin.");
+		pi.showInfoText("里恩镇在右边。从右边的传送门进去，到城里去找李林。");
                 return false;
 	} else {
 		pi.playPortalSound();

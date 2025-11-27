@@ -3,7 +3,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(106020501,0);
         return true;
     } else {
-        pi.playerMessage(5, "The path ahead is covered with sprawling vine thorns, only a Thorn Remover to clear this out...");
+        pi.playerMessage(5, "前面的小路长满了蔓生的藤刺，只有刺清除器才能清除这些刺……");
         return false;
     }
 }

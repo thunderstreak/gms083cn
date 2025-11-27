@@ -38,7 +38,7 @@ function enter(pi) {
                         return doorCross(pi);
                 }
         } else {
-                pi.message("This door is locked.");
+                pi.message("门锁住了。");
                 return false;
         }
 }
