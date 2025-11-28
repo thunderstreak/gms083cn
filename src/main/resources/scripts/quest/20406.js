@@ -39,7 +39,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Is that so? All there was was a saying that #p1103000# set out to continue his journey? That can't be, there were further instructions for him to detail the progress of his mission until then. #rReturn to the cave#k and report again if it really has nothing more there.");
+            qm.sendNext("是这样吗？换句话说，#p1103000#打算继续他的旅程？不可能，在那之前他应该回来报告情况的。#如果洞穴里真的没有什么东西了，请再返回洞穴进行报告.");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.dispose();

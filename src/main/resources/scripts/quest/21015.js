@@ -10,18 +10,18 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-        qm.sendNext("Alright, I've done enough explaining for now. Let's move on to the next stage. What's the next stage, you ask? I just told you. Train as hard as you can until you become strong enough to defeat the Black Mage with a single blow.");
+        qm.sendNext("好了，说明到这里就告一段落，咱们要进入下一阶段了。下一阶段是什么？刚才我已经说过了。就是不断的锻炼身体，直到你能干翻黑魔法师。");
     } else if (status == 1) {
-        qm.sendNextPrev("You may have been a hero in the past, but that was hundreds of years ago. Even if it weren't for the curse of the Black Mage, all those years you spent frozen in time have stiffened your body. You must loosen up a bit and slowly regain your agility. How do you do that, you ask?");
+        qm.sendNextPrev("虽然在几年前你确实挺牛的，但那也是过去的事情了。就算没有黑魔法师的诅咒，在冰块里封冻了那么久，蹦一下都费劲不是么？所以首先要做些热身运动。");
     } else if (status == 2) {
-        qm.sendAcceptDecline("Don't you know that you must first master the fundamentals? So the wise thing to do is to begin with #bBasic Training#k. Oh, of course, I forgot that you lost your memory. Well, that's why I'm here. You'll just have to experience it yourself. Shall we begin?");
+        qm.sendYesNo("都说内练一口气，外练筋骨皮！……这句话你也知道吧？当然要从#b 基本体力锻炼#k开始练起……啊，你先把气喘匀了，然后咱们开始基础体力锻炼。");
     } else if (status == 3) {
 		if (mode == 0) {
-			qm.sendNext("What are you so hesitant about? You're a hero! You gotta strike while the iron is hot! Come on, let's do this!");
+			qm.sendNext("你在犹豫什么？你是英雄！你得趁热打铁！来吧，我们开始吧！");
 			qm.dispose();
 		} else {
 			qm.forceStartQuest();
-			qm.sendNext("The population of Rien may be mostly Penguins, but even this island has monsters. You'll find #o0100131#s if you go to #b#m140020000##k, located on the right side of the town. Please defeat #r10 of those #o0100131#s#k. I'm sure you'll have no trouble defeating the #o0100131#s that even the slowest penguins here can defeat.", 1);
+			qm.sendNext("里恩岛的人口可能主要是企鹅，但即使是这个岛也有怪物。如果你去位于城镇右侧的#b#m140020000##k，你会发现#o0100131#s, 请击败#r10个#o0100131#s#k。我相信你能毫不费力地打败这里最慢的#o0100131#s", 1);
 		}
 	} else if (status == 4) {
 		qm.showInfo("Effect/OnUserEff.img/guideEffect/aranTutorial/tutorialArrow3");

@@ -12,11 +12,11 @@ function start(mode, type, selection) {
                 
                 canStart = qm.canHold(4032423, 1);
                 if(!canStart) {
-                        qm.sendNext("请先在您的背包其他中腾出一个空位。");
+                        qm.sendNext("请确认你的背包里是否还有空位.");
                         return;
                 }
             
-		qm.sendNext("#b盒子里有一种药物。这是什么呢？你最好把这个拿给约翰，问他这是什么。#k");
+		qm.sendNext("#b嗯，盒子里有一种药材。但看不出来是什么？把这个带给约翰看看吧。#k");
 	} else if (status == 1) {
                 if(canStart) {
                         qm.gainItem(4032423,1);

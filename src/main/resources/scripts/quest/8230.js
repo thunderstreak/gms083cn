@@ -15,15 +15,15 @@ function start(mode, type, selection) {
         if(type == 1 && mode == 0)
                 status -= 2;
         else{
-                qm.sendOk("Okay, then. See you around.");
+                qm.sendOk("好吧，那么。回头见.");
                 qm.dispose();
                 return;
         }
     }
     if (status == 0)
-            qm.sendAcceptDecline("Hey, traveler! I need your help. A great threat is about to endanger the folks down there at the New Leaf City, the way I can see it right now. These creatures roaming around here suddenly... That can be no good. Care if you listen to what I have to say?");
+            qm.sendAcceptDecline("嘿，旅行者！我需要你的帮助。新叶城的居民们正面临一个巨大的威胁，如你所见。这些生物在外面不停地游荡。。。那可不好。你懂我意思吗?");
     else if (status == 1) {
-            qm.sendOk("That's the thing: the Twisted Masters, great figures that currently holds seize of the Crimsonwood Keep, have planned a large-scale attack to the New Leaf City, that may be happening on the next few days. I can't just stay here observing while they prepare for this attack. However, I can't just leave this position, I must keep an eye on their moves at all costs. There's where you enter: go find Lukan, knight of the past Crimsonwood Keep, that is currently wandering around the woods, and receive from him further orders, he knows what to do.");
+            qm.sendOk("事情是这样的：扭曲的怪物们现在占领了红木要塞，他们已经计划了对新叶城发起大规模进攻，这可能会在未来几天发生。我们不能坐以待毙。但是，我需要在这里时刻监控他们的动向。需要麻烦你跑一趟：去找卢肯，他是红木过去的骑士，他现在在树林里徘徊，他知道该怎么做，让他告诉你吧。");
             qm.forceStartQuest();
     } else if (status == 2) {
             qm.dispose();
@@ -35,12 +35,12 @@ function end(mode, type, selection) {
 
 	if(status == 0) {
 		if(qm.haveItem(3992041)) {
-			qm.sendOk("Ah, you did accomplish the task I handed to you. Nicely done, now those guys are busy recovering from this offensive. Now, remember: #bthat key must be used to access#k the Inner Sanctum inside the Keep. Hold that with you at all times if you ever want to enter there.");
+			qm.sendOk("啊，你完成了我交给你的任务。干得好，现在那些家伙正焦头烂额. 现在，记住：#b必须用这把钥匙才能进入#k要塞内的内部密室。如果你想进去的话，请带着这个.");
 			qm.forceCompleteQuest();
                 } else if(qm.getQuestStatus(8223) == 2) {
-                        qm.sendOk("You completed the mission but lost the key? That's bad, you NEED this key to enter the inner rooms of the Keep. Check out there with Lukan what you should be doing next, we need you inside the Keep.");
+                        qm.sendOk("你完成任务却丢了钥匙？太糟糕了，你需要这把钥匙才能进入里面的房间。跟鲁肯一起去看看你接下来该怎么做，我们需要你在禁闭室里.");
 		} else {
-			qm.sendOk("The folks back there on the city are counting on you on this one. Please hurry up.");
+			qm.sendOk("城里的人都指望着你。请快点.");
 		}
 	} else if (status == 1) {
                 qm.dispose();

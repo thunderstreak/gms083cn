@@ -15,21 +15,21 @@ function start(mode, type, selection) {
         status++;
     } else {
         if (status == 1) {
-            qm.sendNext("When will you realize how weak you are... When you get yourself in trouble in Victoria Island?");
+            qm.sendNext("你没有意识到你还不够强大。。。假如我现在要派你去维多利亚岛的话。。。");
             qm.dispose();
             return;
         }
         status--;
     }
     if (status == 0) {
-        qm.sendNext("You have finally become a Knight-in-Training. I'd like to give you a mission right away, but you still look miles away from even being able to handle a task on your own. Are you sure you can even go to Victoria Island like this?");
+        qm.sendNext("你终于在训练中成为了一名骑士，我有个事情想交代你，但你看起来还是缺点火候。你确定你能胜任去维多利亚岛的任务吗?");
     } else if (status == 1) {
-        qm.sendAcceptDecline("It's up to you to head over to Victoria Island, but a Knight-in-Training that can't take care of one's self in battles is likely to cause harm to the Empress's impeccable reputation. As the Head Tactician of this island, I can't let that happen, period. I want you to keep training until the right time comes.");
+        qm.sendAcceptDecline("去不去维多利亚岛由你决定，但你是骑士团的一员，如果任务失败了会败坏骑士团的名声。作为这个岛上的首席战术家，我不能让这种事发生，所以，我要你继续训练直到时机成熟.");
     } else if (status == 2) {
         qm.forceCompleteQuest();
-        qm.sendNext("#p1102000#, the Training Instructor, will help you train into a serviceable knight. Once you reach Level 13, I'll assign you a mission or two. So until then, keep training.");
+        qm.sendNext("#p1102000#, 你的训练教练，将帮助你训练成为一个有用的骑士。一旦你达到13级，我会给你分配一两个任务。所以在那之前，请继续训练.");
     } else if (status == 3) {
-        qm.sendPrev("Oh, and are you aware that if you strike a conversation with #p1101001#, she'll give you a blessing? The blessing will definitely help you on your journey.");
+        qm.sendPrev("哦，如果你和 #p1101001# 交谈, 她会给你一些祝福。对你的旅途一定有帮助.");
     } else if (status == 4) {
         qm.dispose();
     }

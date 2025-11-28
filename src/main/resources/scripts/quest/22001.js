@@ -10,22 +10,22 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("哈哈。我笑得很开心。哈哈哈。不过废话说够了。喂#p1013102#，好吗？");
+		qm.sendNext("哈哈。笑死了。哈哈哈。话说回来. 你去喂 #p1013102# 行吗?");
 	} else if (status == 1) {
-		qm.sendNextPrev("#b怎么啦？那是#p1013101#的工作！", 2);
+		qm.sendNextPrev("#b什么? 这是 #p1013101#的工作!", 2);
 	} else if (status == 2) {
-		qm.sendAcceptDecline("你这个小顽童！我告诉过你叫我大哥！你知道#p1013102#有多恨我。如果我靠近他，他会咬我的。你喂他。他喜欢你。");
+		qm.sendAcceptDecline("我靠啊!你还是我亲哥吗!你知道威震天 #p1013102# 很残忍的. 我去喂它会有危险.还是你去吧，毕竟你是我们家最帅的儿子之一.");
 	} else if (status == 3) {
 		if (mode == 0) {
-			qm.sendNext("别再偷懒了。你想看到你弟弟被狗咬吗？快点!再跟我说话，然后接受任务！");
+			qm.sendNext("别想了这里就我们两个.你也不想失去你风华正茂的弟弟吧?快点!点接受!");
 			qm.dispose();		
 		} else {//accept
 			qm.gainItem(4032447, true);
 			qm.forceStartQuest();
-			qm.sendNext("快点，向#b左转#k喂#b#p1013102##k。他整个上午都在叫着要吃东西。");
+			qm.sendNext("去山头 #b左边#k 喂 #b#p1013102##k 吧.感觉它快饿坏了.");
 		}
 	} else if (status == 4) {
-		qm.sendNextPrev("喂完#p1013102#后再回来找我。");
+		qm.sendNextPrev("喂了 #p1013102# 回来找我噢.");
 	} else if (status == 5) {
                 qm.dispose();
         }

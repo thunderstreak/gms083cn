@@ -34,22 +34,22 @@ function start(mode, type, selection) {
     if (mode == -1) {
         qm.dispose();
     } else {
-        if (mode == 0 && type > 0) {
+        if(mode == 0 && type > 0) {
             qm.dispose();
             return;
         }
-
+        
         if (mode == 1)
             status++;
         else
             status--;
-
+        
         if (status == 0)
-            qm.sendNext("你好吗，" + (qm.getPlayer().getGender() == 0 ? "小哥哥" : "小姐姐") + "我是罗杰，一个可以教可爱的冒险家们很多有用信息的人。");
+            qm.sendNext("嘿, " + (qm.getPlayer().getGender() == 0 ? "先生" : "小姐") + "~ 有什么事吗? 哈哈! 我是罗杰,可以告诉你一些冒险岛的信息.");
         else if (status == 1)
-            qm.sendNextPrev("你问我是谁让我来做这些的？\r\n是我自己！我想这样做，只是对你们这些新来的冒险家友好一些。");
+            qm.sendNextPrev("你在问是谁让我这么做的？ 哈哈哈!\r\n我自己!我想这么做，对你们这些新来的旅行者友好一点。");
         else if (status == 2)
-            qm.sendAcceptDecline("所以，让我们做一些有趣的事情吧！一串咒语。。。");
+            qm.sendAcceptDecline("所以。。。。。让我这样做只是为了好玩！阿巴拉卡达布拉~！");
         else if (status == 3) {
             if (qm.getPlayer().getHp() >= 50) {
                 qm.getPlayer().updateHp(25);
@@ -60,9 +60,9 @@ function start(mode, type, selection) {
             }
             
             qm.forceStartQuest();
-            qm.sendNext("被吓到了吗？如果你的血条变成了0，那么你就遇到麻烦了。现在，我会给你一个 #r罗杰的苹果#k。请立刻使用它，然后你就会恢复健康。打开物品界面，然后双击使用。嘿，有一个更加简单打开物品界面的方法，那就是按下 #bI#k 键。");
+            qm.sendNext("惊讶吗？如果HP变为0，那么您就有麻烦了。现在，我给你#r罗杰的苹果#k。吃下去压压惊吧。打开道具栏并双击以使用。嘿，打开道具栏很简单。只需按键盘上的“#bI#k”键。");
         } else if (status == 4) {
-            qm.sendPrev("请使用完我给你的所有苹果后，你就会看到血条正在恢复。当你的血条恢复到100%后再和我对话~");
+            qm.sendPrev("请把我给你的罗杰的苹果吃下去。你将可以看到生命条增加。当你的生命恢复到100%时，请再跟我说一次。");
         } else if (status == 5) {
             qm.showInfo("UI/tutorial.img/28");
             qm.dispose();
@@ -74,37 +74,39 @@ function end(mode, type, selection) {
     if (mode == -1) {
         qm.dispose();
     } else {
-        if (mode == 0 && type > 0) {
+        if(mode == 0 && type > 0) {
             qm.dispose();
             return;
         }
         
         if (mode == 1)
             status++;
-        } else {
+        else
             status--;
-        }
-        if (status == 0) {
+        
+        if (status == 0)
             if (qm.c.getPlayer().getHp() < 50) {
-                qm.sendNext("嘿，你的血条还没有完全恢复，你确定你已经使用了我给你的所有的苹果吗？");
+                qm.sendNext("嘿, 你的HP还没回满.我给你的罗杰的苹果你都吃了吗?你确定?");
                 qm.dispose();
             } else {
                 qm.sendNext("使用物品是如此的简单，对吧？你可以设置 #b快捷键#k 在右下角的快捷栏里。哈哈，你是不是第一次听说？\r\n如果你是一个新手，你应该不知道的是，血条通常会随着时间的流逝自动恢复。好的，虽然花费了一些时间，但是这个新手们必须学会的一些知识。");
             }
-        } else if (status == 1) {
-            qm.sendNextPrev("好吧，现在你学到了很多，我将给你一份礼物。这是你在冒险岛世界旅行的必备物品，所以谢谢我吧！记住，请在紧急情况下使用！");
-        } else if (status == 2) {
-            qm.sendPrev("好吧，这就是我能教你的全部了。我知道这很难过，但是时候说再见了。保重，祝你好运，我的朋友！\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v2010000# 3 #t2010000#\r\n#v2010009# 3 #t2010009#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 10 经验");
-        } else if (status == 3) {
-            if (qm.isQuestCompleted(1021)) {
-                qm.dropMessage(1, "未知的错误");
-            } else if (qm.canHold(2010000) && qm.canHold(2010009)) {
+        else if (status == 1) {
+            qm.sendNextPrev("干得好!这是我为你准备的礼物。");
+        }
+        else if (status == 2) {
+            qm.sendPrev("好了,这就是我可以教你的全部了.是时候说再见了.照顾好自己我的朋友!\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v2010000# 3 #t2010000#\r\n#v2010009# 3 #t2010009#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 10 exp");
+        }
+        else if (status == 3) {
+            if(qm.isQuestCompleted(1021))
+                qm.dropMessage(1,"未知错误");
+            else if(qm.canHold(2010000) && qm.canHold(2010009)){
                 qm.gainExp(10);
                 qm.gainItem(2010000, 3);
                 qm.gainItem(2010009, 3);
                 qm.forceCompleteQuest();
-            } else
-                qm.dropMessage(1, "你的背包满了");
+            }else
+                qm.dropMessage(1,"你的背包满了");
             qm.dispose();
         }
     }

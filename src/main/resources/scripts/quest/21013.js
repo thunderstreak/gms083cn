@@ -28,7 +28,7 @@ function start(mode, type, selection) {
     status++;
     if (mode != 1) {
 	if(type == 1 && mode == 0) {
-		qm.sendNext("I'm sure it will come in handy during your journey. Please, don't decline my offer.");
+		qm.sendNext("给我拿着，好使的！");
 		qm.dispose();
 		return;
  	}else{
@@ -38,12 +38,12 @@ function start(mode, type, selection) {
     }
 
     if (status == 0) 
-	qm.sendSimple("Ah, you're the hero. I've been dying to meet you. \r\n#b#L0#(Seems a bit shy...)#l");		
+	qm.sendSimple("啊，英、英雄大人……我一直都很想见你。 \r\n#b#L0#(这只企鹅不太对劲...)#l");
     else if (status == 1) {
-	qm.sendAcceptDecline("I have something I've been wanting to give you as a gift for a very long time... I know you're busy, especially since you're on your way to town, but will you accept my gift?");
+	qm.sendAcceptDecline("我有一件大宝贝想送英雄大人……今天终于见到了你了，不知英雄能否赏脸收下我这份薄礼？");
 	} else if (status == 2) {
 	qm.forceStartQuest();
-	qm.sendNext("The parts of the gift have been packed inside a box nearby. Sorry to trouble you, but could you break the box and bring me a #b#t4032309##k and some #b#t4032310##k? I'll assemble them for you right away.", 9);
+	qm.sendNext("我想制作一份礼物送给英雄，制作礼物的材料放在这附近的箱子里了。劳烦英雄大人找到这个箱子，把#b#t4032309##k和#b#t4032310##k带来给我。然后我就能立刻把礼物做好。", 9);
     } else if (status == 3) { 
 	qm.guideHint(18); 
 	qm.dispose();
@@ -54,7 +54,7 @@ function end(mode, type, selection) {
     status++;
     if (mode != 1) {
         if(type == 1 && mode == 0) {
-			qm.sendNext("What? You don't want the potion?");
+			qm.sendNext("你是来找茬的吧？");
             qm.dispose();
             return;
         }else{
@@ -63,19 +63,19 @@ function end(mode, type, selection) {
         }
     }
     if (status == 0)
-	qm.sendYesNo("Ah, you've brought all the components. Give me a few seconds to assemble them.. Like this.. And like that.. and...\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v3010062# 1 #t3010062#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 95 exp");
+	qm.sendYesNo("啊，你把所有的部件都带来了。给我几秒钟把它们组装起来..嗯。..我有个竹子...还有个椅...啊！！竹 子 椅！\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v3010062# 1 #t3010062#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 95 exp");
     else if (status == 1) {   
         if(qm.isQuestCompleted(21013)) {
-            qm.dropMessage(1,"Unknown Error");	
+            qm.dropMessage(1,"未知错误");
 		}	
             qm.forceCompleteQuest();		
             qm.gainExp(95);
 			qm.gainItem(4032309, -1);
 			qm.gainItem(4032310, -1);
             qm.gainItem(3010062, 1);
-	    qm.sendNext("Here, a fully-assembled chair, just for you! I've always wanted to give you a chair as a gift, because I know a hero can occasionally use some good rest. Tee hee.", 9);	
+	    qm.sendNext("好了，椅子做好了！嘿嘿！就算是英雄肯定也会有需要歇歇的时候，或者排队的时候，所以我一直想送你一把椅子。", 9);
     } else if (status == 2) { 
-	qm.sendNext("A hero is not invincible. A hero is human. I'm sure you will face challenges and even falter at times. But you are a hero because you have what it takes to overcome any obstacles you may encounter.", 9);
+	qm.sendNext("我想就算是英雄也不能永远活力充沛，肯定也有疲劳、困倦的时候。我这把椅子有很多小木刺非常的扎人，可以提醒英雄不能懈怠要时刻保持清醒。", 9);
     } else if (status == 3) { 
 	qm.guideHint(19);
 	qm.dispose();

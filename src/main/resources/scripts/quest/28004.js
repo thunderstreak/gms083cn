@@ -41,9 +41,9 @@ function start(mode, type, selection) {
                 return;
             }
             
-            qm.sendNext("好吧……这就是我们打败斯克罗吉和他卑鄙计划的计划。我给你的精神之力是一个充满法力的物品。在我即将发给你的地图上，你肯定会用到它。为了做到这一点，你必须带上你的队友。你应该把你的党员带过来，或者现在就组成一个！");
+            qm.sendNext("好吧... 这是一个打败史克鲁奇和粉碎他奸计的计划. 请在我将你传送过去后的地图上释放灵魂之力中的魔力. 为此你需要组建一个队伍并将你的队员带来这里!");
         } else if (status == 1) {
-            qm.sendAcceptDecline("你想继续吗？");
+            qm.sendAcceptDecline("你想离开了吗?");
         } else if (status == 2) {
             var level = qm.getPlayer().getLevel();
             

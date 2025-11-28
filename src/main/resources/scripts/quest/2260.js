@@ -37,7 +37,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Once you've got #b2nd job advancement#k, I'll tell you about the #bMushroom Castle#k.");
+            qm.sendNext("完成了#b2次转职#k之后,我会告诉你#b蘑菇城堡#k的事情.");
         } else if (status == 1) {
             qm.forceStartQuest();
             qm.dispose();
@@ -61,12 +61,12 @@ function end(mode, type, selection) {
         
         if (status == 0) {
             if(GameConstants.getJobBranch(qm.getPlayer().getJob()) == 1) {
-                qm.sendNext("Eh, didn't you get the #r2nd job advancement#k yet?");
+                qm.sendNext("额，你还没有进行#r2次转职#k吗?");
                 qm.dispose();
                 return;
             }
             
-            qm.sendNext("Okay you seem ready to go to the #bMushroom Castle#k. In #rHenesys#k, climb at the tree fort at #bwest#k then enter a portal over there. On the other area, #rgo west#k. From there, a portal will be readily available to access the #bMushroom Castle#k area.");
+            qm.sendNext("好吧，你现在可以去#b蘑菇城堡#k了.在 #r射手村#k的#b出租车#k旁边有一颗大树,树上有一个可以钻进去的树洞.进去之后在#r左下角#k的入口就是去往#b蘑菇城堡#k的通道.");
             qm.forceCompleteQuest();
         } else if (status == 1) {
             qm.dispose();

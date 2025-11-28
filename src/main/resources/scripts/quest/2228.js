@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("谢谢你打败了#r浮士德#k。这将使我的精神得到安息。");
+            qm.sendNext("感谢你战胜了#r浮士德#k.我的灵魂终于能安息了.");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.gainFame(8);

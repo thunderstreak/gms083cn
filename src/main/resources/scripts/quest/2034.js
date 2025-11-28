@@ -12,12 +12,12 @@ function end(mode, type, selection) {
         status++;
 
 	if(status == 0) {
-		qm.sendNext("我就知道。。。你可以很快完成的! 上次你做得很好, 你又来办理业务了啊？ 好吧,你做的这么棒, 我想报答你. #b#p1051000##k 拿着吧，勇士，希望你今后的旅行更加顺利。");
+		qm.sendNext("我就知道。。。我就知道你能搞定的，快点！上一次你的工作做得很好，你又来了，照顾生意！！好吧，既然你做得这么好，我应该好好奖励你。#b#p1051000##k给你一双鞋，希望对你以后的旅行有所帮助。");
 	}
 
 	else if(status == 1) {
 	    if(qm.getPlayer().getInventory(Packages.client.inventory.MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-		qm.sendOk("你的装备栏满了.");
+		qm.sendOk("装备栏空间不足.");
 		qm.dispose();
 		return;
 	    }
@@ -29,13 +29,13 @@ function end(mode, type, selection) {
             else if(stance == Packages.client.MapleJob.THIEF) item = 1072035;
             else if(stance == Packages.client.MapleJob.BRAWLER || stance == Packages.client.MapleJob.GUNSLINGER) item = 1072294;
             else item = 1072018;
-
+         
             qm.gainItem(item, 1);
             qm.gainItem(4000007, -150);
             qm.gainExp(2200);
             qm.completeQuest();
-
-            qm.sendOk("好吧, 如果你以后需要工作，请随时回来找我。这个小镇肯定会需要像你这样的人来帮忙~");
+            
+            qm.sendOk("好吧，如果你需要工作的话，随时回来找我。这个镇上肯定需要像你这样的人帮忙~");
         }
 
         else if (status == 2) {

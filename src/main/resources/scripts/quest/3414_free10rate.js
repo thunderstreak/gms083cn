@@ -13,16 +13,16 @@ function end(mode, type, selection) {
         status++;
 
 	if(status == 0) {
-		qm.sendNext("Whoa... this is it!!! With this sample, the studies that are taking place in Omega Sector will be reinvigorated with results! I am also at a loss for words for finding someone that is more talented than me at hunting. I'll have to get back on track! Anyway, for your job well done, I'll have to reward you accordingly.");
+		qm.sendNext("哇。。。就这样！！！有了这个样本，正在欧米茄领域进行的研究将会有重大进展！果然是要找一个比我更擅长打猎的人，我也不知该说些什么。这个样本对我帮助很大！不管怎样，你做得很棒，我必须奖励你。");
 	}
 
 	else if(status == 1) {
-            var talkStr = "Here, please select the scroll of your choice. All success rates are at 10%. \r\n\r\n#rSELECT A ITEM\r\n#b"
+            var talkStr = "请选择你想要的卷轴。所有的成功率都是10%。 \r\n\r\n#r选择卷轴\r\n#b"
             stance = qm.getPlayer().getJobStyle();
             
             if(stance == Packages.client.MapleJob.WARRIOR || stance == Packages.client.MapleJob.BEGINNER) vecItem = new Array(2043002, 2043102, 2043202, 2044002, 2044102, 2044202, 2044402, 2044302);
             else if(stance == Packages.client.MapleJob.MAGICIAN) vecItem = new Array(2043702, 2043802);
-            else if(stance == Packages.client.MapleJob.BOWMAN || stance == Packages.client.MapleJob.CROSSBOWMAN) vecItem = new Array(2044502, 2044602);
+            else if(stance == Packages.client.MapleJob.弓箭手 || stance == Packages.client.MapleJob.CROSS弓箭手) vecItem = new Array(2044502, 2044602);
             else if(stance == Packages.client.MapleJob.THIEF) vecItem = new Array(2043302, 2044702);
             else vecItem = new Array(2044802, 2044902);
             

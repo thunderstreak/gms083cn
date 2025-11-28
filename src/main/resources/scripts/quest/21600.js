@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,12 +35,12 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Hey, Aran. You seem pretty strong, since that time from when you got freed from the glacier. Suitable enough to #bride a wolf#k, if you ask me.");
+            qm.sendNext("嘿，战神。你看起来很强壮嘛，我听说过你的事了，有没有兴趣整个坐骑？。。");
         } else if (status == 1) {
-            qm.sendAcceptDecline("Picked your interest, huh? Very well, first you must make your way to #bAqua#k, there is a person there who makes #rfood for wolf cubs#k. Bring one portion to me, and I shall deem you able to tame and take care of one. What do you say, will you try for it?");
+            qm.sendAcceptDecline("感兴趣？嗯？很好，首先你先去找巴夸，那里有一个人在给狼崽做食物，给我捎一份来，我能帮你弄个坐骑，要试试吗?");
         } else if (status == 2) {
             qm.forceStartQuest();
-            qm.sendNext("Alright. The one you must meet is #bNanuke#k, she is on top of a #rsnowy whale#k, somewhere in the ocean. Good luck!");
+            qm.sendNext("好。记得他在海底世界的某个地方，一头蓝鲸的脑壳上。祝你好运！");
         } else if (status == 3) {
             qm.dispose();
         }

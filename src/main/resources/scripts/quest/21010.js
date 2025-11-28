@@ -30,7 +30,7 @@ function start(mode, type, selection) {
 	status++;
     if (mode != 1) {
 		if(type == 15 && mode == 0) {
-			qm.sendNext("Oh, no need to decline my offer. It's no big deal. It's just a potion. Well, let me know if you change your mind.");
+			qm.sendNext("哦，没关系。这没什么大不了的，只是一种药水。好吧,如果你改变主意了就告诉我.");
 			qm.dispose();
 			return;
 		}
@@ -38,13 +38,13 @@ function start(mode, type, selection) {
 	}
 
     if (status == 0) {
-	qm.sendNext("Hm, what's a human doing on this island? Wait, it's #p1201000#. What are you doing here, #p1201000#? And who's that beside you? Is it someone you know, #p1201000#? What? The hero, you say?");
+	qm.sendNext("咦？ 这个岛上的什么人？喔，您认识 #p1201000#吗？ #p1201000#到这里有什么事情...啊，这位是不是#p1201000#大人认识的人呢？什么？你说这位是英雄吗？");
     } else if (status == 1) {
 	qm.sendNextPrev("     #i4001170#");//gms like
     } else if (status == 2) {
-	qm.sendNextPrev("Ah, this must be the hero you and your clan have been waiting for. Am I right, #p1201000#? Ah, I knew you weren't just accompanying an average passerby...");
+	qm.sendNextPrev("这位正是 #p1201000#家族等待了数百年的英雄！哇喔喔！难怪看起来就不像是泛泛之辈...");
     } else if (status == 3) { 
-	qm.sendAcceptDecline("Oh, but it seems our hero has become very weak since the Black Mage's curse. It's only makes sense, considering that the hero has been asleep for hundreds of years. #bHere, I'll give you a HP Recovery Potion.#k");//nexon probably forgot to remove the '.' before '#k', lol	
+	qm.sendAcceptDecline("但是，英雄因为黑魔法师的诅咒而在巨冰里沉睡了很久，所以，现在英雄好像有点肌无力的样子。#b这是用大力丸泡制的药水，赶紧喝喝看#k");//nexon probably forgot to remove the '.' before '#k', lol
     } else if (status == 4) {
        	if (qm.getPlayer().getHp() >= 50) {
             	qm.getPlayer().updateHp(25);
@@ -53,9 +53,9 @@ function start(mode, type, selection) {
         	qm.gainItem(2000022, 1);
 			qm.forceStartQuest();
 	}
-	qm.sendNext("Drink it first. Then we'll talk.", 9);
+	qm.sendNext("战神，快喝吧。喝完我们再谈.", 9);
     } else if (status == 5) {
-	qm.sendNextPrev("#b(How do I drink the potion? I don't remember..)", 3);
+	qm.sendNextPrev("#b(我怎么喝药水？我不记得了..)", 3);
     } else if (status == 6) {	
 	qm.guideHint(14);
         qm.dispose();
@@ -74,13 +74,13 @@ function end(mode, type, selection) {
     }
     if (status == 0) {
         if (qm.c.getPlayer().getHp() < 50) {
-            qm.sendNext("You have't drank the potion yet.");
+            qm.sendNext("你是不是不能喝.");
             qm.dispose();
         } else {
-            qm.sendNext("We've been digging and digging inside the Ice Cave in the hope of finding a hero, but I never thought I'd actually see the day... The prophecy was true! You were right, #p1201000#! Now that one of the legendary heroes has returned, we have no reason to fear the Black Mage!");
+            qm.sendNext("我们一直在冰洞里挖啊挖啊挖，希望能找到英雄。但我从没想到今天真的看到了，预言是真的! 你说得对, #p1201000#! 现在，一个传奇英雄回来了，这下黑魔法师要扑街了！");
     	}
     } else if (status == 1) {
-        qm.sendOk("Oh, I've kept you too long. I'm sorry, I got a little carried away. I'm sure the other Penguins feel the same way. I know you're busy, but could you #bstop and talk to the other Penguins#k on your way to town? They would be so honored.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0# \r\n#i2000022# 5 #t2000022#\r\n#i2000023# 5 #t2000023#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 16 exp");
+        qm.sendOk("对不起我耽搁你太久了，我有点太高兴了。我相信其他企鹅也会像我一样的，虽然我知道会占用你的时间，但我还是希望你能去镇上#b和其他企鹅谈谈#k？他们会很荣幸的.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0# \r\n#i2000022# 5 #t2000022#\r\n#i2000023# 5 #t2000023#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 16 exp");
     } else if (status == 2) {
         if(qm.isQuestStarted(21010) && !qm.isQuestCompleted(21010)) {
             qm.gainExp(16);
@@ -89,9 +89,9 @@ function end(mode, type, selection) {
             qm.forceCompleteQuest();
         }
         
-        qm.sendNext("Oh, you've leveled up! You may have even received some skill points. In Maple World, you can acquire 3 skill points every time you level up. Press the #bK key #kto view the Skill window.", 9);
+        qm.sendNext("哦，刚刚那一声吓我一激灵的是你吧！你升级了，得到了一些技能点数。每次都能获得3个技能点。按下 #bK 键 #k去查看技能窗口", 9);
     } else if (status == 3) {
-	qm.sendNextPrev("#b(Everyone's been so nice to me, but I just can't remember anything. Am I really a hero? I should check my skills and see. But how do I check them?)", 3);
+	qm.sendNextPrev("#b(所有人都对我很好，但我什么都不记得了。我真的是英雄吗？我应该检查一下我的技能。但是我怎么检查呢?)", 3);
     } else if (status == 4) {
 	qm.guideHint(15);
 	qm.dispose();

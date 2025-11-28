@@ -35,13 +35,13 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Aaaargh... Yeti's #b#t4032339##k has just been stolen! How frustrating, Yeti worked hard to get it, just to have it stolen by that #rThief Crow#k...", 9);
+            qm.sendNext("啊额... 雪人 #b#t4032339##k 刚刚被抢劫了! 悲剧啊, 雪人好不容易才弄到手的施华洛世奇红宝石,千辛万苦却为他人做嫁。。。", 9);
         } else if (status == 1) {
-            qm.sendNextPrev("Hey, I was just passing by and could not refrain from hearing you just now. I can lend you my strength, where did the thief go?", 3);
+            qm.sendNext("额，我刚好路过，听到你在吱哇乱叫。我外号三重战狼之正义的化身，告诉我小偷去哪了?", 3);
         } else if (status == 2) {
-            qm.sendNextPrev("Oh, how nice of you... Thief has passed #rthrough the gate at west#k. Bring back the #b#t4032339##k, Yeti needs it to give to beloved one.", 9);
+            qm.sendNext("哇，战狼大官人。。。你可得帮帮我，小偷刚从西边的门前走过，把#i4032339##k 拿回来，雪人的幸福就靠你了！", 9);
         } else if (status == 3) {
-            qm.sendNextPrev("Ok, wait there. I will return it back to you in no time!", 3);
+            qm.sendNext("《任何邪恶终将被绳之以法!》", 3);
         } else if (status == 4) {
             qm.forceStartQuest();
             qm.dispose();

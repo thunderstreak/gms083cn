@@ -26,22 +26,22 @@ function start(mode, type, selection) {
     status++;
     if (mode != 1){
         if (mode == 0 && type == 1)
-            qm.sendNext("Do you not want to put in the work to get the ultimate weapon?");
+            qm.sendNext("出门在外没有一把神器能行吗?");
         qm.dispose();
         return;
     }
     if (status == 0) {
-        qm.sendNext("Hmm.. What's a young person like you doing in this secluded place?");
+        qm.sendNext("嗯..年轻人，你鬼鬼祟祟地在干什么?");
     } else if(status == 1) {
-        qm.sendNextPrev("I've come to get the best Polearm there is!", 2);
+        qm.sendNextPrev("老头，我想要最强的武器！", 2);
     } else if(status == 2) {
-        qm.sendNextPrev("The best Polearm? You should be able to purchase it in some town or other place..");
+        qm.sendNextPrev("最强的武器? 你现在的武器不好使吗...？");
     } else if(status == 3) {
-        qm.sendNextPrev("I hear you are the best blacksmith in all of Maple World! I want nothing less than a weapon made by you!", 2);
+        qm.sendNextPrev("我听说你是天下第一铁匠!我想请你为我打造一把武器!", 2);
     } else if(status == 4) {
-        qm.sendAcceptDecline("I'm too old to make weapons now, but.. I do have a Polearm that I made way back when. It's still in excellent shape. But I can't give it to you because that Polearm is extremely sharp, so sharp it could hurt its master. Do you still want it?");
+        qm.sendAcceptDecline("我老了，已经造不动了，但是…我还有一把很久以前亲自打造的剑。但我不能给你，因为那把剑过于锋利，甚至会伤到它的主人。你还想要吗?");
     } else if(status == 5) {
-        qm.sendOk("Well, if you say so.. I can't object to that. I'll tell you what. I'll give you a quick test, and if you pass it, the Giant Polearm is yours. Head over to the #bTraining Center#k and take on the #rScarred Bears#k that are there. Your job is to bring back #b30 Sign of Acceptances#k.");
+        qm.sendOk("好吧，我会给你一个测试，如果你能通过，这把剑就是你的了。前往#b 训练中心 #k 并接受那里 #r伤痕累累的熊#k 的任务。 带回#b30张票.#k");
     } else if(status == 6) {
         qm.startQuest();
         qm.dispose();
@@ -52,21 +52,21 @@ function end(mode, type, selection) {
     status++;
     if (mode != 1){
         if (mode == 0 && type == 1)
-            qm.sendNext("Hm? Are you hesitant to take it now after all that? Well, give it more thought if you'd like. It'll be yours in the end anyways.");
+            qm.sendNext("这把神器削铁如泥，你就说你要不要吧。");
         qm.dispose();
         return;
     }
     if (status == 0) {
         if(qm.haveItem(4032311, 30))
-            qm.sendNext("Oh, have you brought me the #t4032311#? You're stronger than I thought! But more importantly, I am impressed with the amount of courage you displayed when you agreed to take this dangerous weapon without any hesitation. You deserve it. The #p1201001# is yours.");
+            qm.sendNext("你带来了 #t4032311#?你敢于接受这一危险武器，你的勇气令我印象深刻，#p1201001# 是你的了。  ");
         else{
-            qm.sendNext("Go for the 30 #t4032311#.");
+            qm.sendNext("选择 30个 #t4032311#.");
             qm.dispose();
         }
     }else if (status == 1)
-        qm.sendNextPrev("#b(After a long time passed, #p1203000# handed you the #p1201001#, which was carefully wrapped in cloth.)");
+        qm.sendNextPrev("#b(过了许久, #p1203000# 小心翼翼的递给了你 #p1201001# )");
     else if (status == 2)
-        qm.sendYesNo("Here, this is #p1201002#, the Polearm you've asked for. Please take good care of it.");
+        qm.sendYesNo("给，这是 #p1201002#,收好它");
     else if (status == 3){
         //qm.showVideo("Polearm");
         qm.completeQuest();

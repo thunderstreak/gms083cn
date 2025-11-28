@@ -36,12 +36,12 @@ function start(mode, type, selection) {
         
         if (status == 0) {
             if(!qm.canHold(4032328, 1)) {
-                qm.sendNext("嗯，我需要你为我要给你的一封信，背包其他栏空出一个空间。");
+                qm.sendNext("嗯，你需要给信空出一个背包位置。");
                 qm.dispose();
                 return;
             }
             
-            qm.sendNext("给，拿着这个。送到#r#p1002104##k，它包含了保护这个世界的相关事项。请遵从这一要求。");
+            qm.sendNext("给，拿着这个。把它交给#r#p1002104##k，里面有一封维护世界和平的信。不要把这个秘密告诉别人。");
         } else if (status == 1) {
             qm.forceStartQuest();
             

@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,21 +35,21 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {  // thanks ZERO傑洛 for noticing this quest shouldn't need a pw -- GMS-like string data thanks to skycombat
-            qm.sendNext("What is it? I usually don't welcome uninvited guests, but you have a mysterious aura that makes me curious about what you have to say.", 9);
+            qm.sendNext("这是什么？我通常不欢迎不速之客，但你有一种神秘的气质，让我很好奇你要说什么。", 9);
         } else if (status == 1) {
-            qm.sendNext("(You tell her about Giant Nependeath.)", 3);
+            qm.sendNext("(你告诉她有关巨型捕食魔的事。)", 3);
         } else if (status == 2) {
-            qm.sendNext("Giant Nependeath? It's definitely a big problem, but I don't think it's enough to really affect Orbis. Wait, where did you say the Giant Nependeath was, again?", 9);
+            qm.sendNext("巨型盆栽死神？这绝对是个大问题，但我觉得还不足以真正影响奥比斯。等等，你刚才说巨型盆栽死神在哪里？", 9);
         } else if (status == 3) {
-            qm.sendNext("Neglected Strolling Path.", 3);
+            qm.sendNext("被忽视的散步小径。", 3);
         } else if (status == 4) {
-            qm.sendNext("...Neglected Strolling Path? If Giant Nependeath is there, someone is trying to enter Sealed Garden! But why? And more importantly, who?", 9);
+            qm.sendNext("...被忽视的小径？如果巨型盆栽怪在那里，就有人正在试图进入封印花园！但为什么呢？更重要的是，究竟是谁？", 9);
         } else if (status == 5) {
-            qm.sendNext("Sealed Garden?", 3);
+            qm.sendNext("封闭的花园？", 3);
         } else if (status == 6) {
-            qm.sendAcceptDecline("I can't tell you about Sealed Garden. If you want to find out, I must first see whether you are worthy of the information. Do you mind if I look into your fate?", 9);
+            qm.sendAcceptDecline("我不能告诉你关于封印花园的事情。如果你想知道，我必须先看看你是否配得上这些信息。你介意让我看看你的命运吗？", 9);
         } else if (status == 7) {
-            qm.sendOk("Well, now let's look into your fate. Give me a second.");
+            qm.sendOk("好了，现在让我们来看一下你的命运。等我一下。");
         } else if (status == 8) {
             qm.forceStartQuest();
             qm.dispose();

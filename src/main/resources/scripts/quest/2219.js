@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("你知道吗，据说下水道里有个人一直在#r研究一种神奇的粉末能让人长生#k，是不是很好？");
+            qm.sendNext("你知道吗,我听说下水道里有人正在研究一种 #r促进生长的神奇粉末#k,好像很厉害的样子?");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.gainExp(7000);

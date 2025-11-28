@@ -16,24 +16,21 @@ function start(mode, type, selection) {
 	    if(type == 1 && mode == 0)
 		    status -= 2;
 		else{
-			qm.sendNext("Please do not lose faith in our Kingdom of Mushroom.");
+			qm.sendOk("请不要对我们失去信心.");
 			qm.dispose();
 			return;
 		}
 	}
 	if (status == 0)
-		qm.sendAcceptDecline("In order to rescue the princess, you must first navigate the Mushroom Forest. King Pepe set up a powerful barrier forbidding anyone from entering the castle. Please investigate this matter for us.");
+		qm.sendAcceptDecline("为了营救公主，你必须先潜入蘑菇林中。听说企鹅国王设置了一道强大的屏障，禁止任何人进入城堡。请为我们调查此事。");
 	else if (status == 1)
-		qm.sendNext("You'll run into the barrier at the Mushroom Forest by heading east of where you are standing right now. Please be careful. I hear that the area is infested with crazy, fear-inducing monsters.");
+		qm.sendOk("从你现在站的地方往东走，你会在蘑菇林尽头遇到一个屏障。请小心，我听说这个地区到处都是令人恐惧的怪物.");
 	else if(status == 2){
-		//qm.forceStartQuest();
-		//qm.forceStartQuest(2314,"1");
-		qm.gainExp(8300);
-		qm.sendOk("I see, so it was indeed not a regular barrier by any means. Great work there. If not for you help, we wouldn't have had a clue as to what that was all about.");
-		qm.forceCompleteQuest(); 
-	} else if(status == 3){
-                qm.dispose();
-        }
+		qm.forceStartQuest();
+		qm.dispose();
+	} else {
+        qm.dispose();
+	}
 }
 
 function end(mode, type, selection) {
@@ -47,11 +44,11 @@ function end(mode, type, selection) {
 		}
 	}
 	if (status == 0)
-		qm.sendOk("I see that you have thoroughly investigated the barrier at the Mushroom Forest. What was it like?");
+		qm.sendOk("我看你已经彻底调查了蘑菇林的屏障。感觉如何？");
 	else if (status == 1){
 		qm.forceCompleteQuest(); 
 		qm.gainExp(8300);
-		qm.sendOk("I see, so it was indeed not a regular barrier by any means. Great work there. If not for you help, we wouldn't have had a clue as to what that was all about.");
+		qm.sendOk("我明白了，所以这绝对不是一个无法逾越的障碍。干得好。如果没有你的帮助，我们根本不知道那是怎么回事。");
         } else if (status == 2){
                 qm.dispose();
         }

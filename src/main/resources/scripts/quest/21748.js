@@ -35,9 +35,9 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Aran, you came back home safe! So, how fared the mission in Mu Lung? #rGentleman#k ambushed and stole the seal rock again? That's unfortunate. At least you are unharmed, I'm glad.");
+            qm.sendNext("战神，你平安回来了！在武陵的任务完成的如何了？#r影子武士#k偷袭了武陵并再次偷走了封印石？天哪。不过好在你没有受伤。");
         } else if (status == 1) {
-            qm.sendNext("I've researched some skill books, trying to trace any lost skills of yours. Good news I found one of them: it's the #rFinal Charge#k! With it you will be able to draw closer opposing monsters at each swipe. It's a fine improvement for your arsenal, isn't it?");
+            qm.sendNext("我研究了一些新的技能，试图帮你找回记忆。我想起了其中一个：#r战神突进#k！有了它，你将能够击退前面的敌人。这能很好的帮到你，对吧？");
         } else if (status == 2) {
             qm.gainExp(20000);
             qm.teachSkill(21100002, 0, 30, -1); // final charge

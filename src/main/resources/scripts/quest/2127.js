@@ -40,7 +40,7 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendOk("再仔细看看任务说明。马虎、粗心的臭毛病得改改。");
+            qm.sendOk("我看你已经准备好接受任务了。现在听好了。。。");
             qm.forceCompleteQuest();
         } else if (status == 1) {
             qm.dispose();

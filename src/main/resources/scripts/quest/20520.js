@@ -37,13 +37,13 @@ function start(mode, type, selection) {
 	}
 	
 	if (status == 0) {
-		qm.sendNext("Wow, you have already reach Level 50, yet why are you still walking around like that? I mean, you've reached Level 50, but you are still walking around with your own feet. That's unusual behavior for a Knight like you.");
+		qm.sendNext("哇，你已经到了50级了，为什么你还那样到处走？我的意思是，你已经达到50级了，但你仍然用自己的脚在走路。这不应该，也不科学。");
 	} else if (status == 1) {
-		qm.sendAcceptDecline("Well, I suppose it's up to you, but by doing that, you also risk marring the pride and honor of the Empress. This is why I am here to give you a helpful pointer. It's called #bMonster Riding#k. Of course you're interested in this, right?");
+		qm.sendAcceptDecline("好吧，这取决于你，但这样做也有可能损害骑士团的尊严和荣誉，也影响你个人的效率。所以我再次给你介绍一个好东西，它叫“越野车”，你当然对这个感兴趣，对吧?");
 	} else if (status == 2) {
 		qm.forceStartQuest();
 		qm.forceCompleteQuest();
-		qm.sendOk("There's a special mount that only the Cygnus Knights can enjoy. If you are interested, visit #bEreve#k. I will give you more information on it.");
+		qm.sendOk("这里有一种骑士团才能享受到的特殊坐骑. 如果您感兴趣, 去问问 #b埃雷夫#k. 他会给你提供更多的信息.");
 	} else if (status == 3) {
             qm.dispose();
         }

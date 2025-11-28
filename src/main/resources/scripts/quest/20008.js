@@ -37,14 +37,14 @@ function start(mode, type, selection) {
     else if (mode > 0)
         status++;
     if (status == 0)
-        qm.sendSimple("Are you ready to take on a mission? If you can't pass this test, then you won't be able to call yourself a real Knight. Are you sure you can do this? If you are afraid to do this, let me know. I won't tell Neinheart. \r\n #L0#I'll try this later.#l \r\n #L1#I'm not afraid. Let's do this.#l");
+        qm.sendSimple("你准备好执行任务了吗？如果你不能通过这个测试，那就无法成为真正的骑士。你确定你能做到吗？如果你害怕了现在可以退出，我不会告诉南哈特的。 \r\n #L0#让我想一想。。。.#l \r\n #L1#我不怕，我要当骑士！#l");
     else if (status == 1) {
         if (selection == 0) {
-            qm.sendNext("If you call yourself a Knight, then do not hesitate. Show everyone how much courage you have in you.");
+            qm.sendNext("如果不想放弃，那就别犹豫。向大家证明你的实力。");
             qm.dispose();
         } else if (selection == 1) {
             choice1 = selection;
-            qm.sendSimple("I'm glad you didn't run away, but... are you sure you want to become a Knight-in-Training? What I am asking is whether you're okay with being a Cygnus Knight, and therefore being tied to the Empress at all times? She may be an Empress, but she's also still just a kid. Are you sure you can fight for her? I won't let Neinheart know so just tell me what you really feel. \r\n #L2#If the Empress wants peace in the Maple World, then I'm down for whatever.#l \r\n #L3#As long as I can become a knight I'll endure whatever #l");
+            qm.sendSimple("我很高兴你没有临阵脱逃，但我还是得确认一下。。。你确定你想成为骑士团的一员吗？我想说的是，加入了冒险骑士团，意味着要担负起守卫皇后和保护枫叶世界的重担？她虽然是皇后，但她还是个孩子。你确定你能为她而战吗？我不会告诉南哈特的，你可以把你的真实感受告诉我。 \r\n #L2#只要是为了枫叶世界的和平，我愿意。#l \r\n #L3#只要能成为一名骑士，我会担负起这一切。 #l");
             qm.forceStartQuest();
             qm.forceCompleteQuest();
         }

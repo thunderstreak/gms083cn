@@ -24,11 +24,11 @@ var status = -1;
 
 function start(mode, type, selection) {
     if (mode == -1) {
-        qm.sendOk("Oh really. Do you need more time? I'm fully confident that you'll help me out before the Time Sphere is formed.");
+        qm.sendOk("哦，真的。你需要更多的时间吗？我相信你会在时间球形成之前帮助我的。");
         qm.dispose();
     } else {
         if(mode == 0 && type > 0) {
-            qm.sendOk("Oh really. Do you need more time? I'm fully confident that you'll help me out before the Time Sphere is formed.");
+            qm.sendOk("哦，真的。你需要更多的时间吗？我相信你会在时间球形成之前帮助我的。");
             qm.dispose();
             return;
         }
@@ -39,15 +39,15 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendYesNo("Only thing we have to do now ...is to make #o8500002# disappear forever... are you ready?");
+            qm.sendYesNo("我们现在唯一要做的就是让#o8500002#永远消失。。。你准备好了吗？");
         } else if (status == 1) {
-            qm.sendNext("I'll explain to you what you need to do from here on out. \r\nTo enter the power-generating room, you'll need to pass either #bForgotten Passage#k or the #bWarped Passage#k. Once you defeat whichever monster that is guarding the passage, you can obtain #b#t4031172:##k, which is needed to enter the power-generating room.");
+            qm.sendNext("从现在开始我会向你解释你需要做什么。\r\n要进入时间塔的本源，你需要通过#b时间消失之路#k或者#b扭曲的时间#k.击败守卫通道的怪物之后，你就会获得#b#t4031172:##k,这是进入时间塔的本源的前提。");
         } else if (status == 2) {
-            qm.sendNextPrev("Then enter the room through the door in the middle. It's going to be MUCH quieter than you imagined. The Time Sphere should be hidden in a state undetectable in our eyes... but if you seal up the crack in dimension, the #o8500002#, panicking because its exit route is sealed up, will make its appearance there.");
+            qm.sendNextPrev("然后通过中间的门进入房间。里面比你想象的安静得多。因为时间球现在隐藏在我们无法感知到的平行时空里。。。但如果你把裂缝封起来，#o8500002#会因为它的出口路线被封锁而惊慌失措，这将会迫使他出现。");
         } else if (status == 3) {
             if (!qm.haveItem(4031179, 1)) {
                 if (!qm.canHold(4031179, 1)) {
-                    qm.sendOk("Please have an #rETC slot available#k to start this quest.");
+                    qm.sendOk("请确认你其他栏有足够的空间来接收物品。");
                     qm.dispose();
                     return;
                 }
@@ -55,7 +55,7 @@ function start(mode, type, selection) {
                 qm.gainItem(4031179, 1);
             }
             
-            qm.sendAcceptDecline("Drop the #b#t4031179:##k that I returned to you to seal up whatever crack you see that #o8500002# may have used to enter this dimension in the first place. Then it'll come out of the Time Sphere and show everyone its true appearance. Please, please kill it and then come back. \r\n\r\nCollect #r1 #t4031172:##k\r\nEliminate #r#o8500001##k");
+            qm.sendAcceptDecline("把 #b#t4031179:##k 放在时空有裂缝的地方来封闭我们这个维度，这将迫使 #o8500002# 出现.并且从时空球中间现身，请你一定要万般小心，还要平安归来. \r\n\r\nCollect #r1 #t4031172:##k\r\nEliminate #r#o8500001##k");
         } else if (status == 4) {
             qm.forceStartQuest();
             qm.dispose();

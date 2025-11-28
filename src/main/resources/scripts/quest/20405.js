@@ -39,9 +39,9 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("There's a note on the wall: 'The source of the curse still goes missing, but a strange device, that I suppose has been used by #rthem#k was found here.'", 3);
+            qm.sendNext("墙上有一张纸条：“诅咒的源头依然没有找到，但我在这里发现了一个奇怪的装置，我想是他们用过的。'", 3);
         } else if (status == 1) {
-            qm.sendNextPrev("'The machine was sent to #rEreve#k for avaliation, I'll now set out to continue my mission. Let the Empress bless me on my journey.'", 3);
+            qm.sendNextPrev("'这台机器被送到雷夫克进行拆解，我决定继续追查下去，愿皇后保佑我.'", 3);
         } else if (status == 2) {
             qm.forceCompleteQuest();
             qm.dispose();

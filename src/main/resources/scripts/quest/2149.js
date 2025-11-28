@@ -15,7 +15,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("听说，有个邪恶的灵魂诅咒过这片土地，后来，一棵老树居然活了！！我们需要一位英雄来保卫我们的村庄。");
+            qm.sendNext("据说每当有什么邪恶的事情搅乱这片土地，一棵老树就会活下来。。。我们需要一个英雄来保护我们的村庄！");
             qm.forceCompleteQuest();
         } else if (status == 1) {
             qm.dispose();

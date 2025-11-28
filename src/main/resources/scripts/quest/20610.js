@@ -8,10 +8,10 @@ function start(mode, type, selection) {
     status++;
 
     if (status == 0) {
-    	qm.sendAcceptDecline("Have you been mastering your skills? I am sure you've mastered all your skills, which means... it's time for you to learn a #bnew skill#k, right?");
+    	qm.sendAcceptDecline("你一直在使用你的技能吗？我相信你的技能已经运用得炉火纯青了，这意味着。。。是时候学习新的技能了，对吧？");
     } else if (status == 1) {
 	if (mode == 0) {
-	    qm.sendOk("Well, what you're doing right now doesn't make you look like someone that's humble. You just look complacent by doing that, and that's never a good thing.");
+	    qm.sendOk("好吧，你现在有点飘了。你这样看起来很自满，这不是好事.");
 	} else {
 	    qm.forceStartQuest();
             qm.dispose();

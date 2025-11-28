@@ -45,25 +45,25 @@ function end(mode, type, selection) {
         if (status == 0) {
             var hourDay = qm.getHourOfDay();
             if(!(hourDay >= 17 && hourDay < 20)) {
-                qm.sendNext("(嗯，我在垃圾桶里找，但是找不到JM说的#t4031894，也许还不是时候…)");
+                qm.sendNext("(嗯，我在垃圾桶里找#t4031894#，但找不到咪咪说的那个，也许还不是时候。。。(17点至20点的时候再来试试吧) )");
                 canComplete = false;
                 return;
             }
             
             if(qm.getMeso() < 2000) {
-                qm.sendNext("(哦，我还没有合计的费用数额。)");
+                qm.sendNext("(哦，我还没有足够的金币。)");
                 canComplete = false;
                 return;
             }
             
             if(!qm.canHold(4031894, 1)) {
-                qm.sendNext("(嗯，我现在不能用#t4031894#，我需要一个可用的背包其他插槽。)");
+                qm.sendNext("(呃，我现在拿不了#t4031894#，其他栏满了。)");
                 canComplete = false;
                 return;
             }
             
             canComplete = true;
-            qm.sendNext("(好吧，现在我把费用存进去，然后拿报纸……就是这样，是的，就这样。)");
+            qm.sendNext("(啊，这里有张破纸条。。。嗯，它记录了一些计划的细节，那一定是#r#p1052002##k说的.)");
         } else if (status == 1) {
             if (canComplete) {
                 qm.gainMeso(-2000);

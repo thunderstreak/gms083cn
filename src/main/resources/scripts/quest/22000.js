@@ -10,28 +10,28 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("你睡得好吗，埃文？");
+		qm.sendNext("你昨晚睡得好吗, 宝贝儿子?");
 	} else if (status == 1) {
-		qm.sendNextPrev("#b是的，你呢，妈妈？", 2);
+		qm.sendNextPrev("#b别问, 问就是不好.", 2);
 	} else if (status == 2) {
-		qm.sendNextPrev("我也是，但你看起来很累。你确定你睡得好吗？昨晚的雷声和闪电让你睡不着吗？");
+		qm.sendNextPrev("嗯……我猜也是了,昨晚刮风又下雨的,能睡得好就怪了.");
 	} else if (status == 3) {
-		qm.sendNextPrev("#b哦,不。不是那个，妈妈。我昨晚做了一个奇怪的梦。", 2);
+		qm.sendNextPrev("#b不仅如此. 我还做了个很奇怪的梦.", 2);
 	} else if (status == 4) {
-		qm.sendNextPrev("一个奇怪的梦？什么样的奇怪的梦？");
+		qm.sendNextPrev("奇怪的梦，梦见什么呢?");
 	} else if (status == 5) {
-		qm.sendNextPrev("#b嗯…", 2);
+		qm.sendNextPrev("#b如此这般...", 2);
 	} else if (status == 6) {
-		qm.sendNextPrev("#b(你解释说你在梦中遇到了一条龙。)", 2);
+		qm.sendNextPrev("#b(说明梦见在迷雾中遇到龙的事情.)", 2);
 	} else if (status == 7) {
-		qm.sendAcceptDecline("哈哈哈，龙？这是难以置信的。 我很高兴他没有把你整个吞下去！你应该告诉#p1013101#你的梦。我相信他会喜欢的。");
+		qm.sendAcceptDecline("哈哈哈,一条龙?我看你像一条龙!你做了个有趣的梦，去跟 #p1013101# 分享一下，让他也开发开发智力.");
 	} else if (status == 8) {
 		if (mode == 0) {//decline
-			qm.sendNext("嗯?你不想告诉#p1013101#吗？ 你得对你弟弟好点，亲爱的。");//guess
+			qm.sendNext("嗯？不想告诉 #p1013101#吗? 真是，兄弟之间应该好好相处嘛.");//guess
 			qm.dispose();//get the message xd
 		} else {//accept
 			qm.forceStartQuest();
-			qm.sendNext("#b#p1013101##k去#b#m100030102##k喂斗牛犬。它就在外面");
+			qm.sendNext("#b#p1013101##k 去 #b#m100030102##k 给威震天喂饭了。从家里出去就能见到他了.");
 		}
 	} else if (status == 9) {
 		qm.sendImage("UI/tutorial/evan/1/0");
@@ -49,9 +49,9 @@ function end(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("嘿,埃文。你了?你的黑眼圈是怎么回事？没睡好？嗯?一个奇怪的梦？是关于什么的？哇?关于龙的梦？");
+		qm.sendNext("哦，你醒啦？你是挨削了吗黑眼圈这么重？晚上没睡好吗？什么？做了奇怪的梦？什么梦啊？嗯？梦见遇到了龙？");
 	} else if (status == 1) {
-		qm.sendNextPrev("Muahahahahaha，龙？你是认真的吗？我不知道怎么解梦，但这听起来是个不错的梦！你在梦里也看到狗了吗？哈哈哈! \r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 20 exp");
+		qm.sendNextPrev("哈哈哈哈～龙？不得了。居然梦到了龙！你以为你是阿凡达？哈哈哈哈～ \r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 20 exp");
 	} else if (status == 2) {
 		qm.forceCompleteQuest();
 		qm.gainExp(20);

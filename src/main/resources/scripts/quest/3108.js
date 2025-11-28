@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("(As you peek into the shattered statue, you might have found a clue about what happened. Better talk to #rScadur#k about this.)");
+            qm.sendNext("(当你偷看破碎的雕像时你好像已经找到了线索。回去找#r斯卡德#k谈一谈.)");
             qm.forceCompleteQuest();
         } else if (status == 1) {
             qm.dispose();

@@ -1,4 +1,4 @@
--/*
+/*
 	Author: Kevin
 	Quest: Zombie Mushroom Signal 3 (2251)
 	NPC: The Rememberer (1061011)
@@ -23,11 +23,11 @@ function end(mode, type, selection) {
         
         if (status == 0) {
             if(!qm.haveItem(4032399, 20)) {
-                qm.sendOk("请给我拿20块#b#t4032399##k...  #i4032399#");
+                qm.sendOk("请给我20 #b#t4032399##k...  #i4032399#");
             }
             else {
                 qm.gainItem(4032399, -20);
-                qm.sendOk("哦，你带了20个#b#t4032399##k! Thank you.");
+                qm.sendOk("哦，你带了20个 #b#t4032399##k! 谢谢你。");
                 qm.gainExp(8000);
                 qm.forceCompleteQuest();
             }

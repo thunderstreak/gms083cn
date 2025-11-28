@@ -2,11 +2,11 @@ var status = -1;
 
 function start(mode, type, selection) {
     if (mode == -1) {
-        qm.sendNext("Whoa, whoa! Are you really declining my offer? Well, you'll be able to #blevel-up quicker #kwith our help, so let me know if you change your mind. Even if you've declined a Quest, you can receive the Quest again if you just come and talk to me.");
+        qm.sendNext("哇，哇！你真的拒绝我的提议吗？好吧，在我们的帮助下你可以 #b提高速度更快 #k，如果你改变主意了就告诉我。即使你拒绝了任务，重新和我谈谈，你也可以再次接受任务。");
         qm.dispose();
     } else {
         if(mode == 0 && type > 0) {
-            qm.sendNext("Whoa, whoa! Are you really declining my offer? Well, you'll be able to #blevel-up quicker #kwith our help, so let me know if you change your mind. Even if you've declined a Quest, you can receive the Quest again if you just come and talk to me.");
+            qm.sendNext("哇，哇！你真的拒绝我的提议吗？好吧，在我们的帮助下你可以更快的提升，所以如果你改变主意了就告诉我。即使你拒绝了任务，重新和我谈谈，你也可以再次接受任务。");
             qm.dispose();
             return;
         }
@@ -16,13 +16,13 @@ function start(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            qm.sendNext("Welcome to Ereve! And you are? Oh, you're #b#h ##k! \r\nGood to meet you. I've been waiting. You've come to become a Cygnus Knight, right? My name is Kimu, and I'm currently guiding Noblesses like you at the request of Empress Cygnus.");
+            qm.sendNext("欢迎光临！你是？哦，你是 #b#h ##k! \r\n很高兴见到你。我一直在等你，你是想成为骑士团的，对吧？我的名字是奇姆，负责指导预备骑士.");
         } else if (status == 1) {
-            qm.sendNextPrev("If you want to officially become a part of Cygnus Knights, you must first meet the Empress. She's at the center of this island, accompained by Shinsoo. My brothers and I would like to share with you a few things that are considered #bBasic Knowledge#k in Maple World before you go. Would that be okay?");
+            qm.sendNextPrev("如果你想正式成为骑士团的一部分，你必须先见见皇后。她在这个岛的中心，我和我的兄弟们想和你分享一些东西，这些东西是在枫叶世界生活的#基本知识#K。");
         } else if (status == 2) {
-            qm.sendNextPrev("Oh, let me warn you that this is a Quest. You may have noticed that NPCs around Maple World occasionally ask you for various favors. A favor of that sort is called a #bQuest#k. You will receive reward items or EXP upon completing Quests, so I strongly suggest you diligently fulfill the favors of Maple NPCs.");
+            qm.sendNextPrev("我想提醒你一下，但你可能已经注意到了，在枫叶世界的游戏NPC偶尔会向你寻求各种帮助。这样的帮助被称为#任务#K.当你完成任务时，你将会得到奖励，所以我强烈建议你努力完成NPC交给你的工作。");
         } else if (status == 3) {
-            qm.sendAcceptDecline("Would you like to meet #bKizan#k, who can tell you about hunting? You can find Kizan by following the arrow to the left.");
+            qm.sendAcceptDecline("你想见见我吗？ #b奇赞#k, 谁能告诉你打猎的事？你可以沿着左边的箭头找到奇赞。");
         } else if (status == 4) {
             qm.forceStartQuest();
             qm.guideHint(2);
@@ -37,7 +37,7 @@ function end(mode, type, selection) {
         qm.dispose();
     } else {
         if (status == 0) {
-            qm.sendOk("Are you the Noblesse my brother Kimu sent? Nice to meet you! I'm Kizan. I'll give you the reward Kimu asked me to give you. Remember, you can check your Inventory by pressing the #bI key#k. Red potions help you recover HP, and blue ones help recover MP. It's a good idea to learn how to use them beforehand so you'll be ready with them when you're in danger. \r\n\r\n#fUI/UIWindow.img/Quest/reward# \r\n\r\n#v2000020# #z2000020# \r\n#v2000021# #z2000021# \r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0#15 exp");
+            qm.sendOk("是我哥哥让你来的吗？很高兴见到你！我是奇赞，我要给你这个。记住，你可以通过按#bI#k键来使用你的背包里的#K红色药水帮助你恢复hp，蓝色的帮助你恢复mp。事先学习如何使用它们，这样当你处于危险中时，你就能随时准备好了。\r\n\r\n#fUI/UIWindow.img/Quest/reward# \r\n\r\n#v2000020# #z2000020# \r\n#v2000021# #z2000021# \r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0#15 exp");
         } else if (status == 1) {
             if(qm.canHold(2000022) && qm.canHold(2000023)){
                 if(!qm.isQuestCompleted(21010)) {		
@@ -48,7 +48,7 @@ function end(mode, type, selection) {
                 qm.guideHint(3);
                 qm.forceCompleteQuest();
             } else {
-                qm.dropMessage(1, "Your inventory is full");
+                qm.dropMessage(1, "背包没有空位");
             }
 
             qm.dispose();        

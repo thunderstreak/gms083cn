@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -37,11 +37,11 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Oh, this befriended wolf of yours... I sense some hidden powers hidden behind his furs, you see. Wat'cha say, master, if I awaken it's hidden power?", 9);
+            qm.sendNext("Koo，这是你的狼朋友。。。You Know What，我能感觉到他蕴藏着某种力量。Dope，也许可以唤醒点什么来?", 9);
         } else if (status == 1) {
-            qm.sendNextPrev("Wait, can you do that?", 3);
+            qm.sendNextPrev("等等，你能做到吗?", 3);
         } else if (status == 2) {
-            qm.sendAcceptDecline("Astonished, huh? Does all that time frozen in the glacier hindered your senses as well? Why, of course! Tell me when you're ready!", 9);
+            qm.sendAcceptDecline("Yeah,Fo shizzle！当然，不为什么！准备好了就告诉我!", 9);
         } else {
             qm.forceStartQuest();
             qm.dispose();
@@ -65,12 +65,12 @@ function end(mode, type, selection) {
         
         if (status == 0) {
             if(!qm.haveItemWithId(1902017, false)) {
-                qm.sendNext("You will have to unequip the wolf first before going for the evolution.");
+                qm.sendNext("在开始进化之前，你必须先解开狼的尾巴.");
                 qm.dispose();
                 return;
             }
             
-            qm.sendNext("Step aside, behold the mighty prowess of Maha!!");
+            qm.sendNext("Dat 吊矛 Bomb Bomb!吊矛的威力!!");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             

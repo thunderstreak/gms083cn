@@ -35,7 +35,7 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Aran, you're finally back!!! How you've been doing? Where did you go for so long? We have so much to catch up...");
+            qm.sendNext("战神，你终于回来了！！！你最近怎么样？这么久你去哪了？我们有很多事情需要你帮忙。。。");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.dispose();

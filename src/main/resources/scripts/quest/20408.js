@@ -20,7 +20,7 @@
 
 var status = -1;
 
-function start(mode, type, selection) { // missing script for questid found thanks to Jade™
+function start(mode, type, selection) { // missing script for questid found thanks to Lost(tm)
     if (mode == -1) {
         qm.dispose();
     } else {
@@ -28,34 +28,34 @@ function start(mode, type, selection) { // missing script for questid found than
             qm.dispose();
             return;
         }
-        
+
         if (mode == 1)
             status++;
         else
             status--;
-        
+
         if (status == 0) {
-            qm.sendNext("#h0#... First of all, thank you for your great work. If it weren't you, I... I wouldn't be safe from the curse of Black Witch. Thank you so much.");
+            qm.sendNext("#h0#... 谢谢，谢谢你的出色工作。如果不是你，我。。。我会落入黑巫婆的诅咒。非常感谢你.");
         } else if (status == 1) {
-            qm.sendNextPrev("If nothing else, this chain of events makes one thing crystal clear, you have put in countless hours of hard work to better yourself and contribute to the Cygnus Knights.");
+            qm.sendNextPrev("这么长时间了，从你做了这么多事情来看，你的的确确付出了无数心血来修炼和提升自己，为骑士团做出很大的贡献.");
         } else if (status == 2) {
-            qm.sendAcceptDecline("To celebrate your hard work and accomplishments... I would like to award you a new title and renew my blessings onto you. Will you... accept this?");
+            qm.sendAcceptDecline("为了勉励你的努力和成就。。。我想授予你一个新的头衔，为你加冕荣誉。比如。。。这个?");
         } else if (status == 3) {
             if (!qm.canHold(1142069, 1)) {
-                qm.sendOk("Please, make a room available on your EQUIP inventory for the medal.");
+                qm.sendOk("请确认你的背包有足够空间.");
                 qm.dispose();
                 return;
             }
-            
+
             qm.gainItem(1142069, 1);
             if (qm.getJobId() % 10 == 1) {
                 qm.changeJobById(qm.getJobId() + 1);
             }
-            
+
             qm.forceStartQuest();
             qm.forceCompleteQuest();
-            
-            qm.sendOk("#h0#. For courageously battling the Black Mage, I will appoint you as the new Chief Knight of Cygnus Knights from this moment onwards. Please use your power and authority wisely to help protect the citizens of Maple World.");
+
+            qm.sendOk("#h0#. 为了骑士团能更好地对抗黑魔法师，从现在起，我将任命你为骑士团的新首席骑士，请运用好你的才智与力量来保护枫叶世界。");
         } else if (status == 4) {
             qm.dispose();
         }

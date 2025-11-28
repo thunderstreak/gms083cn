@@ -36,21 +36,21 @@ function start(mode, type, selection) {
         
         if (status == 0) {
             if(!qm.haveItem(4001094, 1)) {
-                qm.sendNext("You don't have a #b#t4001094##k...");
+                qm.sendNext("你没有#b#t4001094##k...");
                 qm.dispose();
                 return;
             }
             
             if (qm.haveItem(2041200, 1)) {
-                qm.sendOk("(The #b#t2041200##k in my bag has grown brighter since reaching this place... Noticing again, the young dragon over there seems to be glaring bitterly towards it.)");
+                qm.sendOk("(自动达到了这个地方后，我包里的 #b#t2041200##k 变得更明亮了。。。而且，那边的小龙似乎在狠狠地瞪着它。)");
                 qm.dispose();
                 return;
             }
             
-            qm.sendNext("You have brought a #b#t4001094##k, thank you for retrieving one more of my kin to the nest! Please have this...\r\n\r\n....... (bleuuhnuhgh) (blahrgngnhhng) ...\r\n\r\nehh, #b#t2041200##k as a token of my kin's gratitude. And do a favor for us, please, get that thing out of here...");
+            qm.sendNext("你带来了#b#t4001094##k,谢谢你把我的一个孩子带回巢里！请拿着这个。。。\r\n\r\n....... (bleuuhnuhgh) (blahrgngnhhng) ...\r\n\r\n请收下#b#t2041200##k，感谢你帮我把孩子带回来。谢谢！");
         } else if (status == 1) {
             if (!qm.canHold(2041200, 1)) {
-                qm.sendOk("Please make a room on your USE inventory to receive the reward.");
+                qm.sendOk("请确认你的消耗栏是否有足够的空间来接收奖励。");
                 qm.dispose();
                 return;
             }

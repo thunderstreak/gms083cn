@@ -35,9 +35,9 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendAcceptDecline("#r猫鼬#k像野火一样传播谣言…通过勒索我和我的出租车服务，他们日复一日地抢走我的客户……嘿，别把这事告诉任何人，如果你帮我清理掉挡道的猫鼬，我就告诉你#r蘑菇城堡#k的事。你说呢？");
+            qm.sendAcceptDecline("狸猫不停在散布谣言。。。而且通过勒索我和我的出租车服务，日复一日地破坏我的生意。。。哎，不说了，如果你能清理掉一些#r狸猫#k,我会告诉你#r蘑菇城堡#k 的事情.");
         } else if (status == 1) {
-            qm.sendNext("很好，你有#r5分钟时间#k在这段时间内杀死#b40只猫鼬#k。祝你好运！");
+            qm.sendNext("太好了，请在#r5分钟#k杀死#b40只狸猫#k。祝你好运!");
         } else if (status == 2) {
             qm.forceStartQuest();
             qm.dispose();
@@ -60,7 +60,7 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("你做到了！．．． 嘿，这里的#r猫鼬#k可能会听到我们的谈话。我现在不打算谈论这个。");
+            qm.sendNext("你做到了! 嘿..., 这附近可能会有#r狸猫#k偷听.我们借一步说话.");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.dispose();

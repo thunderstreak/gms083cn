@@ -6,16 +6,16 @@ function start(mode, type, selection) {
         status -= 2;
     else if (mode != 1) {
         //if (mode == 0)
-            qm.sendNext("#b(You need to think about this for a second...)#k");
+            qm.sendNext("#b(你得考虑一下...)#k");
         qm.dispose();
         return;
     }
 	
 	if (status == 0) {
-        qm.sendAcceptDecline("How is the training going? I know you're busy, but please come to #bRien#k immediately. The #bMaha#k has started to act weird again... But its even weirder now. It's different from before. It's... darker than usual.");
+        qm.sendAcceptDecline("喂，训练进展如何？还在休息是吧，你有空过来#b里恩#k一趟，你那大斧子又开始不对劲了。它总闹腾，小脸发黑，你快回来带他去看医生吧。");
     } else if (status == 1) {
             qm.startQuest();
-            qm.sendOk("I have a bad feeling about this. Please come back here. I've never seen or herd Maha like this, but I can sense the suffering its going through. #bOnly you, the master of Maha, can do something about it!");
+            qm.sendOk("我感觉它魔怔了，你快回来一趟吧。再不回来你那大斧子指不定发生点啥，#b行不，战狼？");
     } else if (status == 2) {
             qm.dispose();
     }

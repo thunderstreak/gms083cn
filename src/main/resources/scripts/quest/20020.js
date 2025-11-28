@@ -6,11 +6,11 @@ var status = -1;
 
 function start(mode, type, selection) {
     if (mode == -1) {
-        qm.sendOk("Talk to me after you have decided what you really want to do. Whatever you choose, you will not miss out or lose privileges, so don't take this too seriously...");
+        qm.sendOk("在你决定了你真正想转职的职业之后再跟我说。在你选择之前，你都不会错过或失去选择的权力，所以不要太紧张...");
         qm.dispose();
     } else {
         if(mode == 0 && type > 0 || selection == 1) {
-            qm.sendOk("Talk to me after you have decided what you really want to do. Whatever you choose, you will not miss out or lose privileges, so don't take this too seriously...");
+            qm.sendOk("在你决定了你真正想做什么之后再跟我说。在你选择之前，你都不会错过或失去选择的权力，所以不要太紧张...");
             qm.dispose();
             return;
         }
@@ -21,13 +21,13 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("I can tell you've worked really hard by seeing that you're already at Level 10. I think it's time now for you to break out as a Nobless and officially become the Knight-in-Training. Before doing that, however, I want to ask you one thing. Have you decided which Knight you'd want to beome?");
+            qm.sendNext("我看你已经达到10级了，你的努力没有白费，我想现在是时候让你正式转职，成为一名真正的骑士了。不过，在这之前，我想问你一件事。你决定要成为哪种骑士了吗?");
         } else if (status == 1) {
-            qm.sendNextPrev("There isn't a single path to becoming a Knight. In fact, there are five of them laid out for you. It's up to you to choose which path you'd like to take, but it should definitely be something you will not regret. That's why... I am offering to show you what you'll look like once you become a Knight.");
+            qm.sendNextPrev("一旦做出选择之后就无法反悔。事实上，有五种不同类型的骑士，这取决于你选择你想走哪条路，为了让你更好地做出选择。所以。。。我可以向你展示你成为骑士后的样子.");
         } else if (status == 2) {
-            qm.sendSimple("What do you think? Are you interested in seeing yourself as the leader of the Knights? If you have already decided what kind of Knight you'd like to become, then you won't necessarily have to look at it...\r\n\r\n#b#L0#Show me how I'd look like as the leader of the Knights.#l ..#b#L1#No, I'm okay.");
+            qm.sendSimple("你怎么想？心里是否已经有答案了？如果你已经决定好要成为什么样的骑士，那么你就不必去看它了…\r\n\r\n#b#L0#让我看看我作为骑士领袖的样子.#l ..#b#L1#不，我没事.");
         } else if (status == 3) {
-            qm.sendYesNo("Would you like to see for it yourself right now? A short clip will come out soon. Be prepared for what you are about to witness.");
+            qm.sendYesNo("你想现在亲自看看吗？很快就会有一个短片出来。为你即将见证的事情做好准备.");
         } else if (status == 4) {
             qm.forceStartQuest();
             qm.forceCompleteQuest();

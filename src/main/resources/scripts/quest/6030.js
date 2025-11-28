@@ -38,15 +38,15 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("I am to teach you about the fundamentals of Alchemy.");
+            qm.sendNext("我要教你炼金术的基本原理。");
         } else if (status == 1) {
-            qm.sendNextPrev("While science is good to take a look on the thoughtful side of the elements that compounds the items, it alone is not nearly enough to devise an item.");
+            qm.sendNextPrev("虽然科学有助于从更深层的角度来看待物体的构成，但光靠科学是远远不够的。");
         } else if (status == 2) {
-            qm.sendNextPrev("In fact, to be able to 'tell the pieces' to become a whole, how should it be done? The rustic ways of the blacksmithing winds up dumbing down some latent potentials of the items.");
+            qm.sendNextPrev("事实上，要能够以‘元素’层面来构成为一个整体，应该怎么做？以铁匠的粗犷方式来操作显然不够纯粹。");
         } else if (status == 3) {
-            qm.sendNextPrev("Alchemy can be employed for this task. Cleanly and swiftly, #rit merges the parts that forms an item with almost no drawbacks#k, making out the most of the process with almost no scrapover, if done right. It takes a while to master it, but once it is done, everything will run out neatly.");
+            qm.sendNextPrev("炼金术可以用于这个任务。干净利落，#r通过各种元素的拆解重组，几乎没有任何缺点#k, 如果操作得当，甚至可以在没有废料的情况下完成整个过程。掌握它需要一段时间，但一旦学成将受用终身。");
         } else if (status == 4) {
-            qm.sendNextPrev("And remember this: the maxima of #bExchange#k, the area of the fundamentals of Alchemy where the total amount of the material does not change, is that no item can be created from nothing. Understood?");
+            qm.sendNextPrev("记住这句格言#b物质交换#k,炼金术基本原理中，元素是流动的,它只能从一种形式转化成另一种形式，任何物品都不能从无到有。理解？");
         } else if (status == 5) {
             qm.gainMeso(-10000);
             
